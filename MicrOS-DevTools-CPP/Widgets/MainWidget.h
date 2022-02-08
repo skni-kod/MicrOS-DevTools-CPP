@@ -10,6 +10,7 @@
 #include <QWidget>
 #include <QVBoxLayout>
 
+#include "Tabs/LinksTabWidget.h"
 #include "Tabs/StartTabWidget.h"
 #include "Tabs/ToolsTabWidget.h"
 
@@ -30,6 +31,13 @@ private:
      * @brief Action for exit.
      */
     QAction *exitAction = nullptr;
+
+    QMenu *tabsMenu = nullptr;
+    QAction *startTabAction = nullptr;
+    QAction *liknsTabAction = nullptr;
+    QAction *toolsTabAction = nullptr;
+    QAction *environmentTabAction = nullptr;
+    QAction *buildingTabAction = nullptr;
     /**
      * @brief Pointer to help menu.
      */
@@ -54,6 +62,7 @@ private:
      */
     QTabWidget *mainTabWidget = nullptr;
 
+    LinksTabWidget *linksTabWidget = nullptr;
     StartTabWidget *startTabWidget = nullptr;
     ToolsTabWidget *toolsTabWidget = nullptr;
 
