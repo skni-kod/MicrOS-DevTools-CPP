@@ -20,7 +20,8 @@ include(Widgets/Widgets.pri)
 SOURCES += \
     main.cpp
 
-HEADERS +=
+HEADERS += \
+    main.h
 
 TRANSLATIONS += \
     MicrOS-DevTools-CPP_pl_PL.ts
