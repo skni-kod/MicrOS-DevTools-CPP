@@ -16,7 +16,7 @@ void setAppPallete()
     QPalette p = qApp->palette();
     p.setColor(QPalette::Window, QColor(53,53,53));
     p.setColor(QPalette::WindowText, Qt::white);
-    p.setColor(QPalette::Base, QColor(15,15,15));
+    p.setColor(QPalette::Base, QColor(35,35,35));
     p.setColor(QPalette::AlternateBase, QColor(53,53,53));
     p.setColor(QPalette::ToolTipBase, Qt::white);
     p.setColor(QPalette::ToolTipText, Qt::white);
