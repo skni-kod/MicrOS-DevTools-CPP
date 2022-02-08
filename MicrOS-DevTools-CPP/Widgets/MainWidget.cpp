@@ -35,8 +35,10 @@ MainWidget::MainWidget(QWidget *parent)
     menuBar->addMenu(helpMenu);
     aboutAction = new QAction(tr("&O programie"));
     aboutAction->setShortcut(QKeySequence(tr("Ctrl+A")));
+    aboutMicrosAction = new QAction(tr("O &MicrOSie"));
     aboutQtAction = new QAction(tr("O &Qt"));
     helpMenu->addAction(aboutAction);
+    helpMenu->addAction(aboutMicrosAction);
     helpMenu->addAction(aboutQtAction);
 
     /// Layouts
@@ -62,13 +64,14 @@ MainWidget::MainWidget(QWidget *parent)
     this->setLayout(mainLayout);
 
     // Connections
-    connect(exitAction,SIGNAL(triggered()),qApp,SLOT(quit()));
+    connect(exitAction, SIGNAL(triggered()),qApp,SLOT(quit()));
     connect(startTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(0);});
     connect(liknsTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(1);});
     connect(toolsTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(2);});
     connect(environmentTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(3);});
     connect(buildingTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(4);});
-    connect(aboutAction, SIGNAL(triggered()), this, SLOT(showAboutMessage()));
+    connect(aboutAction, &QAction::triggered, this, &MainWidget::showAboutMessage);
+    connect(aboutMicrosAction, &QAction::triggered, this, &MainWidget::showAboutMicrosMessage);
     connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
 }
 
@@ -86,9 +89,21 @@ void MainWidget::showAboutMessage()
                       "<p>MicrOS to 32-bitowy system operacyjny, opracowany przez członków Sekcji Aplikacji Desktopowych Mobilnych i Webowych. "
                       "Naszym głównym celem było stworzenie od podstaw OS'a posiadającego możliwości podobne do systemu operacyjnego MS-DOS.</p>"
                       "<p>Repozytorium narzędzia MicrOS DevTools CPP (<a href=\"https://github.com/AzuxDario/MicrOS-DevTools-CPP\">www.github.com</a>)"
-                      "<p>Repozytorium systemu MicrOS (<a href=\"https://github.com/skni-kod/MicrOS\">www.github.com</a>)"
                       "<p>W tworzeniu programu wykorzystano Qt 5.12 (<a href=\"https://www.qt.io/\">www.qt.io</a>)</p>"
                       "<p>Program objęty jest licencją GPL 3.0 (<a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">www.gnu.org/licenses/gpl-3.0.en.html</a>)</p>"));
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.setDefaultButton(QMessageBox::Ok);
+    msgBox.exec();
+}
+
+void MainWidget::showAboutMicrosMessage()
+{
+    QMessageBox msgBox;
+    msgBox.setWindowTitle(tr("O MicrOSie"));
+    msgBox.setText(tr("<h3>O MicrOSie</h3>"
+                      "<p>MicrOS to 32-bitowy system operacyjny, opracowany przez członków Sekcji Aplikacji Desktopowych Mobilnych i Webowych. "
+                      "Naszym głównym celem było stworzenie od podstaw OS'a posiadającego możliwości podobne do systemu operacyjnego MS-DOS.</p>"
+                      "<p>Repozytorium systemu MicrOS (<a href=\"https://github.com/skni-kod/MicrOS\">www.github.com</a>)"));
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.setDefaultButton(QMessageBox::Ok);
     msgBox.exec();

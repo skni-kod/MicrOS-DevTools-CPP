@@ -47,6 +47,10 @@ private:
      */
     QAction *aboutAction = nullptr;
     /**
+     * @brief Action for about MicrOS.
+     */
+    QAction *aboutMicrosAction = nullptr;
+    /**
      * @brief Action for about Qt.
      */
     QAction *aboutQtAction = nullptr;
@@ -75,5 +79,9 @@ private slots:
      * @brief Function that shows message box about program.
      */
     void showAboutMessage();
+    /**
+     * @brief Function that shows message box about MicrOS.
+     */
+    void showAboutMicrosMessage();
 };
 #endif // MAINWIDGET_H
