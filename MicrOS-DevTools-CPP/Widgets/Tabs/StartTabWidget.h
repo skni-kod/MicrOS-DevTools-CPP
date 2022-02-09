@@ -22,7 +22,7 @@ private:
     QVBoxLayout *mainLayout = nullptr;
 
 public:
-    StartTabWidget(QWidget *parent = nullptr);
+    explicit StartTabWidget(QWidget *parent = nullptr);
     ~StartTabWidget();
 
 signals:

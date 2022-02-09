@@ -3,7 +3,7 @@
 MainWidget::MainWidget(QWidget *parent)
     : QWidget(parent)
 {
-    /// Menu bar
+    // Menu bar
     menuBar = new QMenuBar();
 
     programMenu = new QMenu(tr("&Program"));
@@ -31,6 +31,13 @@ MainWidget::MainWidget(QWidget *parent)
     tabsMenu->addAction(environmentTabAction);
     tabsMenu->addAction(buildingTabAction);
 
+    consoleMenu = new QMenu(tr("&Konsola"));
+    menuBar->addMenu(consoleMenu);
+    saveConsoleAction = new QAction(tr("&Zapisz zawartość konsoli"));
+    cleanConsoleAction = new QAction(tr("&Wyczyść konsole"));
+    consoleMenu->addAction(saveConsoleAction);
+    consoleMenu->addAction(cleanConsoleAction);
+
     helpMenu = new QMenu(tr("P&omoc"));
     menuBar->addMenu(helpMenu);
     aboutAction = new QAction(tr("&O programie"));
@@ -57,12 +64,13 @@ MainWidget::MainWidget(QWidget *parent)
     mainTabWidget->addTab(new QWidget(), tr("Konfiguracja budownia"));
 
 
+    // Console
     consoleGroupBox = new QGroupBox();
     consoleGroupBox->setTitle(tr("Konsola"));
-    consoleWidget = new ConsoleWidget();
+    consoleWidget = new ConsoleWidget(true);
     consoleWidget->printInfo(tr("MicrOS DevTools CPP 0.1"));
 
-    /// Layouts
+    // Layouts
     mainLayout = new QVBoxLayout();
     consoleLayout = new QVBoxLayout();
 
@@ -75,15 +83,17 @@ MainWidget::MainWidget(QWidget *parent)
     consoleGroupBox->setLayout(consoleLayout);
 
     // Connections
-    connect(exitAction, SIGNAL(triggered()),qApp,SLOT(quit()));
+    connect(exitAction, &QAction::triggered, qApp, &QApplication::quit);
     connect(startTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(0);});
     connect(liknsTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(1);});
     connect(toolsTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(2);});
     connect(environmentTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(3);});
     connect(buildingTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(4);});
+    connect(saveConsoleAction, &QAction::triggered, this, &MainWidget::saveLogToFile);
+    connect(cleanConsoleAction, &QAction::triggered, consoleWidget, &ConsoleWidget::clear);
     connect(aboutAction, &QAction::triggered, this, &MainWidget::showAboutMessage);
     connect(aboutMicrosAction, &QAction::triggered, this, &MainWidget::showAboutMicrosMessage);
-    connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+    connect(aboutQtAction, &QAction::triggered, qApp, &QApplication::aboutQt);
 
     consoleWidget->printOk(tr("Uruchamianie zakończone"));
 }
@@ -120,4 +130,17 @@ void MainWidget::showAboutMicrosMessage()
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.setDefaultButton(QMessageBox::Ok);
     msgBox.exec();
+}
+
+void MainWidget::saveLogToFile()
+{
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Zapisz plik"), "", tr("Log files (*.log);;Text files (*.txt)"));
+    QSaveFile saveFile(fileName);
+    saveFile.open(QIODevice::WriteOnly | QIODevice::Text);
+    QTextStream stream(&saveFile);
+
+    consoleWidget->printInfo(tr("Zapis logu do pliku: ") + fileName);
+
+    stream << consoleWidget->getLog();
+    saveFile.commit();
 }

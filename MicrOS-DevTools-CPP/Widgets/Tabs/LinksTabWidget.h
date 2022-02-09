@@ -22,7 +22,7 @@ private:
     QVBoxLayout *mainLayout = nullptr;
 
 public:
-    LinksTabWidget(QWidget *parent = nullptr);
+    explicit LinksTabWidget(QWidget *parent = nullptr);
     ~LinksTabWidget();
 
 signals:

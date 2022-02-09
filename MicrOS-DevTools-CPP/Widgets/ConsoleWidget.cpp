@@ -9,6 +9,11 @@ ConsoleWidget::ConsoleWidget(QWidget *parent) : QWidget(parent)
     this->setLayout(mainLayout);
 }
 
+ConsoleWidget::ConsoleWidget(bool appendTime, QWidget *parent) : ConsoleWidget(parent)
+{
+    this->appendTime = appendTime;
+}
+
 ConsoleWidget::~ConsoleWidget()
 {
 
@@ -23,7 +28,14 @@ void ConsoleWidget::printLog(QString text, QColor color)
 {
     QColor currentColor = consoleTextEdit->textColor();
     consoleTextEdit->setTextColor(color);
-    consoleTextEdit->append(text);
+    if(appendTime)
+    {
+        consoleTextEdit->append(QDateTime::currentDateTime().toString(timeFormat) + " " + text);
+    }
+    else
+    {
+        consoleTextEdit->append(text);
+    }
     consoleTextEdit->setTextColor(currentColor);
 }
 

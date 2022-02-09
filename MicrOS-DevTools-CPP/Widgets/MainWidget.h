@@ -3,11 +3,14 @@
 
 #include <QAction>
 #include <QApplication>
+#include <QFileDialog>
 #include <QGroupBox>
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
+#include <QSaveFile>
 #include <QTabWidget>
+#include <QTextStream>
 #include <QWidget>
 #include <QVBoxLayout>
 
@@ -40,6 +43,18 @@ private:
     QAction *toolsTabAction = nullptr;
     QAction *environmentTabAction = nullptr;
     QAction *buildingTabAction = nullptr;
+    /**
+     * @brief Pointer to console menu.
+     */
+    QMenu *consoleMenu = nullptr;
+    /**
+     * @brief Action for saving console log.
+     */
+    QAction *saveConsoleAction = nullptr;
+    /**
+     * @brief Action for clean console.
+     */
+    QAction *cleanConsoleAction = nullptr;
     /**
      * @brief Pointer to help menu.
      */
@@ -78,7 +93,7 @@ private:
 
 
 public:
-    MainWidget(QWidget *parent = nullptr);
+    explicit MainWidget(QWidget *parent = nullptr);
     ~MainWidget();
 
 private slots:
@@ -90,5 +105,9 @@ private slots:
      * @brief Function that shows message box about MicrOS.
      */
     void showAboutMicrosMessage();
+    /**
+     * @brief Function that saves log to file.
+     */
+    void saveLogToFile();
 };
 #endif // MAINWIDGET_H
