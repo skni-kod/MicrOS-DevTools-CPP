@@ -37,8 +37,12 @@ MainWidget::MainWidget(QWidget *parent)
     consoleMenu = new QMenu(tr("&Konsola"));
     menuBar->addMenu(consoleMenu);
     saveConsoleAction = new QAction(tr("&Zapisz zawartość konsoli"));
+    showConsoleAction= new QAction(tr("&Pokaż konsole"));
+    showConsoleAction->setCheckable(true);
+    showConsoleAction->setChecked(true);
     cleanConsoleAction = new QAction(tr("&Wyczyść konsole"));
     consoleMenu->addAction(saveConsoleAction);
+    consoleMenu->addAction(showConsoleAction);
     consoleMenu->addAction(cleanConsoleAction);
 
     helpMenu = new QMenu(tr("P&omoc"));
@@ -98,6 +102,7 @@ MainWidget::MainWidget(QWidget *parent)
     connect(compilerTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(4);});
     connect(buildingTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(5);});
     connect(saveConsoleAction, &QAction::triggered, this, &MainWidget::saveLogToFile);
+    connect(showConsoleAction, &QAction::triggered, this, &MainWidget::toggleConsoleVisibility);
     connect(cleanConsoleAction, &QAction::triggered, consoleWidget, &ConsoleWidget::clear);
     connect(aboutAction, &QAction::triggered, this, &MainWidget::showAboutMessage);
     connect(aboutMicrosAction, &QAction::triggered, this, &MainWidget::showAboutMicrosMessage);
@@ -138,6 +143,20 @@ void MainWidget::showAboutMicrosMessage()
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.setDefaultButton(QMessageBox::Ok);
     msgBox.exec();
+}
+
+void MainWidget::toggleConsoleVisibility()
+{
+    if(consoleGroupBox->isVisible())
+    {
+        consoleGroupBox->hide();
+        showConsoleAction->setChecked(false);
+    }
+    else
+    {
+        consoleGroupBox->show();
+        showConsoleAction->setChecked(true);
+    }
 }
 
 void MainWidget::saveLogToFile()

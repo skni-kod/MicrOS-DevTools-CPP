@@ -56,6 +56,10 @@ private:
      */
     QAction *saveConsoleAction = nullptr;
     /**
+     * @brief Action for toggle console visibility.
+     */
+    QAction *showConsoleAction = nullptr;
+    /**
      * @brief Action for clean console.
      */
     QAction *cleanConsoleAction = nullptr;
@@ -112,6 +116,10 @@ private slots:
      * @brief Function that shows message box about MicrOS.
      */
     void showAboutMicrosMessage();
+    /**
+     * @brief Function that toggles console visibility.
+     */
+    void toggleConsoleVisibility();
     /**
      * @brief Function that saves log to file.
      */
