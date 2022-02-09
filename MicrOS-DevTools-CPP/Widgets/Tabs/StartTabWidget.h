@@ -5,28 +5,38 @@
 #include <QWidget>
 #include <QVBoxLayout>
 
+/*!
+ * \brief The StartTabWidget class.
+ * \details Stores controls for start tab.
+ */
 class StartTabWidget : public QWidget
 {
     Q_OBJECT
 
 private:
-    /**
-     * @brief Main label.
+    /*!
+     *  \brief Main label with tab description.
      */
     QLabel *mainLabel = nullptr;
-    /**
-     * @brief Holds information about going to next tab.
+    /*!
+     *  \brief Label about next tab.
      */
     QLabel *nextTabLabel = nullptr;
 
-    /**
-     * @brief Main layout of window.
-     * @details Up menu, down tabs.
+    /*!
+     *  \brief Main layout of tab.
      */
     QVBoxLayout *mainLayout = nullptr;
 
 public:
+    /*!
+     * \brief Default constructor.
+     * \param parent Pointer to parent widget.
+     */
     explicit StartTabWidget(QWidget *parent = nullptr);
+    /*!
+     * \brief Default destructor.
+     */
     ~StartTabWidget();
 
 signals:

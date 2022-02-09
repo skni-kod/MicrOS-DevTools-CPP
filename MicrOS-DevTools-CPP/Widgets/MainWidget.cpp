@@ -5,14 +5,14 @@ MainWidget::MainWidget(QWidget *parent)
 {
     // Menu bar
     menuBar = new QMenuBar();
-
+    // Program menu
     programMenu = new QMenu(tr("&Program"));
     menuBar->addMenu(programMenu);
     exitAction = new QAction(tr("&Wyjście"));
     exitAction->setShortcut(QKeySequence(tr("Ctrl+Q")));
     programMenu->addSeparator();
     programMenu->addAction(exitAction);
-
+    // Tabs menu
     tabsMenu = new QMenu(tr("&Zakładki"));
     menuBar->addMenu(tabsMenu);
     startTabAction = new QAction(tr("&Start"));
@@ -33,7 +33,7 @@ MainWidget::MainWidget(QWidget *parent)
     tabsMenu->addAction(environmentTabAction);
     tabsMenu->addAction(compilerTabAction);
     tabsMenu->addAction(buildingTabAction);
-
+    // Console menu
     consoleMenu = new QMenu(tr("&Konsola"));
     menuBar->addMenu(consoleMenu);
     saveConsoleAction = new QAction(tr("&Zapisz zawartość konsoli"));
@@ -44,7 +44,7 @@ MainWidget::MainWidget(QWidget *parent)
     consoleMenu->addAction(saveConsoleAction);
     consoleMenu->addAction(showConsoleAction);
     consoleMenu->addAction(cleanConsoleAction);
-
+    // Help menu
     helpMenu = new QMenu(tr("P&omoc"));
     menuBar->addMenu(helpMenu);
     aboutAction = new QAction(tr("&O programie"));
@@ -59,7 +59,7 @@ MainWidget::MainWidget(QWidget *parent)
     mainTabWidget = new QTabWidget();
     mainTabWidget->setMinimumWidth(600);
     mainTabWidget->setMinimumHeight(400);
-
+    // Tabs
     linksTabWidget = new LinksTabWidget();
     startTabWidget = new StartTabWidget();
     toolsTabWidget = new ToolsTabWidget();

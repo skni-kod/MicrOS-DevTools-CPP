@@ -22,106 +22,171 @@
 #include "Tabs/StartTabWidget.h"
 #include "Tabs/ToolsTabWidget.h"
 
+/*!
+ * \brief The MainWidget class
+ * \details Main widget of application. Stores menu bar, all tabs and console.
+ */
 class MainWidget : public QWidget
 {
     Q_OBJECT
 
 private:
-    /**
-     * @brief Pointer to main menu.
+    /// Menu bar
+
+    /*!
+     * \brief Pointer to main menu.
      */
     QMenuBar *menuBar = nullptr;
-    /**
-     * @brief Pointer to program menu.
+    /*!
+     * \brief Pointer to program menu.
      */
     QMenu *programMenu = nullptr;
-    /**
-     * @brief Action for exit.
+    /*!
+     * \brief Action for exit.
      */
     QAction *exitAction = nullptr;
-
+    /*!
+     * \brief  Pointer to tabs menu.
+     */
     QMenu *tabsMenu = nullptr;
+    /*!
+     * \brief Action for selecting start tab.
+     */
     QAction *startTabAction = nullptr;
+    /*!
+     * \brief Action for selecting links tab.
+     */
     QAction *liknsTabAction = nullptr;
+    /*!
+     * \brief Action for selecting tools tab.
+     */
     QAction *toolsTabAction = nullptr;
+    /*!
+     * \brief Action for selecting environment tab.
+     */
     QAction *environmentTabAction = nullptr;
+    /*!
+     * \brief Action for selecting compiler tab.
+     */
     QAction *compilerTabAction = nullptr;
+    /*!
+     * \brief Action for selecting building tab.
+     */
     QAction *buildingTabAction = nullptr;
-    /**
-     * @brief Pointer to console menu.
+    /*!
+     * \brief Pointer to console menu.
      */
     QMenu *consoleMenu = nullptr;
-    /**
-     * @brief Action for saving console log.
+    /*!
+     * \brief Action for saving console log.
      */
     QAction *saveConsoleAction = nullptr;
-    /**
-     * @brief Action for toggle console visibility.
+    /*!
+     * \brief Action for toggle console visibility.
      */
     QAction *showConsoleAction = nullptr;
-    /**
-     * @brief Action for clean console.
+    /*!
+     * \brief Action for clean console.
      */
     QAction *cleanConsoleAction = nullptr;
-    /**
-     * @brief Pointer to help menu.
+    /*!
+     * \brief Pointer to help menu.
      */
     QMenu *helpMenu = nullptr;
-    /**
-     * @brief Action for about.
+    /*!
+     * \brief Action for about.
      */
     QAction *aboutAction = nullptr;
-    /**
-     * @brief Action for about MicrOS.
+    /*!
+     * \brief Action for about MicrOS.
      */
     QAction *aboutMicrosAction = nullptr;
-    /**
-     * @brief Action for about Qt.
+    /*!
+     * \brief Action for about Qt.
      */
     QAction *aboutQtAction = nullptr;
 
-    /**
-     * @brief Main layout of window.
-     * @details Up menu, down tabs.
-     */
-    QVBoxLayout *mainLayout = nullptr;
+    /// Tabs
 
-    /**
-     * @brief Main tab wiget.
+    /*!
+     * \brief Main tab wiget.
      */
     QTabWidget *mainTabWidget = nullptr;
-
-    LinksTabWidget *linksTabWidget = nullptr;
+    /*!
+     * \brief Start tab.
+     */
     StartTabWidget *startTabWidget = nullptr;
+    /*!
+     * \brief Tabs with links.
+     */
+    LinksTabWidget *linksTabWidget = nullptr;
+    /*!
+     * \brief Tabs with tools.
+     */
     ToolsTabWidget *toolsTabWidget = nullptr;
+    /*!
+     * \brief Tabs with enviroment settings.
+     */
     EnvironmentTabWidget *environmentTabWidget = nullptr;
+    /*!
+     * \brief Tabs with compiler settings.
+     */
     CompilerTabWidget *compilerTabWidget = nullptr;
+    /*!
+     * \brief Tabs with building settings.
+     */
     BuildingTabWidget *buildingTabWidget = nullptr;
 
+    /// Console
+
+    /*!
+     * \brief Group box for console.
+     */
     QGroupBox *consoleGroupBox = nullptr;
-    QVBoxLayout *consoleLayout = nullptr;
+    /*!
+     * \brief Console widget.
+     */
     ConsoleWidget *consoleWidget = nullptr;
+
+    /// Layouts
+
+    /*!
+     * \brief Main layout of window.
+     * \details From up to down: menu, tabs, console.
+     */
+    QVBoxLayout *mainLayout = nullptr;
+    /*!
+     * \brief Layout for console.
+     */
+    QVBoxLayout *consoleLayout = nullptr;
 
 
 public:
+    /*!
+     * \brief Default constructor.
+     * \param parent Pointer to parent widget.
+     */
     explicit MainWidget(QWidget *parent = nullptr);
+    /*!
+     * \brief Default destructor.
+     */
     ~MainWidget();
 
 private slots:
-    /**
-     * @brief Function that shows message box about program.
+    /*!
+     * \brief Function that shows message box about program.
      */
     void showAboutMessage();
-    /**
-     * @brief Function that shows message box about MicrOS.
+    /*!
+     * \brief Function that shows message box about MicrOS.
      */
     void showAboutMicrosMessage();
-    /**
-     * @brief Function that toggles console visibility.
+    /*!
+     * \brief Function that toggles console visibility.
      */
     void toggleConsoleVisibility();
-    /**
-     * @brief Function that saves log to file.
+    /*!
+     * \brief Function that saves log to file.
      */
     void saveLogToFile();
 };

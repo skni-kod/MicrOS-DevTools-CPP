@@ -6,6 +6,9 @@
 
 #include "MainWidget.h"
 
+/*!
+ * \brief Set pallete of application.
+ */
 void setAppPallete();
 
 #endif // MAIN_H
