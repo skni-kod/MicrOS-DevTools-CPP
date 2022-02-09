@@ -1,11 +1,11 @@
-#ifndef TOOLSTABWIDGET_H
-#define TOOLSTABWIDGET_H
+#ifndef COMPILERTABWIDGET_H
+#define COMPILERTABWIDGET_H
 
 #include <QLabel>
 #include <QWidget>
 #include <QVBoxLayout>
 
-class ToolsTabWidget : public QWidget
+class CompilerTabWidget : public QWidget
 {
     Q_OBJECT
 
@@ -26,11 +26,11 @@ private:
     QVBoxLayout *mainLayout = nullptr;
 
 public:
-    explicit ToolsTabWidget(QWidget *parent = nullptr);
-    ~ToolsTabWidget();
+    explicit CompilerTabWidget(QWidget *parent = nullptr);
+    ~CompilerTabWidget();
 
 signals:
 
 };
 
-#endif // TOOLSTABWIDGET_H
+#endif // COMPILERTABWIDGET_H

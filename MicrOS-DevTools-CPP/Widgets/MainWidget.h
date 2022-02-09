@@ -15,6 +15,9 @@
 #include <QVBoxLayout>
 
 #include "ConsoleWidget.h"
+#include "Tabs/BuildingTabWidget.h"
+#include "Tabs/CompilerTabWidget.h"
+#include "Tabs/EnvironmentTabWidget.h"
 #include "Tabs/LinksTabWidget.h"
 #include "Tabs/StartTabWidget.h"
 #include "Tabs/ToolsTabWidget.h"
@@ -42,7 +45,7 @@ private:
     QAction *liknsTabAction = nullptr;
     QAction *toolsTabAction = nullptr;
     QAction *environmentTabAction = nullptr;
-    QAction *compilatorTabAction = nullptr;
+    QAction *compilerTabAction = nullptr;
     QAction *buildingTabAction = nullptr;
     /**
      * @brief Pointer to console menu.
@@ -87,6 +90,9 @@ private:
     LinksTabWidget *linksTabWidget = nullptr;
     StartTabWidget *startTabWidget = nullptr;
     ToolsTabWidget *toolsTabWidget = nullptr;
+    EnvironmentTabWidget *environmentTabWidget = nullptr;
+    CompilerTabWidget *compilerTabWidget = nullptr;
+    BuildingTabWidget *buildingTabWidget = nullptr;
 
     QGroupBox *consoleGroupBox = nullptr;
     QVBoxLayout *consoleLayout = nullptr;

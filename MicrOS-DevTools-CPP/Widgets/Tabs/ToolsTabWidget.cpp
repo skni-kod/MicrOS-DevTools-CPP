@@ -12,16 +12,22 @@ ToolsTabWidget::ToolsTabWidget(QWidget *parent) : QWidget(parent)
                           "<p> - Imdisk (montowanie dyskietki)<br/>"
                           "(<a href=\"https://sourceforge.net/projects/imdisk-toolkit/files/20190130/ImDiskTk-x64.exe/download\">https://sourceforge.net</a>)</p>"
                           "<p> - MSYS2 (środowisko Linuxowe)<br/>"
-                          "(<a href=\"https://www.msys2.org/\">https://www.msys2.org</a>)</p>"
-                          "<p><b>Gdy skończysz przejdź do zakładki Środowisko.</b></p>"));
+                          "(<a href=\"https://www.msys2.org/\">https://www.msys2.org</a>)</p>"));
     mainLabel->setOpenExternalLinks(true);
     mainLabel->setTextInteractionFlags(Qt::TextBrowserInteraction);
     mainLabel->setWordWrap(true);
+
+    nextTabLabel = new QLabel();
+    nextTabLabel->setText(tr("<p><b>Gdy skończysz przejdź do zakładki Środowisko.</b></p>"));
+    nextTabLabel->setOpenExternalLinks(true);
+    nextTabLabel->setTextInteractionFlags(Qt::TextBrowserInteraction);
+    nextTabLabel->setWordWrap(true);
 
     /// Layouts
     mainLayout = new QVBoxLayout();
     mainLayout->addWidget(mainLabel);
     mainLayout->addStretch();
+    mainLayout->addWidget(nextTabLabel);
     this->setLayout(mainLayout);
 }
 

@@ -23,15 +23,15 @@ MainWidget::MainWidget(QWidget *parent)
     toolsTabAction->setShortcut(QKeySequence(tr("Ctrl+3")));
     environmentTabAction = new QAction(tr("Ś&rodowisko"));
     environmentTabAction->setShortcut(QKeySequence(tr("Ctrl+4")));
-    compilatorTabAction = new QAction(tr("&Kompilator"));
-    compilatorTabAction->setShortcut(QKeySequence(tr("Ctrl+5")));
+    compilerTabAction = new QAction(tr("&Kompilator"));
+    compilerTabAction->setShortcut(QKeySequence(tr("Ctrl+5")));
     buildingTabAction = new QAction(tr("Konfiguracja &budownia"));
     buildingTabAction->setShortcut(QKeySequence(tr("Ctrl+6")));
     tabsMenu->addAction(startTabAction);
     tabsMenu->addAction(liknsTabAction);
     tabsMenu->addAction(toolsTabAction);
     tabsMenu->addAction(environmentTabAction);
-    tabsMenu->addAction(compilatorTabAction);
+    tabsMenu->addAction(compilerTabAction);
     tabsMenu->addAction(buildingTabAction);
 
     consoleMenu = new QMenu(tr("&Konsola"));
@@ -59,20 +59,23 @@ MainWidget::MainWidget(QWidget *parent)
     linksTabWidget = new LinksTabWidget();
     startTabWidget = new StartTabWidget();
     toolsTabWidget = new ToolsTabWidget();
+    environmentTabWidget = new EnvironmentTabWidget();
+    compilerTabWidget = new CompilerTabWidget();
+    buildingTabWidget = new BuildingTabWidget();
 
     mainTabWidget->addTab(startTabWidget, tr("Start"));
     mainTabWidget->addTab(linksTabWidget, tr("Przydatne linki"));
     mainTabWidget->addTab(toolsTabWidget, tr("Narzędzia"));
-    mainTabWidget->addTab(new QWidget(), tr("Środowisko"));
-    mainTabWidget->addTab(new QWidget(), tr("Kompilator"));
-    mainTabWidget->addTab(new QWidget(), tr("Konfiguracja budownia"));
+    mainTabWidget->addTab(environmentTabWidget, tr("Środowisko"));
+    mainTabWidget->addTab(compilerTabWidget, tr("Kompilator"));
+    mainTabWidget->addTab(buildingTabWidget, tr("Konfiguracja budownia"));
 
 
     // Console
     consoleGroupBox = new QGroupBox();
     consoleGroupBox->setTitle(tr("Konsola"));
     consoleWidget = new ConsoleWidget(true);
-    consoleWidget->printInfo(tr("MicrOS DevTools CPP 0.1"));
+    consoleWidget->printLog(tr("MicrOS DevTools CPP 0.1"), ConsoleWidget::LogLevel::Info);
 
     // Layouts
     mainLayout = new QVBoxLayout();
@@ -92,7 +95,7 @@ MainWidget::MainWidget(QWidget *parent)
     connect(liknsTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(1);});
     connect(toolsTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(2);});
     connect(environmentTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(3);});
-    connect(compilatorTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(4);});
+    connect(compilerTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(4);});
     connect(buildingTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(5);});
     connect(saveConsoleAction, &QAction::triggered, this, &MainWidget::saveLogToFile);
     connect(cleanConsoleAction, &QAction::triggered, consoleWidget, &ConsoleWidget::clear);
@@ -100,7 +103,7 @@ MainWidget::MainWidget(QWidget *parent)
     connect(aboutMicrosAction, &QAction::triggered, this, &MainWidget::showAboutMicrosMessage);
     connect(aboutQtAction, &QAction::triggered, qApp, &QApplication::aboutQt);
 
-    consoleWidget->printOk(tr("Uruchamianie zakończone"));
+    consoleWidget->printLog(tr("Uruchamianie zakończone"), ConsoleWidget::LogLevel::Ok);
 }
 
 MainWidget::~MainWidget()
@@ -144,7 +147,7 @@ void MainWidget::saveLogToFile()
     saveFile.open(QIODevice::WriteOnly | QIODevice::Text);
     QTextStream stream(&saveFile);
 
-    consoleWidget->printInfo(tr("Zapis logu do pliku: ") + fileName);
+    consoleWidget->printLog(tr("Zapis logu do pliku: ") + fileName, ConsoleWidget::LogLevel::Info);
 
     stream << consoleWidget->getLog();
     saveFile.commit();

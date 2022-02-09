@@ -13,6 +13,9 @@ class ConsoleWidget : public QWidget
 {
     Q_OBJECT
 
+public:
+    enum class LogLevel {Info, Ok, Error, Warning};
+
 private:
     /**
      * @brief Append time to log flag.
@@ -41,11 +44,7 @@ public:
 signals:
 
 public slots:
-    void printLog(QString text, QColor color);
-    void printInfo(QString text);
-    void printOk(QString text);
-    void printError(QString text);
-    void printWarning(QString text);
+    void printLog(QString message, LogLevel level);
     void clear();
     void setAppendTime(bool value) noexcept {appendTime = value;}
     void setTimeFormat(QString format) {timeFormat = format;}
@@ -54,6 +53,9 @@ public:
     bool getAppendTime() noexcept {return appendTime;}
     QString getTimeFormat() {return timeFormat;}
     QString getLog() {return consoleTextEdit->toPlainText();}
+
+private:
+    void printLog(QString text, QColor color);
 };
 
 #endif // CONSOLEWIDGET_H

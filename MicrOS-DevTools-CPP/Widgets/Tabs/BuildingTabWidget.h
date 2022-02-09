@@ -1,11 +1,11 @@
-#ifndef TOOLSTABWIDGET_H
-#define TOOLSTABWIDGET_H
+#ifndef BUILDINGTABWIDGET_H
+#define BUILDINGTABWIDGET_H
 
 #include <QLabel>
 #include <QWidget>
 #include <QVBoxLayout>
 
-class ToolsTabWidget : public QWidget
+class BuildingTabWidget : public QWidget
 {
     Q_OBJECT
 
@@ -26,11 +26,11 @@ private:
     QVBoxLayout *mainLayout = nullptr;
 
 public:
-    explicit ToolsTabWidget(QWidget *parent = nullptr);
-    ~ToolsTabWidget();
+    explicit BuildingTabWidget(QWidget *parent = nullptr);
+    ~BuildingTabWidget();
 
 signals:
 
 };
 
-#endif // TOOLSTABWIDGET_H
+#endif // BUILDINGTABWIDGET_H

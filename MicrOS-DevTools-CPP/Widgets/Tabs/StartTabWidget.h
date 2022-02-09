@@ -14,6 +14,10 @@ private:
      * @brief Main label.
      */
     QLabel *mainLabel = nullptr;
+    /**
+     * @brief Holds information about going to next tab.
+     */
+    QLabel *nextTabLabel = nullptr;
 
     /**
      * @brief Main layout of window.

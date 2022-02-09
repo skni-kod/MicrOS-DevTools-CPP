@@ -40,26 +40,33 @@ void ConsoleWidget::printLog(QString text, QColor color)
     consoleTextEdit->setTextColor(currentColor);
 }
 
-void ConsoleWidget::printInfo(QString text)
+void ConsoleWidget::printLog(QString message, LogLevel level)
 {
-    QPalette p = qApp->palette();
-    QColor currentColor = p.color(QPalette::WindowText);
-    printLog(text, currentColor);
-}
-
-void ConsoleWidget::printOk(QString text)
-{
-    printLog(text, Qt::green);
-}
-
-void ConsoleWidget::printError(QString text)
-{
-    printLog(text, Qt::red);
-}
-
-void ConsoleWidget::printWarning(QString text)
-{
-    printLog(text, Qt::yellow);
+    switch(level)
+    {
+        case LogLevel::Info:
+        {
+            QPalette p = qApp->palette();
+            QColor currentColor = p.color(QPalette::WindowText);
+            printLog(message, currentColor);
+            break;
+        }
+        case LogLevel::Ok:
+        {
+            printLog(message, Qt::green);
+            break;
+        }
+        case LogLevel::Error:
+        {
+            printLog(message, Qt::red);
+            break;
+        }
+        case LogLevel::Warning:
+        {
+            printLog(message, Qt::yellow);
+            break;
+        }
+    }
 }
 
 void ConsoleWidget::clear()
