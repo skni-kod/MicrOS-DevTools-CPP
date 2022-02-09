@@ -41,14 +41,9 @@ MainWidget::MainWidget(QWidget *parent)
     helpMenu->addAction(aboutMicrosAction);
     helpMenu->addAction(aboutQtAction);
 
-    /// Layouts
-    mainLayout = new QVBoxLayout();
-    mainLayout->setMenuBar(menuBar);
-
     // Tab widget
     mainTabWidget = new QTabWidget();
-    mainLayout->addWidget(mainTabWidget);
-    mainTabWidget->setMinimumWidth(500);
+    mainTabWidget->setMinimumWidth(600);
     mainTabWidget->setMinimumHeight(400);
 
     linksTabWidget = new LinksTabWidget();
@@ -61,7 +56,23 @@ MainWidget::MainWidget(QWidget *parent)
     mainTabWidget->addTab(new QWidget(), tr("Środowisko"));
     mainTabWidget->addTab(new QWidget(), tr("Konfiguracja budownia"));
 
+
+    consoleGroupBox = new QGroupBox();
+    consoleGroupBox->setTitle(tr("Konsola"));
+    consoleWidget = new ConsoleWidget();
+    consoleWidget->printInfo(tr("MicrOS DevTools CPP 0.1"));
+
+    /// Layouts
+    mainLayout = new QVBoxLayout();
+    consoleLayout = new QVBoxLayout();
+
+    mainLayout->setMenuBar(menuBar);
+    mainLayout->addWidget(mainTabWidget);
+    mainLayout->addWidget(consoleGroupBox);
+    consoleLayout->addWidget(consoleWidget);
+
     this->setLayout(mainLayout);
+    consoleGroupBox->setLayout(consoleLayout);
 
     // Connections
     connect(exitAction, SIGNAL(triggered()),qApp,SLOT(quit()));
@@ -73,6 +84,8 @@ MainWidget::MainWidget(QWidget *parent)
     connect(aboutAction, &QAction::triggered, this, &MainWidget::showAboutMessage);
     connect(aboutMicrosAction, &QAction::triggered, this, &MainWidget::showAboutMicrosMessage);
     connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+
+    consoleWidget->printOk(tr("Uruchamianie zakończone"));
 }
 
 MainWidget::~MainWidget()

@@ -3,6 +3,7 @@
 
 #include <QAction>
 #include <QApplication>
+#include <QGroupBox>
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
@@ -10,6 +11,7 @@
 #include <QWidget>
 #include <QVBoxLayout>
 
+#include "ConsoleWidget.h"
 #include "Tabs/LinksTabWidget.h"
 #include "Tabs/StartTabWidget.h"
 #include "Tabs/ToolsTabWidget.h"
@@ -69,6 +71,11 @@ private:
     LinksTabWidget *linksTabWidget = nullptr;
     StartTabWidget *startTabWidget = nullptr;
     ToolsTabWidget *toolsTabWidget = nullptr;
+
+    QGroupBox *consoleGroupBox = nullptr;
+    QVBoxLayout *consoleLayout = nullptr;
+    ConsoleWidget *consoleWidget = nullptr;
+
 
 public:
     MainWidget(QWidget *parent = nullptr);
