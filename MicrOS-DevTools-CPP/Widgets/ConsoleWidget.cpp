@@ -5,6 +5,7 @@ ConsoleWidget::ConsoleWidget(QWidget *parent) : QWidget(parent)
     mainLayout = new QVBoxLayout();
     consoleTextEdit = new QTextEdit();
     consoleTextEdit->setReadOnly(true);
+    consoleTextEdit->setFontFamily("Courier New");
     mainLayout->addWidget(consoleTextEdit);
     this->setLayout(mainLayout);
 }

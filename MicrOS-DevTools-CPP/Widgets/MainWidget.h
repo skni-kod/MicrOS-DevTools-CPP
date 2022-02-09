@@ -42,6 +42,7 @@ private:
     QAction *liknsTabAction = nullptr;
     QAction *toolsTabAction = nullptr;
     QAction *environmentTabAction = nullptr;
+    QAction *compilatorTabAction = nullptr;
     QAction *buildingTabAction = nullptr;
     /**
      * @brief Pointer to console menu.

@@ -23,12 +23,15 @@ MainWidget::MainWidget(QWidget *parent)
     toolsTabAction->setShortcut(QKeySequence(tr("Ctrl+3")));
     environmentTabAction = new QAction(tr("Ś&rodowisko"));
     environmentTabAction->setShortcut(QKeySequence(tr("Ctrl+4")));
-    buildingTabAction = new QAction(tr("&Konfiguracja budownia"));
-    buildingTabAction->setShortcut(QKeySequence(tr("Ctrl+5")));
+    compilatorTabAction = new QAction(tr("&Kompilator"));
+    compilatorTabAction->setShortcut(QKeySequence(tr("Ctrl+5")));
+    buildingTabAction = new QAction(tr("Konfiguracja &budownia"));
+    buildingTabAction->setShortcut(QKeySequence(tr("Ctrl+6")));
     tabsMenu->addAction(startTabAction);
     tabsMenu->addAction(liknsTabAction);
     tabsMenu->addAction(toolsTabAction);
     tabsMenu->addAction(environmentTabAction);
+    tabsMenu->addAction(compilatorTabAction);
     tabsMenu->addAction(buildingTabAction);
 
     consoleMenu = new QMenu(tr("&Konsola"));
@@ -61,6 +64,7 @@ MainWidget::MainWidget(QWidget *parent)
     mainTabWidget->addTab(linksTabWidget, tr("Przydatne linki"));
     mainTabWidget->addTab(toolsTabWidget, tr("Narzędzia"));
     mainTabWidget->addTab(new QWidget(), tr("Środowisko"));
+    mainTabWidget->addTab(new QWidget(), tr("Kompilator"));
     mainTabWidget->addTab(new QWidget(), tr("Konfiguracja budownia"));
 
 
@@ -88,7 +92,8 @@ MainWidget::MainWidget(QWidget *parent)
     connect(liknsTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(1);});
     connect(toolsTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(2);});
     connect(environmentTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(3);});
-    connect(buildingTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(4);});
+    connect(compilatorTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(4);});
+    connect(buildingTabAction, &QAction::triggered, this, [&]{mainTabWidget->setCurrentIndex(5);});
     connect(saveConsoleAction, &QAction::triggered, this, &MainWidget::saveLogToFile);
     connect(cleanConsoleAction, &QAction::triggered, consoleWidget, &ConsoleWidget::clear);
     connect(aboutAction, &QAction::triggered, this, &MainWidget::showAboutMessage);
