@@ -160,7 +160,6 @@ private:
      */
     QVBoxLayout *consoleLayout = nullptr;
 
-
 public:
     /*!
      * \brief Default constructor.

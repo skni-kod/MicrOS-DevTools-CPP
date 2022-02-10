@@ -2,6 +2,10 @@
 #include <QDebug>
 StartTabWidget::StartTabWidget(QWidget *parent) : QWidget(parent)
 {
+    logoLabel = new QLabel();
+    logoLabel->setPixmap(QPixmap(":/pictures/DevToolsLogo").scaledToWidth(250));
+    logoLabel->setAlignment(Qt::AlignCenter);
+
     mainLabel = new QLabel();
     mainLabel->setText(tr("<h3>MicrOS DevTools CPP</h3>"
                           "<p>Program stanowi narzędzie developerskie przydatne programistom MicrOSa.</p>"
@@ -21,6 +25,7 @@ StartTabWidget::StartTabWidget(QWidget *parent) : QWidget(parent)
 
     /// Layouts
     mainLayout = new QVBoxLayout();
+    mainLayout->addWidget(logoLabel);
     mainLayout->addWidget(mainLabel);
     mainLayout->addStretch();
     mainLayout->addWidget(nextTabLabel);

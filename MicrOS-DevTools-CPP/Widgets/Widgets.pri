@@ -8,3 +8,5 @@ HEADERS += \
     $$PWD/MainWidget.h 
 	
 include(Tabs/Tabs.pri)
+
+RESOURCES +=
