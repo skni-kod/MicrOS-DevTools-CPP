@@ -22,12 +22,14 @@ class ConsoleWidget : public QWidget
 public:
     /*!
      * \brief Indicates legel of message.
-     * \enum Info Standard type of message.
-     * \enum Ok Type of message that communicates success.
-     * \enum Error Type of message that indicates error.
-     * \enum Warning Type of message that indicates warning, but not as ciritcal as error.
      */
-    enum class LogLevel {Info, Ok, Error, Warning};
+    enum class LogLevel
+    {
+        Info,     /*!< Standard type of message. */
+        Ok,       /*!< Type of message that communicates success. */
+        Error,    /*!< Type of message that indicates error. */
+        Warning   /*!< Type of message that indicates warning, but not as ciritcal as error. */
+    };
 
 private:
     /*!
@@ -77,7 +79,7 @@ signals:
 public slots:
     /*!
      * \brief Print line of text to log.
-     * \param Message to print to log console.
+     * \param message Message to print to log console.
      * \param level Level of logged message.
      */
     void printLog(QString message, LogLevel level);
