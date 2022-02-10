@@ -74,7 +74,6 @@ MainWidget::MainWidget(QWidget *parent)
     mainTabWidget->addTab(compilerTabWidget, tr("Kompilator"));
     mainTabWidget->addTab(buildingTabWidget, tr("Konfiguracja budownia"));
 
-
     // Console
     consoleGroupBox = new QGroupBox();
     consoleGroupBox->setTitle(tr("Konsola"));
@@ -126,7 +125,10 @@ void MainWidget::showAboutMessage()
                       "Naszym głównym celem było stworzenie od podstaw OS'a posiadającego możliwości podobne do systemu operacyjnego MS-DOS.</p>"
                       "<p>Repozytorium narzędzia MicrOS DevTools CPP (<a href=\"https://github.com/AzuxDario/MicrOS-DevTools-CPP\">www.github.com</a>)"
                       "<p>W tworzeniu programu wykorzystano Qt 5.12 (<a href=\"https://www.qt.io/\">www.qt.io</a>)</p>"
-                      "<p>Program objęty jest licencją GPL 3.0 (<a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">www.gnu.org/licenses/gpl-3.0.en.html</a>)</p>"));
+                      "<p>Program objęty jest licencją GPL 3.0 (<a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">www.gnu.org/licenses/gpl-3.0.en.html</a>)</p>"
+                      "<p>Logo MicrOSa jest własnością koła naukowego. <br\\>"
+                      "Znajduje się na nim przerobiony trybik autorstwa Webalys (<a href=\"https://www.iconfinder.com/webalys\">www.iconfinder.com</a>)</p>"));
+    msgBox.setIconPixmap(QPixmap(":/pictures/DevToolsIcon").scaled(80, 80));
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.setDefaultButton(QMessageBox::Ok);
     msgBox.exec();
@@ -140,6 +142,7 @@ void MainWidget::showAboutMicrosMessage()
                       "<p>MicrOS to 32-bitowy system operacyjny, opracowany przez członków Sekcji Aplikacji Desktopowych Mobilnych i Webowych. "
                       "Naszym głównym celem było stworzenie od podstaw OS'a posiadającego możliwości podobne do systemu operacyjnego MS-DOS.</p>"
                       "<p>Repozytorium systemu MicrOS (<a href=\"https://github.com/skni-kod/MicrOS\">www.github.com</a>)"));
+    msgBox.setIconPixmap(QPixmap(":/pictures/MicrosIcon").scaled(80, 80));
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.setDefaultButton(QMessageBox::Ok);
     msgBox.exec();

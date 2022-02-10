@@ -15,6 +15,10 @@ class StartTabWidget : public QWidget
 
 private:
     /*!
+     *  \brief Logo label with program logo.
+     */
+    QLabel *logoLabel = nullptr;
+    /*!
      *  \brief Main label with tab description.
      */
     QLabel *mainLabel = nullptr;
