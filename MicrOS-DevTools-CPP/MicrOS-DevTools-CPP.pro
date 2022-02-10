@@ -21,7 +21,8 @@ SOURCES += \
     main.cpp
 
 HEADERS += \
-    main.h
+    main.h \
+    version.h
 
 TRANSLATIONS += \
     MicrOS-DevTools-CPP_pl_PL.ts
@@ -30,3 +31,7 @@ TRANSLATIONS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RC_FILE = resources.rc
+
+RESOURCES +=
