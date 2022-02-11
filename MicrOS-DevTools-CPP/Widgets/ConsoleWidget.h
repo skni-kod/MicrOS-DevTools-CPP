@@ -82,7 +82,7 @@ public slots:
      * \param message Message to print to log console.
      * \param level Level of logged message.
      */
-    void printLog(QString message, LogLevel level);
+    void printMessage(QString message, LogLevel level);
     /*!
      * \brief Clears log console.
      */

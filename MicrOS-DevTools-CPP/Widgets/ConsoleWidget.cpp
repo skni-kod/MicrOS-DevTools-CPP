@@ -40,7 +40,7 @@ void ConsoleWidget::printLog(QString text, QColor color)
     consoleTextEdit->setTextColor(currentColor);
 }
 
-void ConsoleWidget::printLog(QString message, LogLevel level)
+void ConsoleWidget::printMessage(QString message, LogLevel level)
 {
     switch(level)
     {

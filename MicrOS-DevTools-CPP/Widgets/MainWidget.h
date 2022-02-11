@@ -15,6 +15,7 @@
 #include <QVBoxLayout>
 
 #include "ConsoleWidget.h"
+#include "Database/DatabaseManager.h"
 #include "Tabs/BuildingTabWidget.h"
 #include "Tabs/CompilerTabWidget.h"
 #include "Tabs/EnvironmentTabWidget.h"
@@ -159,6 +160,8 @@ private:
      * \brief Layout for console.
      */
     QVBoxLayout *consoleLayout = nullptr;
+
+    DatabaseManager *databaseManager = nullptr;
 
 public:
     /*!
