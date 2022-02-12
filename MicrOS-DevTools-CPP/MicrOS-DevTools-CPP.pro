@@ -22,8 +22,9 @@ SOURCES += \
     main.cpp
 
 HEADERS += \
+    Version.h \
     main.h \
-    version.h
+    winversion.h
 
 TRANSLATIONS += \
     MicrOS-DevTools-CPP_pl_PL.ts
