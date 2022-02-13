@@ -164,7 +164,13 @@ void MainWidget::toggleConsoleVisibility()
 
 void MainWidget::saveLogToFile()
 {
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Zapisz plik"), "", tr("Log files (*.log);;Text files (*.txt)"));
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Zapisz plik"), QStandardPaths::writableLocation(QStandardPaths::DesktopLocation),
+                                                    tr("Log files (*.log);;Text files (*.txt)"));
+    if(fileName.isNull())
+    {
+        return;
+    }
+
     QSaveFile saveFile(fileName);
     saveFile.open(QIODevice::WriteOnly | QIODevice::Text);
     QTextStream stream(&saveFile);

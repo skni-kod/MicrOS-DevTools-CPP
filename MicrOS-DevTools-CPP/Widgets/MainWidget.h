@@ -9,6 +9,7 @@
 #include <QMenuBar>
 #include <QMessageBox>
 #include <QSaveFile>
+#include <QStandardPaths>
 #include <QTabWidget>
 #include <QTextStream>
 #include <QWidget>
