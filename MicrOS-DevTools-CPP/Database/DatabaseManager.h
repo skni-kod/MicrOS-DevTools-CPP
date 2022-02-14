@@ -6,6 +6,7 @@
 #include <QFile>
 #include <QObject>
 #include <QSqlDatabase>
+#include <QSqlError>
 #include <QSqlQuery>
 
 #ifdef Q_OS_WIN
@@ -38,18 +39,21 @@ private:
 
 public:
     DatabaseManager(QObject *parent = nullptr);
+    ~DatabaseManager();
 
 signals:
     void logMessage(QString message, ConsoleWidget::LogLevel logLevel);
 
 public:
-    void init(QString databaseName);
+    bool init(QString databaseName);
 
 private:
     void checkDatabaseFolder();
-    void getDatabaseInitState(QFile &databaseFile, QFile &checkFile);
-    void buildDatabase(const QString &path);
     void createCheckfile(const QString &path);
+    void getDatabaseInitState(QFile &databaseFile, QFile &checkFile);
+    bool connectToDatabase(const QString &path);
+    bool buildDatabase();
+    QString SqlErrorToString(const QSqlError::ErrorType &error);
 };
 
 #endif // DATABASEMANAGER_H

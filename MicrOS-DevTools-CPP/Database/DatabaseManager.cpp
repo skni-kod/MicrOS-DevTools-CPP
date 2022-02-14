@@ -5,7 +5,15 @@ DatabaseManager::DatabaseManager(QObject *parent) : QObject(parent)
 
 }
 
-void DatabaseManager::init(QString databaseName)
+DatabaseManager::~DatabaseManager()
+{
+    if(databaseInitialized == true)
+    {
+        database.close();
+    }
+}
+
+bool DatabaseManager::init(QString databaseName)
 {
     // Check if databaseFolder exist, if not create one
     checkDatabaseFolder();
@@ -17,11 +25,22 @@ void DatabaseManager::init(QString databaseName)
     // Check if database file exist
     getDatabaseInitState(databaseFile, checkFile);
 
-    // In these states database fill be created as new
+    // Connect to database
+    if(connectToDatabase(databaseName) == false)
+    {
+        emit logMessage(tr("Błąd podczas łączenia do bazy danych"), ConsoleWidget::LogLevel::Error);
+        return false;
+    }
+    // In these states database file be created as new
     // No need to check if database needs to be updated
     if(databaseState == DatabaseInitState::New || databaseState == DatabaseInitState::Deleted)
     {
-        buildDatabase(databaseName);
+        if(buildDatabase() == false)
+        {
+            emit logMessage(tr("Błąd podczas budownia bazy danych"), ConsoleWidget::LogLevel::Error);
+            return false;
+        }
+
         if(databaseState == DatabaseInitState::New)
         {
             createCheckfile(databaseFolder + QDir::separator() + checkFileName);
@@ -44,11 +63,11 @@ void DatabaseManager::init(QString databaseName)
     {
         // Check if database needs to be updated
 
-
     }
 
     emit logMessage(tr("Inicjalizacja bazy danych zakończona"), ConsoleWidget::LogLevel::Ok);
     databaseInitialized = true;
+    return true;
 }
 
 void DatabaseManager::checkDatabaseFolder()
@@ -58,6 +77,22 @@ void DatabaseManager::checkDatabaseFolder()
     {
         databaseDir.mkdir(databaseFolder);
     }
+}
+
+void DatabaseManager::createCheckfile(const QString &path)
+{
+    QFile checkFile(path);
+    checkFile.open(QIODevice::WriteOnly | QIODevice::Text);
+
+#ifdef Q_OS_WIN
+    int attr = GetFileAttributes(path.toStdWString().c_str());
+        if ((attr & FILE_ATTRIBUTE_HIDDEN) == 0)
+        {
+            SetFileAttributes(path.toStdWString().c_str(), attr | FILE_ATTRIBUTE_HIDDEN);
+        }
+#endif
+
+    checkFile.close();
 }
 
 void DatabaseManager::getDatabaseInitState(QFile &databaseFile, QFile &checkFile)
@@ -91,30 +126,53 @@ void DatabaseManager::getDatabaseInitState(QFile &databaseFile, QFile &checkFile
     }
 }
 
-void DatabaseManager::buildDatabase(const QString &path)
+bool DatabaseManager::connectToDatabase(const QString &path)
 {
+    if(QSqlDatabase::isDriverAvailable("QSQLITE") == false)
+    {
+        emit logMessage(tr("Driver QSQLite nie jest dostępny - nie można utworzyć bazy danych"), ConsoleWidget::LogLevel::Error);
+        return false;
+    }
     database = QSqlDatabase::addDatabase("QSQLITE");
     database.setDatabaseName(databaseFolder + QDir::separator() + path);
-    database.open();
+
+    if(database.open())
+    {
+        return true;
+    }
+    else
+    {
+        QSqlError error = database.lastError();
+        emit logMessage(tr("Błąd przy otwieraniu bazy danych: ") + SqlErrorToString(error.type()), ConsoleWidget::LogLevel::Error);
+        emit logMessage(tr("Błąd sterownika: ") + error.driverText(), ConsoleWidget::LogLevel::Error);
+        emit logMessage(tr("Błąd bazy danych: ") + error.databaseText(), ConsoleWidget::LogLevel::Error);
+        emit logMessage(tr("Kod błędu: ") + error.nativeErrorCode(), ConsoleWidget::LogLevel::Error);
+        return false;
+    }
+}
+
+bool DatabaseManager::buildDatabase()
+{
 
     DatabaseCreator creator;
     creator.createDatabase(database);
-
-    database.close();
+    return true;
 }
 
-void DatabaseManager::createCheckfile(const QString &path)
+QString DatabaseManager::SqlErrorToString(const QSqlError::ErrorType &error)
 {
-    QFile checkFile(path);
-    checkFile.open(QIODevice::WriteOnly | QIODevice::Text);
-
-#ifdef Q_OS_WIN
-    int attr = GetFileAttributes(path.toStdWString().c_str());
-        if ((attr & FILE_ATTRIBUTE_HIDDEN) == 0)
-        {
-            SetFileAttributes(path.toStdWString().c_str(), attr | FILE_ATTRIBUTE_HIDDEN);
-        }
-#endif
-
-    checkFile.close();
+    switch(error)
+    {
+        case QSqlError::ErrorType::NoError:
+            return tr("Brak błędu");
+        case QSqlError::ErrorType::ConnectionError:
+            return tr("Błąd połączenia");
+        case QSqlError::ErrorType::StatementError:
+            return tr("Błąd zapytania");
+        case QSqlError::ErrorType::TransactionError:
+            return tr("Błąd transakcji");
+        case QSqlError::ErrorType::UnknownError:
+        default:
+            return tr("Bieznany błąd");
+    }
 }
