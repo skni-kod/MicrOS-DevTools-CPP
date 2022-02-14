@@ -5,7 +5,7 @@ DatabaseCreator::DatabaseCreator(QObject *parent) : QObject(parent)
 
 }
 
-void DatabaseCreator::createDatabase(QSqlDatabase &database)
+bool DatabaseCreator::createDatabase(QSqlDatabase &database)
 {
     QSqlQuery query(database);
     // Table SystemVersion
@@ -49,4 +49,6 @@ void DatabaseCreator::createDatabase(QSqlDatabase &database)
     query.bindValue(":setting", "Windows version");
     query.bindValue(":type", "S");
     query.exec();
+
+    return true;
 }

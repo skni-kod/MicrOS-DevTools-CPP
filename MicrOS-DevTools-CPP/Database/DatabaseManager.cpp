@@ -130,7 +130,7 @@ bool DatabaseManager::connectToDatabase(const QString &path)
 {
     if(QSqlDatabase::isDriverAvailable("QSQLITE") == false)
     {
-        emit logMessage(tr("Driver QSQLite nie jest dostępny - nie można utworzyć bazy danych"), ConsoleWidget::LogLevel::Error);
+        emit logMessage(tr("Sterownik QSQLite nie jest dostępny - nie można połączyć się z bazą danych"), ConsoleWidget::LogLevel::Error);
         return false;
     }
     database = QSqlDatabase::addDatabase("QSQLITE");
@@ -143,7 +143,7 @@ bool DatabaseManager::connectToDatabase(const QString &path)
     else
     {
         QSqlError error = database.lastError();
-        emit logMessage(tr("Błąd przy otwieraniu bazy danych: ") + SqlErrorToString(error.type()), ConsoleWidget::LogLevel::Error);
+        emit logMessage(tr("Błąd przy otwieraniu bazy danych: ") + DatabaseHelper::SqlErrorToString(error.type()), ConsoleWidget::LogLevel::Error);
         emit logMessage(tr("Błąd sterownika: ") + error.driverText(), ConsoleWidget::LogLevel::Error);
         emit logMessage(tr("Błąd bazy danych: ") + error.databaseText(), ConsoleWidget::LogLevel::Error);
         emit logMessage(tr("Kod błędu: ") + error.nativeErrorCode(), ConsoleWidget::LogLevel::Error);
@@ -159,20 +159,3 @@ bool DatabaseManager::buildDatabase()
     return true;
 }
 
-QString DatabaseManager::SqlErrorToString(const QSqlError::ErrorType &error)
-{
-    switch(error)
-    {
-        case QSqlError::ErrorType::NoError:
-            return tr("Brak błędu");
-        case QSqlError::ErrorType::ConnectionError:
-            return tr("Błąd połączenia");
-        case QSqlError::ErrorType::StatementError:
-            return tr("Błąd zapytania");
-        case QSqlError::ErrorType::TransactionError:
-            return tr("Błąd transakcji");
-        case QSqlError::ErrorType::UnknownError:
-        default:
-            return tr("Bieznany błąd");
-    }
-}

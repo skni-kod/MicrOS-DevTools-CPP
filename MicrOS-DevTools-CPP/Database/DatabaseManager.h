@@ -16,6 +16,7 @@
 #include "Version.h"
 #include "ConsoleWidget.h"
 #include "DatabaseCreator.h"
+#include "DatabaseHelper.h"
 
 class DatabaseManager : public QObject
 {
@@ -38,7 +39,7 @@ private:
     QSqlDatabase database;
 
 public:
-    DatabaseManager(QObject *parent = nullptr);
+    explicit DatabaseManager(QObject *parent = nullptr);
     ~DatabaseManager();
 
 signals:
@@ -53,7 +54,7 @@ private:
     void getDatabaseInitState(QFile &databaseFile, QFile &checkFile);
     bool connectToDatabase(const QString &path);
     bool buildDatabase();
-    QString SqlErrorToString(const QSqlError::ErrorType &error);
+
 };
 
 #endif // DATABASEMANAGER_H

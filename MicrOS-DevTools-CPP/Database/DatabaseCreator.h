@@ -17,7 +17,7 @@ public:
 signals:
 
 public:
-    void createDatabase(QSqlDatabase &database);
+    bool createDatabase(QSqlDatabase &database);
 };
 
 #endif // DATABASECREATOR_H
