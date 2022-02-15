@@ -9,15 +9,35 @@ bool DatabaseCreator::createDatabase(QSqlDatabase &database)
 {
     QSqlQuery query(database);
     // Table SystemVersion
-    query.exec("CREATE TABLE SystemVersion (id INTEGER NOT NULL PRIMARY KEY, component TEXT NOT NULL UNIQUE, version TEXT NOT NULL)");
+    if(query.exec("CREATE TABLE SystemVersion (id INTEGER NOT NULL PRIMARY KEY, component TEXT NOT NULL UNIQUE, version TEXT NOT NULL)") == false)
+    {
+        QSqlError error = query.lastError();
+        emit logMessage(DatabaseHelper::SqlErrorToString(error), ConsoleWidget::LogLevel::Error);
+        return false;
+    }
     query.prepare("INSERT INTO SystemVersion (component, version) VALUES (:component, :version)");
     query.bindValue(":component", "Application version");
     query.bindValue(":version", APPLICATION_VERSION);
-    query.exec();
-    query.prepare("INSERT INTO SystemVersion (component, version) VALUES (:component, :version)");
+    if(query.exec() == false)
+    {
+        QSqlError error = query.lastError();
+        emit logMessage(DatabaseHelper::SqlErrorToString(error), ConsoleWidget::LogLevel::Error);
+        return false;
+    }
+    if(query.prepare("INSERT INTO SystemVersion (component, version) VALUES (:component, :version)") == false)
+    {
+        QSqlError error = query.lastError();
+        emit logMessage(DatabaseHelper::SqlErrorToString(error), ConsoleWidget::LogLevel::Error);
+        return false;
+    }
     query.bindValue(":component", "Database version");
     query.bindValue(":version", QString::number(DATABASE_VERSION));
-    query.exec();
+    if(query.exec() == false)
+    {
+        QSqlError error = query.lastError();
+        emit logMessage(DatabaseHelper::SqlErrorToString(error), ConsoleWidget::LogLevel::Error);
+        return false;
+    }
 
     // Table SystemSettings
     query.exec("CREATE TABLE SystemSettings (id INTEGER NOT NULL PRIMARY KEY, setting TEXT NOT NULL UNIQUE, value TEXT, type TEXT NOT NULL)");

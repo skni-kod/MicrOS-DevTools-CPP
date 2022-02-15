@@ -13,6 +13,11 @@ DatabaseManager::~DatabaseManager()
     }
 }
 
+void DatabaseManager::sendMessage(QString message, ConsoleWidget::LogLevel logLevel)
+{
+    emit logMessage(message, logLevel);
+}
+
 bool DatabaseManager::init(QString databaseName)
 {
     // Check if databaseFolder exist, if not create one
@@ -143,10 +148,7 @@ bool DatabaseManager::connectToDatabase(const QString &path)
     else
     {
         QSqlError error = database.lastError();
-        emit logMessage(tr("Błąd przy otwieraniu bazy danych: ") + DatabaseHelper::SqlErrorToString(error.type()), ConsoleWidget::LogLevel::Error);
-        emit logMessage(tr("Błąd sterownika: ") + error.driverText(), ConsoleWidget::LogLevel::Error);
-        emit logMessage(tr("Błąd bazy danych: ") + error.databaseText(), ConsoleWidget::LogLevel::Error);
-        emit logMessage(tr("Kod błędu: ") + error.nativeErrorCode(), ConsoleWidget::LogLevel::Error);
+        emit logMessage(DatabaseHelper::SqlErrorToString(error), ConsoleWidget::LogLevel::Error);
         return false;
     }
 }
@@ -155,7 +157,7 @@ bool DatabaseManager::buildDatabase()
 {
 
     DatabaseCreator creator;
-    creator.createDatabase(database);
-    return true;
+    connect(&creator, &DatabaseCreator::logMessage, this, &DatabaseManager::sendMessage);
+    return creator.createDatabase(database);
 }
 

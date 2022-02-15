@@ -45,6 +45,9 @@ public:
 signals:
     void logMessage(QString message, ConsoleWidget::LogLevel logLevel);
 
+public slots:
+    void sendMessage(QString message, ConsoleWidget::LogLevel logLevel);
+
 public:
     bool init(QString databaseName);
 

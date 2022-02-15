@@ -5,6 +5,20 @@ DatabaseHelper::DatabaseHelper(QObject *parent) : QObject(parent)
 
 }
 
+QString DatabaseHelper::SqlErrorToString(const QSqlError &error)
+{
+    QString message;
+    message.append(tr("Błąd przy otwieraniu bazy danych: "));
+    message.append(DatabaseHelper::SqlErrorToString(error.type()));
+    message.append(", ");
+    message.append(tr("Błąd sterownika: ") + error.driverText());
+    message.append(", ");
+    message.append(tr("Błąd bazy danych: ") + error.databaseText());
+    message.append(", ");
+    message.append(tr("Kod błędu: ") + error.nativeErrorCode());
+    return message;
+}
+
 QString DatabaseHelper::SqlErrorToString(const QSqlError::ErrorType &error)
 {
     switch(error)

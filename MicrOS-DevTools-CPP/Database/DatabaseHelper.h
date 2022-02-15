@@ -11,6 +11,7 @@ class DatabaseHelper : public QObject
 
 public:
     explicit DatabaseHelper(QObject *parent = nullptr);
+    static QString SqlErrorToString(const QSqlError &error);
     static QString SqlErrorToString(const QSqlError::ErrorType &error);
 };
 
