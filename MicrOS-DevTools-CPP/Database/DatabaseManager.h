@@ -15,6 +15,7 @@
 
 #include "DatabaseCreator.h"
 #include "DatabaseHelper.h"
+#include "DatabaseUpdater.h"
 #include "Version.h"
 #include "Utils/Logger.h"
 

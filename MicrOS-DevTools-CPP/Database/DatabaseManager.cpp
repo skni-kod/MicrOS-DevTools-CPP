@@ -62,7 +62,8 @@ bool DatabaseManager::init(QString databaseName)
     if(databaseState == DatabaseInitState::Exist || databaseState == DatabaseInitState::CheckDeteled)
     {
         // Check if database needs to be updated
-
+        DatabaseUpdater updater(logger);
+        updater.checkForUpdate(database);
     }
 
     logger->logMessage(tr("Inicjalizacja bazy danych zakończona"), Logger::LogLevel::Ok);
