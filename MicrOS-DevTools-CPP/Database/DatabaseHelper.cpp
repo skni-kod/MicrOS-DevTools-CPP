@@ -5,21 +5,15 @@ DatabaseHelper::DatabaseHelper(QObject *parent) : QObject(parent)
 
 }
 
-QString DatabaseHelper::SqlErrorToString(const QSqlError &error)
+void DatabaseHelper::QSqlErrorToString(const QSqlError &error, Logger *logger)
 {
-    QString message;
-    message.append(tr("Błąd przy otwieraniu bazy danych: "));
-    message.append(DatabaseHelper::SqlErrorToString(error.type()));
-    message.append(", ");
-    message.append(tr("Błąd sterownika: ") + error.driverText());
-    message.append(", ");
-    message.append(tr("Błąd bazy danych: ") + error.databaseText());
-    message.append(", ");
-    message.append(tr("Kod błędu: ") + error.nativeErrorCode());
-    return message;
+    logger->logMessage(tr("Błąd bazy danych: ") + DatabaseHelper::QSqlErrorTypeToString(error.type()), Logger::LogLevel::Error);
+    logger->logMessage(tr("Błąd sterownika: ") +  error.driverText(), Logger::LogLevel::Error);
+    logger->logMessage(tr("Błąd bazy danych: ") + error.databaseText(), Logger::LogLevel::Error);
+    logger->logMessage(tr("Kod błędu: ") + error.nativeErrorCode(), Logger::LogLevel::Error);
 }
 
-QString DatabaseHelper::SqlErrorToString(const QSqlError::ErrorType &error)
+QString DatabaseHelper::QSqlErrorTypeToString(const QSqlError::ErrorType &error)
 {
     switch(error)
     {
@@ -35,4 +29,39 @@ QString DatabaseHelper::SqlErrorToString(const QSqlError::ErrorType &error)
         default:
             return tr("Bieznany błąd");
     }
+}
+
+bool DatabaseHelper::QSqlQueryExec(QSqlQuery &query, Logger *logger)
+{
+    if(query.exec() == false)
+    {
+        DatabaseHelper::QSqlErrorToString(query.lastError(), logger);
+        logger->logMessage(tr("Zapytanie: ") + query.lastQuery(), Logger::LogLevel::Error);
+        return false;
+    }
+    return true;
+}
+
+bool DatabaseHelper::QSqlQueryExec(QSqlQuery &query, QString sqlQuery, Logger *logger)
+{
+    if(query.exec(sqlQuery) == false)
+    {
+        logger->logMessage(tr("Błąd podczas wykonywnia zapytania"), Logger::LogLevel::Error);
+        DatabaseHelper::QSqlErrorToString(query.lastError(), logger);
+        logger->logMessage(tr("Zapytanie: ") + query.lastQuery(), Logger::LogLevel::Error);
+        return false;
+    }
+    return true;
+}
+
+bool DatabaseHelper::QSqlQueryPrepare(QSqlQuery &query, QString sqlQuery, Logger *logger)
+{
+    if(query.prepare(sqlQuery) == false)
+    {
+        logger->logMessage(tr("Błąd podczas przygotowywania zapytania"), Logger::LogLevel::Error);
+        DatabaseHelper::QSqlErrorToString(query.lastError(), logger);
+        logger->logMessage(tr("Zapytanie: ") + query.lastQuery(), Logger::LogLevel::Error);
+        return false;
+    }
+    return true;
 }

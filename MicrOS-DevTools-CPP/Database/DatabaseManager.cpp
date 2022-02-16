@@ -143,7 +143,7 @@ bool DatabaseManager::connectToDatabase(const QString &path)
     else
     {
         QSqlError error = database.lastError();
-        logger->logMessage(DatabaseHelper::SqlErrorToString(error), Logger::LogLevel::Error);
+        DatabaseHelper::QSqlErrorToString(error, logger);
         return false;
     }
 }
