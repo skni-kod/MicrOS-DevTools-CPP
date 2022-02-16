@@ -1,7 +1,11 @@
 #ifndef DATABASEUPDATER_H
 #define DATABASEUPDATER_H
 
+#include <QDateTime>
 #include <QDebug>
+#include <QDir>
+#include <QFile>
+#include <QFileInfo>
 #include <QObject>
 #include <QSqlDatabase>
 #include <QVariant>
@@ -22,10 +26,11 @@ public:
 signals:
 
 public:
-    bool checkForUpdate(QSqlDatabase &database);
+    bool checkForUpdate(QSqlDatabase &database, QFile &databaseFile);
 
 private:
     bool isUpdateNeeded(QSqlDatabase &database);
+    bool backupDatabaseFile(QSqlDatabase &database, QFile &databaseFile);
 };
 
 #endif // DATABASEUPDATER_H

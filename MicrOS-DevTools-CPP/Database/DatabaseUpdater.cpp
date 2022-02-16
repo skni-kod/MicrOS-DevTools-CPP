@@ -5,11 +5,16 @@ DatabaseUpdater::DatabaseUpdater(Logger *logger, QObject *parent) : QObject(pare
     this->logger = logger;
 }
 
-bool DatabaseUpdater::checkForUpdate(QSqlDatabase &database)
+bool DatabaseUpdater::checkForUpdate(QSqlDatabase &database, QFile &databaseFile)
 {
     if(isUpdateNeeded(database))
     {
-        logger->logMessage(tr("Aktualizowanie bazy danych"), Logger::LogLevel::Info);
+        logger->logMessage(tr("Rozpoczęcie procedury aktualizowacji bazy danych"), Logger::LogLevel::Info);
+        if(backupDatabaseFile(database, databaseFile))
+        {
+
+        }
+
     }
     return true;
 }
@@ -40,4 +45,21 @@ bool DatabaseUpdater::isUpdateNeeded(QSqlDatabase &database)
         return true;
     }
     return false;
+}
+
+bool DatabaseUpdater::backupDatabaseFile(QSqlDatabase &database, QFile &databaseFile)
+{
+    database.close();
+    QFileInfo fileInfo = databaseFile;
+    QString oldFilePath = fileInfo.absolutePath() + "/" + fileInfo.fileName();
+    QString newFilePath = fileInfo.absolutePath() + "/" + "backup_" + QDateTime::currentDateTime().toString("yyyyMMddThhmmsszzz") + "_" + fileInfo.fileName();
+    if(QFile::copy(oldFilePath, newFilePath) == false)
+    {
+        database.open();
+        logger->logMessage(tr("Nie można utworzyć kopii zapasowej bazy danych") + QDir::toNativeSeparators(newFilePath), Logger::LogLevel::Warning);
+        return false;
+    }
+    database.open();
+    logger->logMessage(tr("Utworzono kopie zapsową bazy danych: ") + QDir::toNativeSeparators(newFilePath), Logger::LogLevel::Info);
+    return true;
 }
