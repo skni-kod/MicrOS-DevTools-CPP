@@ -119,6 +119,14 @@ MainWidget::MainWidget(QWidget *parent)
 
 MainWidget::~MainWidget()
 {
+    if(databaseManager)
+    {
+        delete databaseManager;
+    }
+    if(logger)
+    {
+        delete logger;
+    }
 }
 
 void MainWidget::showAboutMessage()
