@@ -1,8 +1,8 @@
 #include "DatabaseManager.h"
 
-DatabaseManager::DatabaseManager(QObject *parent) : QObject(parent)
+DatabaseManager::DatabaseManager(Logger *logger, QObject *parent) : QObject(parent)
 {
-
+    this->logger = logger;
 }
 
 DatabaseManager::~DatabaseManager()
@@ -11,11 +11,6 @@ DatabaseManager::~DatabaseManager()
     {
         database.close();
     }
-}
-
-void DatabaseManager::sendMessage(QString message, ConsoleWidget::LogLevel logLevel)
-{
-    emit logMessage(message, logLevel);
 }
 
 bool DatabaseManager::init(QString databaseName)
@@ -33,7 +28,7 @@ bool DatabaseManager::init(QString databaseName)
     // Connect to database
     if(connectToDatabase(databaseName) == false)
     {
-        emit logMessage(tr("Błąd podczas łączenia do bazy danych"), ConsoleWidget::LogLevel::Error);
+        logger->logMessage(tr("Błąd podczas łączenia do bazy danych"), Logger::LogLevel::Error);
         return false;
     }
     // In these states database file be created as new
@@ -42,25 +37,25 @@ bool DatabaseManager::init(QString databaseName)
     {
         if(buildDatabase() == false)
         {
-            emit logMessage(tr("Błąd podczas budownia bazy danych"), ConsoleWidget::LogLevel::Error);
+            logger->logMessage(tr("Błąd podczas budownia bazy danych"), Logger::LogLevel::Error);
             return false;
         }
 
         if(databaseState == DatabaseInitState::New)
         {
             createCheckfile(databaseFolder + QDir::separator() + checkFileName);
-            emit logMessage(tr("Baza danych zbudowana"), ConsoleWidget::LogLevel::Info);
+            logger->logMessage(tr("Baza danych zbudowana"), Logger::LogLevel::Info);
         }
         else
         {
-            emit logMessage(tr("Baza danych odbudowna"), ConsoleWidget::LogLevel::Info);
+            logger->logMessage(tr("Baza danych odbudowna"), Logger::LogLevel::Info);
         }
     }
 
     if(databaseState == DatabaseInitState::CheckDeteled)
     {
         createCheckfile(databaseFolder + QDir::separator() + checkFileName);
-        emit logMessage(tr("Plik .database.txt odtworzony"), ConsoleWidget::LogLevel::Info);
+        logger->logMessage(tr("Plik .database.txt odtworzony"), Logger::LogLevel::Info);
     }
 
 
@@ -70,7 +65,7 @@ bool DatabaseManager::init(QString databaseName)
 
     }
 
-    emit logMessage(tr("Inicjalizacja bazy danych zakończona"), ConsoleWidget::LogLevel::Ok);
+    logger->logMessage(tr("Inicjalizacja bazy danych zakończona"), Logger::LogLevel::Ok);
     databaseInitialized = true;
     return true;
 }
@@ -106,11 +101,11 @@ void DatabaseManager::getDatabaseInitState(QFile &databaseFile, QFile &checkFile
     {
             // If not exist, create database
             databaseState = DatabaseInitState::New;
-            emit logMessage(tr("Tworzenie bazy danych"), ConsoleWidget::LogLevel::Info);
+            logger->logMessage(tr("Tworzenie bazy danych"), Logger::LogLevel::Info);
     }
     else
     {
-        emit logMessage(tr("Łączenie z bazą danych"), ConsoleWidget::LogLevel::Info);
+        logger->logMessage(tr("Łączenie z bazą danych"), Logger::LogLevel::Info);
         if(databaseFile.exists() && checkFile.exists())
         {
             // If database and check file exist
@@ -120,13 +115,13 @@ void DatabaseManager::getDatabaseInitState(QFile &databaseFile, QFile &checkFile
         {
             // If database not exist but check file do
             databaseState = DatabaseInitState::Deleted;
-            emit logMessage(tr("Nie usuwaj bazy danych"), ConsoleWidget::LogLevel::Warning);
+            logger->logMessage(tr("Nie usuwaj bazy danych"), Logger::LogLevel::Warning);
         }
         else if(databaseFile.exists() && !checkFile.exists())
         {
             // If database do exist but check file not
             databaseState = DatabaseInitState::CheckDeteled;
-            emit logMessage(tr("Nie usuwaj pliku .database.txt"), ConsoleWidget::LogLevel::Warning);
+            logger->logMessage(tr("Nie usuwaj pliku .database.txt"), Logger::LogLevel::Warning);
         }
     }
 }
@@ -135,7 +130,7 @@ bool DatabaseManager::connectToDatabase(const QString &path)
 {
     if(QSqlDatabase::isDriverAvailable("QSQLITE") == false)
     {
-        emit logMessage(tr("Sterownik QSQLite nie jest dostępny - nie można połączyć się z bazą danych"), ConsoleWidget::LogLevel::Error);
+        logger->logMessage(tr("Sterownik QSQLite nie jest dostępny - nie można połączyć się z bazą danych"), Logger::LogLevel::Error);
         return false;
     }
     database = QSqlDatabase::addDatabase("QSQLITE");
@@ -148,7 +143,7 @@ bool DatabaseManager::connectToDatabase(const QString &path)
     else
     {
         QSqlError error = database.lastError();
-        emit logMessage(DatabaseHelper::SqlErrorToString(error), ConsoleWidget::LogLevel::Error);
+        logger->logMessage(DatabaseHelper::SqlErrorToString(error), Logger::LogLevel::Error);
         return false;
     }
 }
@@ -156,8 +151,7 @@ bool DatabaseManager::connectToDatabase(const QString &path)
 bool DatabaseManager::buildDatabase()
 {
 
-    DatabaseCreator creator;
-    connect(&creator, &DatabaseCreator::logMessage, this, &DatabaseManager::sendMessage);
+    DatabaseCreator creator(logger);
     return creator.createDatabase(database);
 }
 

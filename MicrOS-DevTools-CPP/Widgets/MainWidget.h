@@ -22,6 +22,7 @@
 #include "Tabs/LinksTabWidget.h"
 #include "Tabs/StartTabWidget.h"
 #include "Tabs/ToolsTabWidget.h"
+#include "Utils/Logger.h"
 
 /*!
  * \brief The MainWidget class
@@ -160,6 +161,8 @@ private:
      * \brief Layout for console.
      */
     QVBoxLayout *consoleLayout = nullptr;
+
+    Logger *logger = nullptr;
 
     DatabaseManager *databaseManager = nullptr;
 

@@ -1,8 +1,8 @@
 #include "DatabaseCreator.h"
 
-DatabaseCreator::DatabaseCreator(QObject *parent) : QObject(parent)
+DatabaseCreator::DatabaseCreator(Logger *logger, QObject *parent) : QObject(parent)
 {
-
+    this->logger = logger;
 }
 
 bool DatabaseCreator::createDatabase(QSqlDatabase &database)
@@ -12,7 +12,7 @@ bool DatabaseCreator::createDatabase(QSqlDatabase &database)
     if(query.exec("CREATE TABLE SystemVersion (id INTEGER NOT NULL PRIMARY KEY, component TEXT NOT NULL UNIQUE, version TEXT NOT NULL)") == false)
     {
         QSqlError error = query.lastError();
-        emit logMessage(DatabaseHelper::SqlErrorToString(error), ConsoleWidget::LogLevel::Error);
+        logger->logMessage(DatabaseHelper::SqlErrorToString(error), Logger::LogLevel::Error);
         return false;
     }
     query.prepare("INSERT INTO SystemVersion (component, version) VALUES (:component, :version)");
@@ -21,13 +21,13 @@ bool DatabaseCreator::createDatabase(QSqlDatabase &database)
     if(query.exec() == false)
     {
         QSqlError error = query.lastError();
-        emit logMessage(DatabaseHelper::SqlErrorToString(error), ConsoleWidget::LogLevel::Error);
+        logger->logMessage(DatabaseHelper::SqlErrorToString(error), Logger::LogLevel::Error);
         return false;
     }
     if(query.prepare("INSERT INTO SystemVersion (component, version) VALUES (:component, :version)") == false)
     {
         QSqlError error = query.lastError();
-        emit logMessage(DatabaseHelper::SqlErrorToString(error), ConsoleWidget::LogLevel::Error);
+        logger->logMessage(DatabaseHelper::SqlErrorToString(error), Logger::LogLevel::Error);
         return false;
     }
     query.bindValue(":component", "Database version");
@@ -35,7 +35,7 @@ bool DatabaseCreator::createDatabase(QSqlDatabase &database)
     if(query.exec() == false)
     {
         QSqlError error = query.lastError();
-        emit logMessage(DatabaseHelper::SqlErrorToString(error), ConsoleWidget::LogLevel::Error);
+        logger->logMessage(DatabaseHelper::SqlErrorToString(error), Logger::LogLevel::Error);
         return false;
     }
 

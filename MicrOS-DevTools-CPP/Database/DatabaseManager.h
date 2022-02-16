@@ -13,10 +13,10 @@
 #include <windows.h>
 #endif
 
-#include "Version.h"
-#include "ConsoleWidget.h"
 #include "DatabaseCreator.h"
 #include "DatabaseHelper.h"
+#include "Version.h"
+#include "Utils/Logger.h"
 
 class DatabaseManager : public QObject
 {
@@ -34,19 +34,15 @@ private:
     const QString databaseFolder = "data";
     const QString checkFileName = ".database.txt";
 
+    Logger *logger = nullptr;
+
     DatabaseInitState databaseState = DatabaseInitState::NotChecked;
     bool databaseInitialized = false;
     QSqlDatabase database;
 
 public:
-    explicit DatabaseManager(QObject *parent = nullptr);
+    explicit DatabaseManager(Logger *logger, QObject *parent = nullptr);
     ~DatabaseManager();
-
-signals:
-    void logMessage(QString message, ConsoleWidget::LogLevel logLevel);
-
-public slots:
-    void sendMessage(QString message, ConsoleWidget::LogLevel logLevel);
 
 public:
     bool init(QString databaseName);

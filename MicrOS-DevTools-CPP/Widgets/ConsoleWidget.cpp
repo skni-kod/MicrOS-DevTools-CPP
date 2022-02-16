@@ -10,11 +10,6 @@ ConsoleWidget::ConsoleWidget(QWidget *parent) : QWidget(parent)
     this->setLayout(mainLayout);
 }
 
-ConsoleWidget::ConsoleWidget(bool appendTime, QWidget *parent) : ConsoleWidget(parent)
-{
-    this->appendTime = appendTime;
-}
-
 ConsoleWidget::~ConsoleWidget()
 {
 
@@ -29,39 +24,32 @@ void ConsoleWidget::printLog(QString text, QColor color)
 {
     QColor currentColor = consoleTextEdit->textColor();
     consoleTextEdit->setTextColor(color);
-    if(appendTime)
-    {
-        consoleTextEdit->append(QDateTime::currentDateTime().toString(timeFormat) + " " + text);
-    }
-    else
-    {
-        consoleTextEdit->append(text);
-    }
+    consoleTextEdit->append(text);
     consoleTextEdit->setTextColor(currentColor);
 }
 
-void ConsoleWidget::printMessage(QString message, LogLevel level)
+void ConsoleWidget::printMessage(QString message, Logger::LogLevel level)
 {
     switch(level)
     {
-        case LogLevel::Info:
+        case Logger::LogLevel::Info:
         {
             QPalette p = qApp->palette();
             QColor currentColor = p.color(QPalette::WindowText);
             printLog(message, currentColor);
             break;
         }
-        case LogLevel::Ok:
+        case Logger::LogLevel::Ok:
         {
             printLog(message, Qt::green);
             break;
         }
-        case LogLevel::Error:
+        case Logger::LogLevel::Error:
         {
             printLog(message, Qt::red);
             break;
         }
-        case LogLevel::Warning:
+        case Logger::LogLevel::Warning:
         {
             printLog(message, Qt::yellow);
             break;

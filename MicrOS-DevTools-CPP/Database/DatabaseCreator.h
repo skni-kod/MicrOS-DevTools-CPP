@@ -10,16 +10,16 @@
 #include "ConsoleWidget.h"
 #include "DatabaseHelper.h"
 #include "Version.h"
+#include "Utils/Logger.h"
 
 class DatabaseCreator : public QObject
 {
     Q_OBJECT
 
-public:
-    explicit DatabaseCreator(QObject *parent = nullptr);
+    Logger *logger = nullptr;
 
-signals:
-    void logMessage(QString message, ConsoleWidget::LogLevel logLevel);
+public:
+    explicit DatabaseCreator(Logger *logger, QObject *parent = nullptr);
 
 public:
     bool createDatabase(QSqlDatabase &database);

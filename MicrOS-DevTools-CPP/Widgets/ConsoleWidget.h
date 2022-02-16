@@ -9,6 +9,8 @@
 #include <QWidget>
 #include <QVBoxLayout>
 
+#include "Utils/Logger.h"
+
 /*!
  * \brief The ConsoleWidget class.
  * \details Defines widget that can act as console.
@@ -19,30 +21,7 @@ class ConsoleWidget : public QWidget
 {
     Q_OBJECT
 
-public:
-    /*!
-     * \brief Indicates legel of message.
-     */
-    enum class LogLevel
-    {
-        Info,     /*!< Standard type of message. */
-        Ok,       /*!< Type of message that communicates success. */
-        Error,    /*!< Type of message that indicates error. */
-        Warning   /*!< Type of message that indicates warning, but not as ciritcal as error. */
-    };
-
 private:
-    /*!
-     * \brief Append time to log flag.
-     * \details When true current time will be added to each line in logs.
-     *
-     */
-    bool appendTime = false;
-    /*!
-     * \brief Format of time in logs.
-     *
-     */
-    QString timeFormat = "hh:mm:ss.zzz";
     /*!
      *  \brief Main layout of widget.
      */
@@ -58,12 +37,6 @@ public:
      * \param parent Pointer to parent widget.
      */
     explicit ConsoleWidget(QWidget *parent = nullptr);
-    /*!
-     * \brief Constructor.
-     * \param appendTime Flag which indicates if time should be added to log line.
-     * \param parent Pointer to parent widget.
-     */
-    ConsoleWidget(bool appendTime, QWidget *parent = nullptr);
     /*!
      * \brief Default destructor.
      */
@@ -82,35 +55,13 @@ public slots:
      * \param message Message to print to log console.
      * \param level Level of logged message.
      */
-    void printMessage(QString message, LogLevel level);
+    void printMessage(QString message, Logger::LogLevel level);
     /*!
      * \brief Clears log console.
      */
     void clear();
-    /*!
-     * \brief Setter for \a appendTime
-     * \details Controls property that indicates if time should be added to logged message.
-     * \param value Value to set.
-     */
-    void setAppendTime(bool value) noexcept {appendTime = value;}
-    /*!
-     * \brief Setter for \a timeFormat
-     * \details Controls property that indicates format of time that is added to logged message.
-     * \param format Format for time.
-     */
-    void setTimeFormat(QString format) {timeFormat = format;}
 
 public:
-    /*!
-     * \brief Getter for \a appendTime
-     * \return Value of \a appendTime.
-     */
-    bool getAppendTime() noexcept {return appendTime;}
-    /*!
-     * \brief Getter for \a timeFormat
-     * \return Value of \a timeFormat.
-     */
-    QString getTimeFormat() {return timeFormat;}
     /*!
      * \brief Getter for content of log console
      * \return Whole log stored by console.
