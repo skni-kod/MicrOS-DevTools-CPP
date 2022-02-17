@@ -18,6 +18,7 @@ class DatabaseUpdater : public QObject
 {
     Q_OBJECT
 
+    int databaseVersion = 0;
     Logger *logger = nullptr;
 
 public:
@@ -31,6 +32,9 @@ public:
 private:
     bool isUpdateNeeded(QSqlDatabase &database);
     bool backupDatabaseFile(QSqlDatabase &database, QFile &databaseFile);
+    bool updateDatabase(QSqlDatabase &database);
+    bool updateDatabaseVersionField(QSqlDatabase &database);
+    bool updateToVersion2(QSqlDatabase &database);
 };
 
 #endif // DATABASEUPDATER_H
