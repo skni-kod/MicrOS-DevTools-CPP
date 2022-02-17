@@ -9,7 +9,7 @@ bool DatabaseUpdater::checkForUpdate(QSqlDatabase &database, QFile &databaseFile
 {
     if(isUpdateNeeded(database))
     {
-        logger->logMessage(tr("Rozpoczęcie procedury aktualizowacji bazy danych"), Logger::LogLevel::Info);
+        logger->logMessage(tr("Rozpoczęcie procedury aktualizacji bazy danych"), Logger::LogLevel::Info);
         if(backupDatabaseFile(database, databaseFile))
         {
 
@@ -60,6 +60,6 @@ bool DatabaseUpdater::backupDatabaseFile(QSqlDatabase &database, QFile &database
         return false;
     }
     database.open();
-    logger->logMessage(tr("Utworzono kopie zapsową bazy danych: ") + QDir::toNativeSeparators(newFilePath), Logger::LogLevel::Info);
+    logger->logMessage(tr("Utworzono kopie zapasową bazy danych: ") + QDir::toNativeSeparators(newFilePath), Logger::LogLevel::Info);
     return true;
 }
