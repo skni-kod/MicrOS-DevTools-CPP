@@ -74,11 +74,15 @@ MainWidget::MainWidget(QWidget *parent)
     mainTabWidget->addTab(compilerTabWidget, tr("Kompilator"));
     mainTabWidget->addTab(buildingTabWidget, tr("Konfiguracja budownia"));
 
+    // Logger
+    logger = new Logger(true);
+
     // Console
     consoleGroupBox = new QGroupBox();
     consoleGroupBox->setTitle(tr("Konsola"));
-    consoleWidget = new ConsoleWidget(true);
-    consoleWidget->printLog(tr("MicrOS DevTools CPP 0.1"), ConsoleWidget::LogLevel::Info);
+    consoleWidget = new ConsoleWidget();
+    connect(logger, &Logger::messageLogged, consoleWidget, &ConsoleWidget::printMessage);
+    logger->logMessage(tr("MicrOS DevTools CPP 0.1"), Logger::LogLevel::Info);
 
     // Layouts
     mainLayout = new QVBoxLayout();
@@ -91,6 +95,8 @@ MainWidget::MainWidget(QWidget *parent)
 
     this->setLayout(mainLayout);
     consoleGroupBox->setLayout(consoleLayout);
+
+    databaseManager = new DatabaseManager(logger);
 
     // Connections
     connect(exitAction, &QAction::triggered, qApp, &QApplication::quit);
@@ -107,11 +113,20 @@ MainWidget::MainWidget(QWidget *parent)
     connect(aboutMicrosAction, &QAction::triggered, this, &MainWidget::showAboutMicrosMessage);
     connect(aboutQtAction, &QAction::triggered, qApp, &QApplication::aboutQt);
 
-    consoleWidget->printLog(tr("Uruchamianie zakończone"), ConsoleWidget::LogLevel::Ok);
+    databaseManager->init("database.db");
+    logger->logMessage(tr("Uruchamianie zakończone"), Logger::LogLevel::Ok);
 }
 
 MainWidget::~MainWidget()
 {
+    if(databaseManager)
+    {
+        delete databaseManager;
+    }
+    if(logger)
+    {
+        delete logger;
+    }
 }
 
 void MainWidget::showAboutMessage()
@@ -175,7 +190,7 @@ void MainWidget::saveLogToFile()
     saveFile.open(QIODevice::WriteOnly | QIODevice::Text);
     QTextStream stream(&saveFile);
 
-    consoleWidget->printLog(tr("Zapis logu do pliku: ") + fileName, ConsoleWidget::LogLevel::Info);
+    logger->logMessage(tr("Zapis logu do pliku: ") + fileName, Logger::LogLevel::Info);
 
     stream << consoleWidget->getLog();
     saveFile.commit();

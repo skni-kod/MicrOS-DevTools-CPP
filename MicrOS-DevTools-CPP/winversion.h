@@ -1,5 +1,5 @@
-#ifndef VERSION_H
-#define VERSION_H
+#ifndef WINVERSION_H
+#define WINVERSION_H
 
 
 #define VER_FILEVERSION             0,1,0,0
@@ -8,7 +8,7 @@
 #define VER_PRODUCTVERSION          0,1,0,0
 #define VER_PRODUCTVERSION_STR      "0.1\0"
 
-#define VER_COMPANYNAME_STR         "Studenckie Ko³o Naukowe Informatyków ""KOD"""
+#define VER_COMPANYNAME_STR         "Studenckie Kolo Naukowe Informatyków ""KOD"""
 #define VER_FILEDESCRIPTION_STR     "MicrOS DevTools CPP"
 #define VER_INTERNALNAME_STR        "MicrOS DevTools CPP"
 #define VER_LEGALCOPYRIGHT_STR      "Copyright © 2022 Studenckie Ko³o Naukowe Informatyków ""KOD"""
@@ -19,4 +19,4 @@
 
 #define VER_COMPANYDOMAIN_STR       "kod.prz.edu.pl"
 
-#endif // VERSION_H
+#endif // WINVERSION_H

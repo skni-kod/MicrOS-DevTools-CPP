@@ -16,12 +16,14 @@
 #include <QVBoxLayout>
 
 #include "ConsoleWidget.h"
+#include "Database/DatabaseManager.h"
 #include "Tabs/BuildingTabWidget.h"
 #include "Tabs/CompilerTabWidget.h"
 #include "Tabs/EnvironmentTabWidget.h"
 #include "Tabs/LinksTabWidget.h"
 #include "Tabs/StartTabWidget.h"
 #include "Tabs/ToolsTabWidget.h"
+#include "Utils/Logger.h"
 
 /*!
  * \brief The MainWidget class
@@ -160,6 +162,16 @@ private:
      * \brief Layout for console.
      */
     QVBoxLayout *consoleLayout = nullptr;
+
+    /*!
+     * \brief Default loger instance.
+     */
+    Logger *logger = nullptr;
+
+    /*!
+     * \brief Database manager instance.
+     */
+    DatabaseManager *databaseManager = nullptr;
 
 public:
     /*!
