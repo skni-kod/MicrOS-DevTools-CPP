@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loglevel_0',['LogLevel',['../class_console_widget.html#a12cbdd8b9b08a7bd0c94c17a945c079e',1,'ConsoleWidget']]]
+  ['loglevel_0',['LogLevel',['../class_logger.html#ac744681e23720966b5f430ec2060da36',1,'Logger']]]
 ];

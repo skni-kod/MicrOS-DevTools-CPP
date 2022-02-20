@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['linkstabwidget_0',['LinksTabWidget',['../class_links_tab_widget.html',1,'']]]
+  ['environmenttabwidget_0',['EnvironmentTabWidget',['../class_environment_tab_widget.html',1,'']]]
 ];

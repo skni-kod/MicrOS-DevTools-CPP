@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['linkstabwidget_0',['LinksTabWidget',['../class_links_tab_widget.html',1,'LinksTabWidget'],['../class_links_tab_widget.html#a28b0fb7d32acff87bc1ad9c3ae7f7a53',1,'LinksTabWidget::LinksTabWidget()']]],
-  ['linkstabwidget_2ecpp_1',['LinksTabWidget.cpp',['../_links_tab_widget_8cpp.html',1,'']]],
-  ['linkstabwidget_2eh_2',['LinksTabWidget.h',['../_links_tab_widget_8h.html',1,'']]],
-  ['loglevel_3',['LogLevel',['../class_console_widget.html#a12cbdd8b9b08a7bd0c94c17a945c079e',1,'ConsoleWidget']]]
+  ['getappendtime_0',['getAppendTime',['../class_logger.html#ae5fcb16c8a664ba08f69159177e1e7b0',1,'Logger']]],
+  ['getlog_1',['getLog',['../class_console_widget.html#af6dbf9f5e1fdf53e5c12e1953137df17',1,'ConsoleWidget']]],
+  ['gettimeformat_2',['getTimeFormat',['../class_logger.html#afe5f187090cf67fb1c94659b6e0815c4',1,'Logger']]]
 ];

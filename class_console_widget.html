@@ -63,7 +63,6 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-slots">Public Slots</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="class_console_widget-members.html">List of all members</a>  </div>
@@ -82,96 +81,36 @@ Inheritance diagram for ConsoleWidget:</div>
   <img src="class_console_widget.png" alt=""/>
  </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:a12cbdd8b9b08a7bd0c94c17a945c079e"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console_widget.html#a12cbdd8b9b08a7bd0c94c17a945c079e">LogLevel</a> { <a class="el" href="class_console_widget.html#a12cbdd8b9b08a7bd0c94c17a945c079ea4059b0251f66a18cb56f544728796875">Info</a>
-, <a class="el" href="class_console_widget.html#a12cbdd8b9b08a7bd0c94c17a945c079eaa60852f204ed8028c1c58808b746d115">Ok</a>
-, <a class="el" href="class_console_widget.html#a12cbdd8b9b08a7bd0c94c17a945c079ea902b0d55fddef6f8d651fe1035b7d4bd">Error</a>
-, <a class="el" href="class_console_widget.html#a12cbdd8b9b08a7bd0c94c17a945c079ea0eaadb4fcb48a0a0ed7bc9868be9fbaa">Warning</a>
- }</td></tr>
-<tr class="memdesc:a12cbdd8b9b08a7bd0c94c17a945c079e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates legel of message.  <a href="class_console_widget.html#a12cbdd8b9b08a7bd0c94c17a945c079e">More...</a><br /></td></tr>
-<tr class="separator:a12cbdd8b9b08a7bd0c94c17a945c079e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-slots" name="pub-slots"></a>
 Public Slots</h2></td></tr>
-<tr class="memitem:ab2bfc263a06bea22f74111b9f462ce31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console_widget.html#ab2bfc263a06bea22f74111b9f462ce31">printLog</a> (QString message, <a class="el" href="class_console_widget.html#a12cbdd8b9b08a7bd0c94c17a945c079e">LogLevel</a> level)</td></tr>
-<tr class="memdesc:ab2bfc263a06bea22f74111b9f462ce31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print line of text to log.  <a href="class_console_widget.html#ab2bfc263a06bea22f74111b9f462ce31">More...</a><br /></td></tr>
-<tr class="separator:ab2bfc263a06bea22f74111b9f462ce31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7c2624ef982887775c6d29f43f2cd24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console_widget.html#ae7c2624ef982887775c6d29f43f2cd24">printMessage</a> (QString message, <a class="el" href="class_logger.html#ac744681e23720966b5f430ec2060da36">Logger::LogLevel</a> level)</td></tr>
+<tr class="memdesc:ae7c2624ef982887775c6d29f43f2cd24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print line of text to log.  <a href="class_console_widget.html#ae7c2624ef982887775c6d29f43f2cd24">More...</a><br /></td></tr>
+<tr class="separator:ae7c2624ef982887775c6d29f43f2cd24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90b79732e36bd1685a458ca0641eb48a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console_widget.html#a90b79732e36bd1685a458ca0641eb48a">clear</a> ()</td></tr>
 <tr class="memdesc:a90b79732e36bd1685a458ca0641eb48a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears log console.  <a href="class_console_widget.html#a90b79732e36bd1685a458ca0641eb48a">More...</a><br /></td></tr>
 <tr class="separator:a90b79732e36bd1685a458ca0641eb48a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcb399e965636d9047d9a2bd59ae123b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console_widget.html#adcb399e965636d9047d9a2bd59ae123b">setAppendTime</a> (bool value) noexcept</td></tr>
-<tr class="memdesc:adcb399e965636d9047d9a2bd59ae123b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter for <em>appendTime</em>.  <a href="class_console_widget.html#adcb399e965636d9047d9a2bd59ae123b">More...</a><br /></td></tr>
-<tr class="separator:adcb399e965636d9047d9a2bd59ae123b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af31680b95704c5ed5eca78573fe959f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console_widget.html#af31680b95704c5ed5eca78573fe959f3">setTimeFormat</a> (QString format)</td></tr>
-<tr class="memdesc:af31680b95704c5ed5eca78573fe959f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter for <em>timeFormat</em>.  <a href="class_console_widget.html#af31680b95704c5ed5eca78573fe959f3">More...</a><br /></td></tr>
-<tr class="separator:af31680b95704c5ed5eca78573fe959f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a6066941c0a3886ad45a87bfab53670e6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console_widget.html#a6066941c0a3886ad45a87bfab53670e6">ConsoleWidget</a> (QWidget *parent=nullptr)</td></tr>
 <tr class="memdesc:a6066941c0a3886ad45a87bfab53670e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="class_console_widget.html#a6066941c0a3886ad45a87bfab53670e6">More...</a><br /></td></tr>
 <tr class="separator:a6066941c0a3886ad45a87bfab53670e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12b61a91c3c6422a296473150790d8e6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console_widget.html#a12b61a91c3c6422a296473150790d8e6">ConsoleWidget</a> (bool appendTime, QWidget *parent=nullptr)</td></tr>
-<tr class="memdesc:a12b61a91c3c6422a296473150790d8e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="class_console_widget.html#a12b61a91c3c6422a296473150790d8e6">More...</a><br /></td></tr>
-<tr class="separator:a12b61a91c3c6422a296473150790d8e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a151841b20c3b0a1177a49e1522445905"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console_widget.html#a151841b20c3b0a1177a49e1522445905">~ConsoleWidget</a> ()</td></tr>
 <tr class="memdesc:a151841b20c3b0a1177a49e1522445905"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor.  <a href="class_console_widget.html#a151841b20c3b0a1177a49e1522445905">More...</a><br /></td></tr>
 <tr class="separator:a151841b20c3b0a1177a49e1522445905"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a612b77b689d20cdefb4b3e26b7984f7d"><td class="memItemLeft" align="right" valign="top">QSize&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console_widget.html#a612b77b689d20cdefb4b3e26b7984f7d">sizeHint</a> () const override</td></tr>
 <tr class="memdesc:a612b77b689d20cdefb4b3e26b7984f7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides recommended size for the widget.  <a href="class_console_widget.html#a612b77b689d20cdefb4b3e26b7984f7d">More...</a><br /></td></tr>
 <tr class="separator:a612b77b689d20cdefb4b3e26b7984f7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ec9c99e58512371809c54720981d1b1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console_widget.html#a0ec9c99e58512371809c54720981d1b1">getAppendTime</a> () noexcept</td></tr>
-<tr class="memdesc:a0ec9c99e58512371809c54720981d1b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for <em>appendTime</em>.  <a href="class_console_widget.html#a0ec9c99e58512371809c54720981d1b1">More...</a><br /></td></tr>
-<tr class="separator:a0ec9c99e58512371809c54720981d1b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ddae5e36f3c360e7b8f469512269d15"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console_widget.html#a9ddae5e36f3c360e7b8f469512269d15">getTimeFormat</a> ()</td></tr>
-<tr class="memdesc:a9ddae5e36f3c360e7b8f469512269d15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for <em>timeFormat</em>.  <a href="class_console_widget.html#a9ddae5e36f3c360e7b8f469512269d15">More...</a><br /></td></tr>
-<tr class="separator:a9ddae5e36f3c360e7b8f469512269d15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6dbf9f5e1fdf53e5c12e1953137df17"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_console_widget.html#af6dbf9f5e1fdf53e5c12e1953137df17">getLog</a> ()</td></tr>
 <tr class="memdesc:af6dbf9f5e1fdf53e5c12e1953137df17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for content of log console.  <a href="class_console_widget.html#af6dbf9f5e1fdf53e5c12e1953137df17">More...</a><br /></td></tr>
 <tr class="separator:af6dbf9f5e1fdf53e5c12e1953137df17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >The <a class="el" href="class_console_widget.html" title="The ConsoleWidget class.">ConsoleWidget</a> class. </p>
-<p >Defines widget that can act as console. Prints messages with 4 different colored levels. Has posibility to include time with message. </p>
-</div><h2 class="groupheader">Member Enumeration Documentation</h2>
-<a id="a12cbdd8b9b08a7bd0c94c17a945c079e" name="a12cbdd8b9b08a7bd0c94c17a945c079e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12cbdd8b9b08a7bd0c94c17a945c079e">&#9670;&nbsp;</a></span>LogLevel</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum class <a class="el" href="class_console_widget.html#a12cbdd8b9b08a7bd0c94c17a945c079e">ConsoleWidget::LogLevel</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Indicates legel of message. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a12cbdd8b9b08a7bd0c94c17a945c079ea4059b0251f66a18cb56f544728796875" name="a12cbdd8b9b08a7bd0c94c17a945c079ea4059b0251f66a18cb56f544728796875"></a>Info&#160;</td><td class="fielddoc"><p >Standard type of message. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a12cbdd8b9b08a7bd0c94c17a945c079eaa60852f204ed8028c1c58808b746d115" name="a12cbdd8b9b08a7bd0c94c17a945c079eaa60852f204ed8028c1c58808b746d115"></a>Ok&#160;</td><td class="fielddoc"><p >Type of message that communicates success. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a12cbdd8b9b08a7bd0c94c17a945c079ea902b0d55fddef6f8d651fe1035b7d4bd" name="a12cbdd8b9b08a7bd0c94c17a945c079ea902b0d55fddef6f8d651fe1035b7d4bd"></a>Error&#160;</td><td class="fielddoc"><p >Type of message that indicates error. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a12cbdd8b9b08a7bd0c94c17a945c079ea0eaadb4fcb48a0a0ed7bc9868be9fbaa" name="a12cbdd8b9b08a7bd0c94c17a945c079ea0eaadb4fcb48a0a0ed7bc9868be9fbaa"></a>Warning&#160;</td><td class="fielddoc"><p >Type of message that indicates warning, but not as ciritcal as error. </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<p >Defines widget that can act as console. Prints messages with 4 different colored levels. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6066941c0a3886ad45a87bfab53670e6" name="a6066941c0a3886ad45a87bfab53670e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6066941c0a3886ad45a87bfab53670e6">&#9670;&nbsp;</a></span>ConsoleWidget() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a6066941c0a3886ad45a87bfab53670e6">&#9670;&nbsp;</a></span>ConsoleWidget()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -197,43 +136,6 @@ Public Member Functions</h2></td></tr>
 <p>Default constructor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">parent</td><td>Pointer to parent widget. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a12b61a91c3c6422a296473150790d8e6" name="a12b61a91c3c6422a296473150790d8e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12b61a91c3c6422a296473150790d8e6">&#9670;&nbsp;</a></span>ConsoleWidget() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">ConsoleWidget::ConsoleWidget </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>appendTime</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">QWidget *&#160;</td>
-          <td class="paramname"><em>parent</em> = <code>nullptr</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Constructor. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">appendTime</td><td>Flag which indicates if time should be added to log line. </td></tr>
     <tr><td class="paramname">parent</td><td>Pointer to parent widget. </td></tr>
   </table>
   </dd>
@@ -288,34 +190,6 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a0ec9c99e58512371809c54720981d1b1" name="a0ec9c99e58512371809c54720981d1b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ec9c99e58512371809c54720981d1b1">&#9670;&nbsp;</a></span>getAppendTime()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool ConsoleWidget::getAppendTime </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Getter for <em>appendTime</em>. </p>
-<dl class="section return"><dt>Returns</dt><dd>Value of <em>appendTime</em>. </dd></dl>
-
-</div>
-</div>
 <a id="af6dbf9f5e1fdf53e5c12e1953137df17" name="af6dbf9f5e1fdf53e5c12e1953137df17"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af6dbf9f5e1fdf53e5c12e1953137df17">&#9670;&nbsp;</a></span>getLog()</h2>
 
@@ -344,8 +218,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9ddae5e36f3c360e7b8f469512269d15" name="a9ddae5e36f3c360e7b8f469512269d15"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ddae5e36f3c360e7b8f469512269d15">&#9670;&nbsp;</a></span>getTimeFormat()</h2>
+<a id="ae7c2624ef982887775c6d29f43f2cd24" name="ae7c2624ef982887775c6d29f43f2cd24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7c2624ef982887775c6d29f43f2cd24">&#9670;&nbsp;</a></span>printMessage</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -354,35 +228,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QString ConsoleWidget::getTimeFormat </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Getter for <em>timeFormat</em>. </p>
-<dl class="section return"><dt>Returns</dt><dd>Value of <em>timeFormat</em>. </dd></dl>
-
-</div>
-</div>
-<a id="ab2bfc263a06bea22f74111b9f462ce31" name="ab2bfc263a06bea22f74111b9f462ce31"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab2bfc263a06bea22f74111b9f462ce31">&#9670;&nbsp;</a></span>printLog</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ConsoleWidget::printLog </td>
+          <td class="memname">void ConsoleWidget::printMessage </td>
           <td>(</td>
           <td class="paramtype">QString&#160;</td>
           <td class="paramname"><em>message</em>, </td>
@@ -390,7 +236,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_console_widget.html#a12cbdd8b9b08a7bd0c94c17a945c079e">LogLevel</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_logger.html#ac744681e23720966b5f430ec2060da36">Logger::LogLevel</a>&#160;</td>
           <td class="paramname"><em>level</em>&#160;</td>
         </tr>
         <tr>
@@ -411,74 +257,6 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">message</td><td>Message to print to log console. </td></tr>
     <tr><td class="paramname">level</td><td>Level of logged message. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="adcb399e965636d9047d9a2bd59ae123b" name="adcb399e965636d9047d9a2bd59ae123b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adcb399e965636d9047d9a2bd59ae123b">&#9670;&nbsp;</a></span>setAppendTime</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ConsoleWidget::setAppendTime </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">slot</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Setter for <em>appendTime</em>. </p>
-<p >Controls property that indicates if time should be added to logged message. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">value</td><td>Value to set. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="af31680b95704c5ed5eca78573fe959f3" name="af31680b95704c5ed5eca78573fe959f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af31680b95704c5ed5eca78573fe959f3">&#9670;&nbsp;</a></span>setTimeFormat</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ConsoleWidget::setTimeFormat </td>
-          <td>(</td>
-          <td class="paramtype">QString&#160;</td>
-          <td class="paramname"><em>format</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">slot</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Setter for <em>timeFormat</em>. </p>
-<p >Controls property that indicates format of time that is added to logged message. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">format</td><td>Format for time. </td></tr>
   </table>
   </dd>
 </dl>

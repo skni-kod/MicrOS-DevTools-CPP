@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['setappendtime_0',['setAppendTime',['../class_console_widget.html#adcb399e965636d9047d9a2bd59ae123b',1,'ConsoleWidget']]],
-  ['setapppallete_1',['setAppPallete',['../main_8cpp.html#a9177b587e61ddf972eb046dc1af8db90',1,'setAppPallete():&#160;main.cpp'],['../main_8h.html#a9177b587e61ddf972eb046dc1af8db90',1,'setAppPallete():&#160;main.cpp']]],
-  ['settimeformat_2',['setTimeFormat',['../class_console_widget.html#af31680b95704c5ed5eca78573fe959f3',1,'ConsoleWidget']]],
-  ['sizehint_3',['sizeHint',['../class_console_widget.html#a612b77b689d20cdefb4b3e26b7984f7d',1,'ConsoleWidget']]],
-  ['starttabwidget_4',['StartTabWidget',['../class_start_tab_widget.html#a8e67cc0afc9815f21694d41365e4cdd3',1,'StartTabWidget']]]
+  ['main_0',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]],
+  ['mainwidget_1',['MainWidget',['../class_main_widget.html#aad53bf5b787be1871bfdd56540d4727f',1,'MainWidget']]],
+  ['messagelogged_2',['messageLogged',['../class_logger.html#aa7c587169fefb97b6828c162bd04b871',1,'Logger']]]
 ];

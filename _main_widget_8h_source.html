@@ -87,81 +87,91 @@ $(function() {
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;QVBoxLayout&gt;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="_console_widget_8h.html">ConsoleWidget.h</a>&quot;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="_building_tab_widget_8h.html">Tabs/BuildingTabWidget.h</a>&quot;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="_compiler_tab_widget_8h.html">Tabs/CompilerTabWidget.h</a>&quot;</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="_environment_tab_widget_8h.html">Tabs/EnvironmentTabWidget.h</a>&quot;</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="_links_tab_widget_8h.html">Tabs/LinksTabWidget.h</a>&quot;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="_start_tab_widget_8h.html">Tabs/StartTabWidget.h</a>&quot;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="_tools_tab_widget_8h.html">Tabs/ToolsTabWidget.h</a>&quot;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_main_widget.html">   30</a></span><span class="keyword">class </span><a class="code hl_class" href="class_main_widget.html">MainWidget</a> : <span class="keyword">public</span> QWidget</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    Q_OBJECT</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    QMenuBar *menuBar = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    QMenu *programMenu = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    QAction *exitAction = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    QMenu *tabsMenu = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    QAction *startTabAction = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    QAction *liknsTabAction = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    QAction *toolsTabAction = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    QAction *environmentTabAction = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    QAction *compilerTabAction = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    QAction *buildingTabAction = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    QMenu *consoleMenu = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    QAction *saveConsoleAction = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    QAction *showConsoleAction = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    QAction *cleanConsoleAction = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    QMenu *helpMenu = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    QAction *aboutAction = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    QAction *aboutMicrosAction = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    QAction *aboutQtAction = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="_database_manager_8h.html">Database/DatabaseManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="_building_tab_widget_8h.html">Tabs/BuildingTabWidget.h</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="_compiler_tab_widget_8h.html">Tabs/CompilerTabWidget.h</a>&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="_environment_tab_widget_8h.html">Tabs/EnvironmentTabWidget.h</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="_links_tab_widget_8h.html">Tabs/LinksTabWidget.h</a>&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="_start_tab_widget_8h.html">Tabs/StartTabWidget.h</a>&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="_tools_tab_widget_8h.html">Tabs/ToolsTabWidget.h</a>&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;<a class="code" href="_logger_8h.html">Utils/Logger.h</a>&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="class_main_widget.html">   32</a></span><span class="keyword">class </span><a class="code hl_class" href="class_main_widget.html">MainWidget</a> : <span class="keyword">public</span> QWidget</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    Q_OBJECT</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    QMenuBar *menuBar = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    QMenu *programMenu = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    QAction *exitAction = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    QMenu *tabsMenu = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    QAction *startTabAction = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    QAction *liknsTabAction = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    QAction *toolsTabAction = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    QAction *environmentTabAction = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    QAction *compilerTabAction = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    QAction *buildingTabAction = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    QMenu *consoleMenu = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    QAction *saveConsoleAction = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    QAction *showConsoleAction = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    QAction *cleanConsoleAction = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    QMenu *helpMenu = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    QAction *aboutAction = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    QAction *aboutMicrosAction = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    QAction *aboutQtAction = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    QTabWidget *mainTabWidget = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <a class="code hl_class" href="class_start_tab_widget.html">StartTabWidget</a> *startTabWidget = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <a class="code hl_class" href="class_links_tab_widget.html">LinksTabWidget</a> *linksTabWidget = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <a class="code hl_class" href="class_tools_tab_widget.html">ToolsTabWidget</a> *toolsTabWidget = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <a class="code hl_class" href="class_environment_tab_widget.html">EnvironmentTabWidget</a> *environmentTabWidget = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <a class="code hl_class" href="class_compiler_tab_widget.html">CompilerTabWidget</a> *compilerTabWidget = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <a class="code hl_class" href="class_building_tab_widget.html">BuildingTabWidget</a> *buildingTabWidget = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    QTabWidget *mainTabWidget = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <a class="code hl_class" href="class_start_tab_widget.html">StartTabWidget</a> *startTabWidget = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <a class="code hl_class" href="class_links_tab_widget.html">LinksTabWidget</a> *linksTabWidget = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <a class="code hl_class" href="class_tools_tab_widget.html">ToolsTabWidget</a> *toolsTabWidget = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <a class="code hl_class" href="class_environment_tab_widget.html">EnvironmentTabWidget</a> *environmentTabWidget = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <a class="code hl_class" href="class_compiler_tab_widget.html">CompilerTabWidget</a> *compilerTabWidget = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <a class="code hl_class" href="class_building_tab_widget.html">BuildingTabWidget</a> *buildingTabWidget = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    QGroupBox *consoleGroupBox = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <a class="code hl_class" href="class_console_widget.html">ConsoleWidget</a> *consoleWidget = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    QGroupBox *consoleGroupBox = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <a class="code hl_class" href="class_console_widget.html">ConsoleWidget</a> *consoleWidget = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    QVBoxLayout *mainLayout = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    QVBoxLayout *consoleLayout = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="class_main_widget.html#aad53bf5b787be1871bfdd56540d4727f">MainWidget</a>(QWidget *parent = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <a class="code hl_function" href="class_main_widget.html#add21c63f8e799303a21a69da3d288c2f">~MainWidget</a>();</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="keyword">private</span> slots:</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    <span class="keywordtype">void</span> showAboutMessage();</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="keywordtype">void</span> showAboutMicrosMessage();</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordtype">void</span> toggleConsoleVisibility();</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keywordtype">void</span> saveLogToFile();</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>};</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="preprocessor">#endif </span><span class="comment">// MAINWIDGET_H</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    QVBoxLayout *mainLayout = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    QVBoxLayout *consoleLayout = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <a class="code hl_class" href="class_logger.html">Logger</a> *logger = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <a class="code hl_class" href="class_database_manager.html">DatabaseManager</a> *databaseManager = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="class_main_widget.html#aad53bf5b787be1871bfdd56540d4727f">MainWidget</a>(QWidget *parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <a class="code hl_function" href="class_main_widget.html#add21c63f8e799303a21a69da3d288c2f">~MainWidget</a>();</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="keyword">private</span> slots:</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keywordtype">void</span> showAboutMessage();</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    <span class="keywordtype">void</span> showAboutMicrosMessage();</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keywordtype">void</span> toggleConsoleVisibility();</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    <span class="keywordtype">void</span> saveLogToFile();</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>};</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="preprocessor">#endif </span><span class="comment">// MAINWIDGET_H</span></div>
 <div class="ttc" id="a_building_tab_widget_8h_html"><div class="ttname"><a href="_building_tab_widget_8h.html">BuildingTabWidget.h</a></div></div>
 <div class="ttc" id="a_compiler_tab_widget_8h_html"><div class="ttname"><a href="_compiler_tab_widget_8h.html">CompilerTabWidget.h</a></div></div>
 <div class="ttc" id="a_console_widget_8h_html"><div class="ttname"><a href="_console_widget_8h.html">ConsoleWidget.h</a></div></div>
+<div class="ttc" id="a_database_manager_8h_html"><div class="ttname"><a href="_database_manager_8h.html">DatabaseManager.h</a></div></div>
 <div class="ttc" id="a_environment_tab_widget_8h_html"><div class="ttname"><a href="_environment_tab_widget_8h.html">EnvironmentTabWidget.h</a></div></div>
 <div class="ttc" id="a_links_tab_widget_8h_html"><div class="ttname"><a href="_links_tab_widget_8h.html">LinksTabWidget.h</a></div></div>
+<div class="ttc" id="a_logger_8h_html"><div class="ttname"><a href="_logger_8h.html">Logger.h</a></div></div>
 <div class="ttc" id="a_start_tab_widget_8h_html"><div class="ttname"><a href="_start_tab_widget_8h.html">StartTabWidget.h</a></div></div>
 <div class="ttc" id="a_tools_tab_widget_8h_html"><div class="ttname"><a href="_tools_tab_widget_8h.html">ToolsTabWidget.h</a></div></div>
 <div class="ttc" id="aclass_building_tab_widget_html"><div class="ttname"><a href="class_building_tab_widget.html">BuildingTabWidget</a></div><div class="ttdoc">The BuildingTabWidget class.</div><div class="ttdef"><b>Definition:</b> BuildingTabWidget.h:13</div></div>
 <div class="ttc" id="aclass_compiler_tab_widget_html"><div class="ttname"><a href="class_compiler_tab_widget.html">CompilerTabWidget</a></div><div class="ttdoc">The CompilerTabWidget class.</div><div class="ttdef"><b>Definition:</b> CompilerTabWidget.h:13</div></div>
-<div class="ttc" id="aclass_console_widget_html"><div class="ttname"><a href="class_console_widget.html">ConsoleWidget</a></div><div class="ttdoc">The ConsoleWidget class.</div><div class="ttdef"><b>Definition:</b> ConsoleWidget.h:19</div></div>
+<div class="ttc" id="aclass_console_widget_html"><div class="ttname"><a href="class_console_widget.html">ConsoleWidget</a></div><div class="ttdoc">The ConsoleWidget class.</div><div class="ttdef"><b>Definition:</b> ConsoleWidget.h:20</div></div>
+<div class="ttc" id="aclass_database_manager_html"><div class="ttname"><a href="class_database_manager.html">DatabaseManager</a></div><div class="ttdoc">The DatabaseManager class.</div><div class="ttdef"><b>Definition:</b> DatabaseManager.h:27</div></div>
 <div class="ttc" id="aclass_environment_tab_widget_html"><div class="ttname"><a href="class_environment_tab_widget.html">EnvironmentTabWidget</a></div><div class="ttdoc">The EnvironmentTabWidget class.</div><div class="ttdef"><b>Definition:</b> EnvironmentTabWidget.h:13</div></div>
 <div class="ttc" id="aclass_links_tab_widget_html"><div class="ttname"><a href="class_links_tab_widget.html">LinksTabWidget</a></div><div class="ttdoc">The LinksTabWidget class.</div><div class="ttdef"><b>Definition:</b> LinksTabWidget.h:13</div></div>
-<div class="ttc" id="aclass_main_widget_html"><div class="ttname"><a href="class_main_widget.html">MainWidget</a></div><div class="ttdoc">The MainWidget class.</div><div class="ttdef"><b>Definition:</b> MainWidget.h:31</div></div>
+<div class="ttc" id="aclass_logger_html"><div class="ttname"><a href="class_logger.html">Logger</a></div><div class="ttdoc">Class that represents logger.</div><div class="ttdef"><b>Definition:</b> Logger.h:14</div></div>
+<div class="ttc" id="aclass_main_widget_html"><div class="ttname"><a href="class_main_widget.html">MainWidget</a></div><div class="ttdoc">The MainWidget class.</div><div class="ttdef"><b>Definition:</b> MainWidget.h:33</div></div>
 <div class="ttc" id="aclass_main_widget_html_aad53bf5b787be1871bfdd56540d4727f"><div class="ttname"><a href="class_main_widget.html#aad53bf5b787be1871bfdd56540d4727f">MainWidget::MainWidget</a></div><div class="ttdeci">MainWidget(QWidget *parent=nullptr)</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition:</b> MainWidget.cpp:3</div></div>
-<div class="ttc" id="aclass_main_widget_html_add21c63f8e799303a21a69da3d288c2f"><div class="ttname"><a href="class_main_widget.html#add21c63f8e799303a21a69da3d288c2f">MainWidget::~MainWidget</a></div><div class="ttdeci">~MainWidget()</div><div class="ttdoc">Default destructor.</div><div class="ttdef"><b>Definition:</b> MainWidget.cpp:113</div></div>
+<div class="ttc" id="aclass_main_widget_html_add21c63f8e799303a21a69da3d288c2f"><div class="ttname"><a href="class_main_widget.html#add21c63f8e799303a21a69da3d288c2f">MainWidget::~MainWidget</a></div><div class="ttdeci">~MainWidget()</div><div class="ttdoc">Default destructor.</div><div class="ttdef"><b>Definition:</b> MainWidget.cpp:120</div></div>
 <div class="ttc" id="aclass_start_tab_widget_html"><div class="ttname"><a href="class_start_tab_widget.html">StartTabWidget</a></div><div class="ttdoc">The StartTabWidget class.</div><div class="ttdef"><b>Definition:</b> StartTabWidget.h:13</div></div>
 <div class="ttc" id="aclass_tools_tab_widget_html"><div class="ttname"><a href="class_tools_tab_widget.html">ToolsTabWidget</a></div><div class="ttdoc">The ToolsTabWidget class.</div><div class="ttdef"><b>Definition:</b> ToolsTabWidget.h:13</div></div>
 </div><!-- fragment --></div><!-- contents -->

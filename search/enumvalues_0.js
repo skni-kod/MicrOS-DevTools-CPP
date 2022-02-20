@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['error_0',['Error',['../class_console_widget.html#a12cbdd8b9b08a7bd0c94c17a945c079ea902b0d55fddef6f8d651fe1035b7d4bd',1,'ConsoleWidget']]]
+  ['error_0',['Error',['../class_logger.html#ac744681e23720966b5f430ec2060da36a902b0d55fddef6f8d651fe1035b7d4bd',1,'Logger']]]
 ];

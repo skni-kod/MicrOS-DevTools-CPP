@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['toolstabwidget_0',['ToolsTabWidget',['../class_tools_tab_widget.html',1,'ToolsTabWidget'],['../class_tools_tab_widget.html#a9afeb1da04810335dd63429a3c865561',1,'ToolsTabWidget::ToolsTabWidget()']]],
-  ['toolstabwidget_2ecpp_1',['ToolsTabWidget.cpp',['../_tools_tab_widget_8cpp.html',1,'']]],
-  ['toolstabwidget_2eh_2',['ToolsTabWidget.h',['../_tools_tab_widget_8h.html',1,'']]]
+  ['qsqlerrortostring_0',['QSqlErrorToString',['../class_database_helper.html#a175bbbde176f187e05c9f5df99705284',1,'DatabaseHelper']]],
+  ['qsqlerrortypetostring_1',['QSqlErrorTypeToString',['../class_database_helper.html#a9518dd5d23a82d653c64f5a3460fd7b9',1,'DatabaseHelper']]],
+  ['qsqlqueryexec_2',['QSqlQueryExec',['../class_database_helper.html#a60a5996c462d11ee37943f31acc69aef',1,'DatabaseHelper::QSqlQueryExec(QSqlQuery &amp;query, Logger *logger)'],['../class_database_helper.html#ac40772eca298489172139723a051ef7d',1,'DatabaseHelper::QSqlQueryExec(QSqlQuery &amp;query, QString sqlQuery, Logger *logger)']]],
+  ['qsqlqueryprepare_3',['QSqlQueryPrepare',['../class_database_helper.html#adb4cf98d1bcc5bc864f21ed326829980',1,'DatabaseHelper']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['starttabwidget_0',['StartTabWidget',['../class_start_tab_widget.html',1,'']]]
+  ['mainwidget_0',['MainWidget',['../class_main_widget.html',1,'']]]
 ];
