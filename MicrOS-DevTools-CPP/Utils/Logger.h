@@ -5,6 +5,11 @@
 #include <QString>
 #include <QObject>
 
+/*!
+ * \brief Class that represents logger
+ * \details Allow to log message with different level and send them via signal to places where they should be delivered.
+ * Has posibility to include time with message.
+ */
 class Logger : public QObject
 {
     Q_OBJECT

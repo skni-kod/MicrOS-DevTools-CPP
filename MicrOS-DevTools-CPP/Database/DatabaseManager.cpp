@@ -19,7 +19,7 @@ bool DatabaseManager::init(QString databaseName)
     checkDatabaseFolder();
 
     // Database file and check file
-    QFile databaseFile(databaseFolder + QDir::separator() + databaseName);
+    databaseFile.setFileName(databaseFolder + QDir::separator() + databaseName);
     QFile checkFile(databaseFolder + QDir::separator() + checkFileName);
 
     // Check if database file exist
@@ -52,21 +52,17 @@ bool DatabaseManager::init(QString databaseName)
         }
     }
 
-    if(databaseState == DatabaseInitState::CheckDeteled)
+    if(databaseState == DatabaseInitState::CheckDeleted)
     {
         createCheckfile(databaseFolder + QDir::separator() + checkFileName);
         logger->logMessage(tr("Plik .database.txt odtworzony"), Logger::LogLevel::Info);
     }
 
 
-    if(databaseState == DatabaseInitState::Exist || databaseState == DatabaseInitState::CheckDeteled)
+    if(databaseState == DatabaseInitState::Exist || databaseState == DatabaseInitState::CheckDeleted)
     {
         // Check if database needs to be updated
-        DatabaseUpdater updater(logger);
-        if(updater.checkForUpdate(database, databaseFile) == false)
-        {
-            return false;
-        }
+
     }
 
     logger->logMessage(tr("Inicjalizacja bazy danych zakończona"), Logger::LogLevel::Ok);
@@ -124,7 +120,7 @@ void DatabaseManager::getDatabaseInitState(QFile &databaseFile, QFile &checkFile
         else if(databaseFile.exists() && !checkFile.exists())
         {
             // If database do exist but check file not
-            databaseState = DatabaseInitState::CheckDeteled;
+            databaseState = DatabaseInitState::CheckDeleted;
             logger->logMessage(tr("Nie usuwaj pliku .database.txt"), Logger::LogLevel::Warning);
         }
     }
@@ -159,3 +155,8 @@ bool DatabaseManager::buildDatabase()
     return creator.createDatabase(database);
 }
 
+bool DatabaseManager::updateDatabase()
+{
+    DatabaseUpdater updater(logger);
+    return updater.checkForUpdate(database, databaseFile);
+}

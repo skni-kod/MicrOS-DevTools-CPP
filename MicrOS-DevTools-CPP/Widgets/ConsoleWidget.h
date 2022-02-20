@@ -15,7 +15,6 @@
  * \brief The ConsoleWidget class.
  * \details Defines widget that can act as console.
  * Prints messages with 4 different colored levels.
- * Has posibility to include time with message.
  */
 class ConsoleWidget : public QWidget
 {

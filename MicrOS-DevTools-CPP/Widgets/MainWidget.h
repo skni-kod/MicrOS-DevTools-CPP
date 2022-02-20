@@ -162,8 +162,14 @@ private:
      */
     QVBoxLayout *consoleLayout = nullptr;
 
+    /*!
+     * \brief Default loger instance.
+     */
     Logger *logger = nullptr;
 
+    /*!
+     * \brief Database manager instance.
+     */
     DatabaseManager *databaseManager = nullptr;
 
 public:

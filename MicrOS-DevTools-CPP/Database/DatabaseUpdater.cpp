@@ -107,19 +107,7 @@ bool DatabaseUpdater::updateDatabaseVersionField(QSqlDatabase &database)
     return true;
 }
 
-bool DatabaseUpdater::updateToVersion2(QSqlDatabase &database)
+bool DatabaseUpdater::updateToVersion2(QSqlDatabase &)
 {
-    QSqlQuery query(database);
-    // Table SystemVersion
-    if(DatabaseHelper::QSqlQueryPrepare(query, "UPDATE SystemVersion SET version = :version WHERE component = :component", logger) == false)
-    {
-        return false;
-    }
-    query.bindValue(":component", "Application version");
-    query.bindValue(":version", "Shuka");
-    if(DatabaseHelper::QSqlQueryExec(query, logger) == false)
-    {
-        return false;
-    }
     return true;
 }
