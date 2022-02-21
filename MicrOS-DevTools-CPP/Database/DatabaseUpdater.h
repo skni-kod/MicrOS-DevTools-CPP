@@ -2,17 +2,18 @@
 #define DATABASEUPDATER_H
 
 #include <QDateTime>
-#include <QDebug>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
 #include <QObject>
+#include <QPair>
 #include <QSqlDatabase>
 #include <QVariant>
 
-#include "DatabaseHelper.h"
-#include "Version.h"
+#include "Database/DatabaseFields.h"
+#include "Database/DatabaseHelper.h"
 #include "Utils/Logger.h"
+#include "Version.h"
 
 /*!
  * \brief Class that updates database.
@@ -25,6 +26,7 @@ class DatabaseUpdater : public QObject
      * \brief Holds current database version.
      */
     int databaseVersion = 0;
+
     /*!
      * \brief logger Logger instance.
      */
@@ -45,17 +47,17 @@ public:
      * \brief Check if update should be performed and update if yes.
      * \param database Database instance.
      * \param databaseFile Database file instance.
-     * \return
+     * \return True if success, false when error.
      */
-    bool checkForUpdate(QSqlDatabase &database, QFile &databaseFile);
+    bool checkForUpdateAndUpdate(QSqlDatabase &database, QFile &databaseFile);
 
 private:
     /*!
      * \brief Check if update is needed.
      * \param database Database instance.
-     * \return True if update is needed, false otherwise or when error occurs.
+     * \return First value: true if success, false when error occurs. Second value: true if update needed.
      */
-    bool isUpdateNeeded(QSqlDatabase &database);
+    QPair<bool, bool> isUpdateNeeded(QSqlDatabase &database);
     /*!
      * \brief Perform backup of database file.
      * \details Database will be copied to file with timestamp in name. If copying fails, copy won't be created.
@@ -67,7 +69,7 @@ private:
     /*!
      * \brief Performs database update.
      * \param database Database instance.
-     * \return
+     * \return True if success, false otherwise.
      */
     bool updateDatabase(QSqlDatabase &database);
     /*!
