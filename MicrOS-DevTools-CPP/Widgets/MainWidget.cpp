@@ -75,7 +75,7 @@ MainWidget::MainWidget(QWidget *parent)
     mainTabWidget->addTab(buildingTabWidget, tr("Konfiguracja budownia"));
 
     // Logger
-    logger = new Logger(true);
+    logger = new Logger(true, this);
 
     // Console
     consoleGroupBox = new QGroupBox();
@@ -96,7 +96,7 @@ MainWidget::MainWidget(QWidget *parent)
     this->setLayout(mainLayout);
     consoleGroupBox->setLayout(consoleLayout);
 
-    databaseManager = new DatabaseManager(logger);
+    databaseManager = new DatabaseManager(logger, this);
 
     // Connections
     connect(exitAction, &QAction::triggered, qApp, &QApplication::quit);
@@ -113,20 +113,13 @@ MainWidget::MainWidget(QWidget *parent)
     connect(aboutMicrosAction, &QAction::triggered, this, &MainWidget::showAboutMicrosMessage);
     connect(aboutQtAction, &QAction::triggered, qApp, &QApplication::aboutQt);
 
-    databaseManager->init("database.db");
+    databaseManager->init();
     logger->logMessage(tr("Uruchamianie zakończone"), Logger::LogLevel::Ok);
 }
 
 MainWidget::~MainWidget()
 {
-    if(databaseManager)
-    {
-        delete databaseManager;
-    }
-    if(logger)
-    {
-        delete logger;
-    }
+
 }
 
 void MainWidget::showAboutMessage()
@@ -190,7 +183,7 @@ void MainWidget::saveLogToFile()
     saveFile.open(QIODevice::WriteOnly | QIODevice::Text);
     QTextStream stream(&saveFile);
 
-    logger->logMessage(tr("Zapis logu do pliku: ") + fileName, Logger::LogLevel::Info);
+    logger->logMessage(tr("Zapis logu do pliku: ") + QDir::toNativeSeparators(fileName), Logger::LogLevel::Info);
 
     stream << consoleWidget->getLog();
     saveFile.commit();

@@ -6,8 +6,8 @@
 #include <QDateTime>
 #include <QString>
 #include <QTextEdit>
-#include <QWidget>
 #include <QVBoxLayout>
+#include <QWidget>
 
 #include "Utils/Logger.h"
 

@@ -13,20 +13,20 @@ DatabaseManager::~DatabaseManager()
     }
 }
 
-bool DatabaseManager::init(QString databaseName)
+bool DatabaseManager::init()
 {
     // Check if databaseFolder exist, if not create one
     checkDatabaseFolder();
 
     // Database file and check file
-    databaseFile.setFileName(databaseFolder + QDir::separator() + databaseName);
-    QFile checkFile(databaseFolder + QDir::separator() + checkFileName);
+    databaseFile.setFileName(databaseFolder + "/" + databaseFileName);
+    QFile checkFile(databaseFolder + "/" + checkFileName);
 
     // Check if database file exist
     getDatabaseInitState(databaseFile, checkFile);
 
     // Connect to database
-    if(connectToDatabase(databaseName) == false)
+    if(connectToDatabase(databaseFileName) == false)
     {
         logger->logMessage(tr("Błąd podczas łączenia do bazy danych"), Logger::LogLevel::Error);
         return false;
@@ -43,7 +43,7 @@ bool DatabaseManager::init(QString databaseName)
 
         if(databaseState == DatabaseInitState::New)
         {
-            createCheckfile(databaseFolder + QDir::separator() + checkFileName);
+            createCheckfile(databaseFolder + "/" + checkFileName);
             logger->logMessage(tr("Baza danych zbudowana"), Logger::LogLevel::Info);
         }
         else
@@ -54,15 +54,17 @@ bool DatabaseManager::init(QString databaseName)
 
     if(databaseState == DatabaseInitState::CheckDeleted)
     {
-        createCheckfile(databaseFolder + QDir::separator() + checkFileName);
+        createCheckfile(databaseFolder + "/" + checkFileName);
         logger->logMessage(tr("Plik .database.txt odtworzony"), Logger::LogLevel::Info);
     }
-
 
     if(databaseState == DatabaseInitState::Exist || databaseState == DatabaseInitState::CheckDeleted)
     {
         // Check if database needs to be updated
-
+        if(updateDatabase() == false)
+        {
+            return false;
+        }
     }
 
     logger->logMessage(tr("Inicjalizacja bazy danych zakończona"), Logger::LogLevel::Ok);
@@ -134,7 +136,7 @@ bool DatabaseManager::connectToDatabase(const QString &path)
         return false;
     }
     database = QSqlDatabase::addDatabase("QSQLITE");
-    database.setDatabaseName(databaseFolder + QDir::separator() + path);
+    database.setDatabaseName(databaseFolder + "/" + path);
 
     if(database.open())
     {
@@ -158,5 +160,5 @@ bool DatabaseManager::buildDatabase()
 bool DatabaseManager::updateDatabase()
 {
     DatabaseUpdater updater(logger);
-    return updater.checkForUpdate(database, databaseFile);
+    return updater.checkForUpdateAndUpdate(database, databaseFile);
 }

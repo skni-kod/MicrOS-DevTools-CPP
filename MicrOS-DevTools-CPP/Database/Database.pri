@@ -7,6 +7,7 @@ SOURCES +=  \
     $$PWD/DatabaseUpdater.cpp
 HEADERS += \
     $$PWD/DatabaseCreator.h \
+    $$PWD/DatabaseFields.h \
     $$PWD/DatabaseHelper.h \
     $$PWD/DatabaseManager.h \
     $$PWD/DatabaseUpdater.h

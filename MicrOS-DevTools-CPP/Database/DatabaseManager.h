@@ -1,7 +1,6 @@
 #ifndef DATABASEMANAGER_H
 #define DATABASEMANAGER_H
 
-#include <QDebug>
 #include <QDir>
 #include <QFile>
 #include <QObject>
@@ -13,11 +12,11 @@
 #include <windows.h>
 #endif
 
-#include "DatabaseCreator.h"
-#include "DatabaseHelper.h"
-#include "DatabaseUpdater.h"
-#include "Version.h"
+#include "Database/DatabaseCreator.h"
+#include "Database/DatabaseHelper.h"
+#include "Database/DatabaseUpdater.h"
 #include "Utils/Logger.h"
+#include "Version.h"
 
 /*!
  * \brief The DatabaseManager class
@@ -39,6 +38,11 @@ private:
         Deleted,       /*!< Database has been deleted. */
         CheckDeleted   /*!< Check file has been deleted. */
     };
+
+    /*!
+     * \brief File name of database.
+     */
+    const QString databaseFileName = "database.db";
 
     /*!
      * \brief Folder where database is stored.
@@ -90,10 +94,9 @@ public:
 public:
     /*!
      * \brief Initializes database.
-     * \param databaseName Name of database file.
      * \return True if success, false otherwise.
      */
-    bool init(QString databaseName);
+    bool init();
 
 private:
     /*!

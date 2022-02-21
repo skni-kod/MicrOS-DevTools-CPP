@@ -12,8 +12,8 @@
 #include <QStandardPaths>
 #include <QTabWidget>
 #include <QTextStream>
-#include <QWidget>
 #include <QVBoxLayout>
+#include <QWidget>
 
 #include "ConsoleWidget.h"
 #include "Database/DatabaseManager.h"

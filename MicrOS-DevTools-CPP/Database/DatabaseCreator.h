@@ -7,10 +7,11 @@
 #include <QSqlQuery>
 #include <QVariant>
 
-#include "ConsoleWidget.h"
-#include "DatabaseHelper.h"
-#include "Version.h"
+#include "Database/DatabaseFields.h"
+#include "Database/DatabaseHelper.h"
 #include "Utils/Logger.h"
+#include "Widgets/ConsoleWidget.h"
+#include "Version.h"
 
 /*!
  * \brief Class that creates database.

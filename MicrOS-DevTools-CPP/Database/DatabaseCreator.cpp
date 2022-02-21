@@ -17,7 +17,7 @@ bool DatabaseCreator::createDatabase(QSqlDatabase &database)
     {
         return false;
     }
-    query.bindValue(":component", "Application version");
+    query.bindValue(":component", APPLICATION_VERSION_SETTING);
     query.bindValue(":version", APPLICATION_VERSION);
     if(DatabaseHelper::QSqlQueryExec(query, logger) == false)
     {
@@ -28,7 +28,7 @@ bool DatabaseCreator::createDatabase(QSqlDatabase &database)
     {
         return false;
     }
-    query.bindValue(":component", "Database version");
+    query.bindValue(":component", DATABASE_VERSION_SETTING);
     query.bindValue(":version", QString::number(DATABASE_VERSION));
     if(DatabaseHelper::QSqlQueryExec(query, logger) == false)
     {
@@ -45,7 +45,7 @@ bool DatabaseCreator::createDatabase(QSqlDatabase &database)
     {
         return false;
     }
-    query.bindValue(":setting", "Repository location");
+    query.bindValue(":setting", REPOSITORY_LOCATION_SETTING);
     query.bindValue(":type", "S");
     if(DatabaseHelper::QSqlQueryExec(query, logger) == false)
     {
@@ -56,7 +56,7 @@ bool DatabaseCreator::createDatabase(QSqlDatabase &database)
     {
         return false;
     }
-    query.bindValue(":setting", "MSYS location");
+    query.bindValue(":setting", MSYS_LOCATION_SETTING);
     query.bindValue(":type", "S");
     if(DatabaseHelper::QSqlQueryExec(query, logger) == false)
     {
@@ -67,7 +67,7 @@ bool DatabaseCreator::createDatabase(QSqlDatabase &database)
     {
         return false;
     }
-    query.bindValue(":setting", "QEMU location");
+    query.bindValue(":setting", QEMU_LOCATION_SETTING);
     query.bindValue(":type", "S");
     if(DatabaseHelper::QSqlQueryExec(query, logger) == false)
     {
@@ -78,7 +78,7 @@ bool DatabaseCreator::createDatabase(QSqlDatabase &database)
     {
         return false;
     }
-    query.bindValue(":setting", "Floppy letter");
+    query.bindValue(":setting", FLOPPY_LETTER_SETTING);
     query.bindValue(":type", "S");
     if(DatabaseHelper::QSqlQueryExec(query, logger) == false)
     {
@@ -89,7 +89,7 @@ bool DatabaseCreator::createDatabase(QSqlDatabase &database)
     {
         return false;
     }
-    query.bindValue(":setting", "Compilation threads");
+    query.bindValue(":setting", COMPILATION_THREADS_SETTING);
     query.bindValue(":type", "I");
     if(DatabaseHelper::QSqlQueryExec(query, logger) == false)
     {
@@ -100,7 +100,7 @@ bool DatabaseCreator::createDatabase(QSqlDatabase &database)
     {
         return false;
     }
-    query.bindValue(":setting", "Debugger target");
+    query.bindValue(":setting", DEBUGGER_TARGET_SETTING);
     query.bindValue(":type", "S");
     if(DatabaseHelper::QSqlQueryExec(query, logger) == false)
     {
@@ -111,7 +111,7 @@ bool DatabaseCreator::createDatabase(QSqlDatabase &database)
     {
         return false;
     }
-    query.bindValue(":setting", "Windows version");
+    query.bindValue(":setting", WINDOWS_VERSION_SETTING);
     query.bindValue(":type", "S");
     if(DatabaseHelper::QSqlQueryExec(query, logger) == false)
     {

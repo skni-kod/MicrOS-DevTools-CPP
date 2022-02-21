@@ -5,9 +5,15 @@ DatabaseUpdater::DatabaseUpdater(Logger *logger, QObject *parent) : QObject(pare
     this->logger = logger;
 }
 
-bool DatabaseUpdater::checkForUpdate(QSqlDatabase &database, QFile &databaseFile)
+bool DatabaseUpdater::checkForUpdateAndUpdate(QSqlDatabase &database, QFile &databaseFile)
 {
-    if(isUpdateNeeded(database))
+    QPair result = isUpdateNeeded(database);
+    if(result.first)
+    {
+        logger->logMessage(tr("Błąd przy sprawdzaniu czy konieczna jest aktualizacja bazy danych"), Logger::LogLevel::Error);
+        return false;
+    }
+    if(result.second)
     {
         logger->logMessage(tr("Rozpoczęcie procedury aktualizacji bazy danych"), Logger::LogLevel::Info);
         backupDatabaseFile(database, databaseFile);
@@ -16,18 +22,18 @@ bool DatabaseUpdater::checkForUpdate(QSqlDatabase &database, QFile &databaseFile
             logger->logMessage(tr("Aktualizacja bazy danych nie powiodła się"), Logger::LogLevel::Error);
             return false;
         }
+        logger->logMessage(tr("Baza danych zaktualizowana"), Logger::LogLevel::Ok);
     }
-    logger->logMessage(tr("Baza danych zaktualizowana"), Logger::LogLevel::Ok);
     return true;
 }
 
-bool DatabaseUpdater::isUpdateNeeded(QSqlDatabase &database)
+QPair<bool, bool>  DatabaseUpdater::isUpdateNeeded(QSqlDatabase &database)
 {
     QSqlQuery query(database);
     // Table SystemVersion
     if(DatabaseHelper::QSqlQueryExec(query, "SELECT version FROM SystemVersion WHERE component = 'Database version'", logger) == false)
     {
-        return false;
+        return QPair(true, false);
     }
     query.next();
     QString databaseVersionStr = query.value(0).toString();
@@ -36,7 +42,7 @@ bool DatabaseUpdater::isUpdateNeeded(QSqlDatabase &database)
     if(conversionOk == false)
     {
         logger->logMessage(tr("Wersja bazy danych nie jest liczbą: ") + databaseVersionStr, Logger::LogLevel::Error);
-        return false;
+        return QPair(true, false);
     }
     if(DATABASE_VERSION > databaseVersion)
     {
@@ -44,9 +50,9 @@ bool DatabaseUpdater::isUpdateNeeded(QSqlDatabase &database)
                            tr(", nowa wersja bazy danych: ") + QString::number(DATABASE_VERSION) +
                            tr(" Wymagana aktualizacja"),
                            Logger::LogLevel::Info);
-        return true;
+        return QPair(false, true);
     }
-    return false;
+    return QPair(false, false);
 }
 
 bool DatabaseUpdater::backupDatabaseFile(QSqlDatabase &database, QFile &databaseFile)
@@ -98,7 +104,7 @@ bool DatabaseUpdater::updateDatabaseVersionField(QSqlDatabase &database)
     {
         return false;
     }
-    query.bindValue(":component", "Database version");
+    query.bindValue(":component", APPLICATION_VERSION_SETTING);
     query.bindValue(":version", DATABASE_VERSION);
     if(DatabaseHelper::QSqlQueryExec(query, logger) == false)
     {
