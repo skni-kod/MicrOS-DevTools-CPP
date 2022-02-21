@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>MicrOS DevTools CPP</DisplayName>
+    <Description>Główny element programu stanowiący narzędzie developerskie.</Description>
+    <Version>0.1</Version>
+    <ReleaseDate>2022-02-20</ReleaseDate>
+	<Default>True</Default>
+    <Licenses>
+        <License name="Licencja MicrOS DevTools CPP" file="license.txt" />
+		<License name="Licencja OpenSSL" file="license-openssl-ssleay.txt" />
+    </Licenses>
+	<Script>installscript.qs</Script>
+</Package>
