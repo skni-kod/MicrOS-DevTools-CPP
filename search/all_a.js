@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['printmessage_0',['printMessage',['../class_console_widget.html#ae7c2624ef982887775c6d29f43f2cd24',1,'ConsoleWidget']]]
+  ['ok_0',['Ok',['../class_logger.html#ac744681e23720966b5f430ec2060da36aa60852f204ed8028c1c58808b746d115',1,'Logger']]]
 ];

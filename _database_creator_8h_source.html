@@ -78,30 +78,32 @@ $(function() {
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;QSqlQuery&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;QVariant&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="_console_widget_8h.html">ConsoleWidget.h</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="_database_helper_8h.html">DatabaseHelper.h</a>&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="_version_8h.html">Version.h</a>&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="_logger_8h.html">Utils/Logger.h</a>&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="class_database_creator.html">   18</a></span><span class="keyword">class </span><a class="code hl_class" href="class_database_creator.html">DatabaseCreator</a> : <span class="keyword">public</span> QObject</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    Q_OBJECT</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_class" href="class_logger.html">Logger</a> *logger = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="class_database_creator.html#a770f57fb38c5750378844790342596f3">DatabaseCreator</a>(<a class="code hl_class" href="class_logger.html">Logger</a> *logger, QObject *parent = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_database_creator.html#ac5d4c405a6cfc01cb2fb0a128f7ce5ed">createDatabase</a>(QSqlDatabase &amp;database);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>};</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif </span><span class="comment">// DATABASECREATOR_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="_database_fields_8h.html">Database/DatabaseFields.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="_database_helper_8h.html">Database/DatabaseHelper.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="_logger_8h.html">Utils/Logger.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="_console_widget_8h.html">Widgets/ConsoleWidget.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="_version_8h.html">Version.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="class_database_creator.html">   19</a></span><span class="keyword">class </span><a class="code hl_class" href="class_database_creator.html">DatabaseCreator</a> : <span class="keyword">public</span> QObject</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    Q_OBJECT</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_class" href="class_logger.html">Logger</a> *logger = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="class_database_creator.html#a770f57fb38c5750378844790342596f3">DatabaseCreator</a>(<a class="code hl_class" href="class_logger.html">Logger</a> *logger, QObject *parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_database_creator.html#ac5d4c405a6cfc01cb2fb0a128f7ce5ed">createDatabase</a>(QSqlDatabase &amp;database);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>};</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#endif </span><span class="comment">// DATABASECREATOR_H</span></div>
 <div class="ttc" id="a_console_widget_8h_html"><div class="ttname"><a href="_console_widget_8h.html">ConsoleWidget.h</a></div></div>
+<div class="ttc" id="a_database_fields_8h_html"><div class="ttname"><a href="_database_fields_8h.html">DatabaseFields.h</a></div></div>
 <div class="ttc" id="a_database_helper_8h_html"><div class="ttname"><a href="_database_helper_8h.html">DatabaseHelper.h</a></div></div>
 <div class="ttc" id="a_logger_8h_html"><div class="ttname"><a href="_logger_8h.html">Logger.h</a></div></div>
 <div class="ttc" id="a_version_8h_html"><div class="ttname"><a href="_version_8h.html">Version.h</a></div></div>
-<div class="ttc" id="aclass_database_creator_html"><div class="ttname"><a href="class_database_creator.html">DatabaseCreator</a></div><div class="ttdoc">Class that creates database.</div><div class="ttdef"><b>Definition:</b> DatabaseCreator.h:19</div></div>
+<div class="ttc" id="aclass_database_creator_html"><div class="ttname"><a href="class_database_creator.html">DatabaseCreator</a></div><div class="ttdoc">Class that creates database.</div><div class="ttdef"><b>Definition:</b> DatabaseCreator.h:20</div></div>
 <div class="ttc" id="aclass_database_creator_html_a770f57fb38c5750378844790342596f3"><div class="ttname"><a href="class_database_creator.html#a770f57fb38c5750378844790342596f3">DatabaseCreator::DatabaseCreator</a></div><div class="ttdeci">DatabaseCreator(Logger *logger, QObject *parent=nullptr)</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition:</b> DatabaseCreator.cpp:3</div></div>
 <div class="ttc" id="aclass_database_creator_html_ac5d4c405a6cfc01cb2fb0a128f7ce5ed"><div class="ttname"><a href="class_database_creator.html#ac5d4c405a6cfc01cb2fb0a128f7ce5ed">DatabaseCreator::createDatabase</a></div><div class="ttdeci">bool createDatabase(QSqlDatabase &amp;database)</div><div class="ttdoc">Created database.</div><div class="ttdef"><b>Definition:</b> DatabaseCreator.cpp:8</div></div>
 <div class="ttc" id="aclass_logger_html"><div class="ttname"><a href="class_logger.html">Logger</a></div><div class="ttdoc">Class that represents logger.</div><div class="ttdef"><b>Definition:</b> Logger.h:14</div></div>

@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['main_0',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]],
-  ['main_2ecpp_1',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['main_2eh_2',['main.h',['../main_8h.html',1,'']]],
-  ['mainwidget_3',['MainWidget',['../class_main_widget.html',1,'MainWidget'],['../class_main_widget.html#aad53bf5b787be1871bfdd56540d4727f',1,'MainWidget::MainWidget()']]],
-  ['mainwidget_2ecpp_4',['MainWidget.cpp',['../_main_widget_8cpp.html',1,'']]],
-  ['mainwidget_2eh_5',['MainWidget.h',['../_main_widget_8h.html',1,'']]],
-  ['messagelogged_6',['messageLogged',['../class_logger.html#aa7c587169fefb97b6828c162bd04b871',1,'Logger']]],
-  ['micros_2ddevtools_2dcpp_7',['MicrOS-DevTools-CPP',['../md__r_e_a_d_m_e.html',1,'']]]
+  ['linkstabwidget_0',['LinksTabWidget',['../class_links_tab_widget.html',1,'LinksTabWidget'],['../class_links_tab_widget.html#a28b0fb7d32acff87bc1ad9c3ae7f7a53',1,'LinksTabWidget::LinksTabWidget()']]],
+  ['linkstabwidget_2ecpp_1',['LinksTabWidget.cpp',['../_links_tab_widget_8cpp.html',1,'']]],
+  ['linkstabwidget_2eh_2',['LinksTabWidget.h',['../_links_tab_widget_8h.html',1,'']]],
+  ['logger_3',['Logger',['../class_logger.html',1,'Logger'],['../class_logger.html#a42a7882b4620182cccf14923986b54ca',1,'Logger::Logger(QObject *parent=nullptr)'],['../class_logger.html#a5342ddbbb0c5a37f69c11eee55c41f59',1,'Logger::Logger(bool appendTime, QObject *parent=nullptr)']]],
+  ['logger_2ecpp_4',['Logger.cpp',['../_logger_8cpp.html',1,'']]],
+  ['logger_2eh_5',['Logger.h',['../_logger_8h.html',1,'']]],
+  ['loglevel_6',['LogLevel',['../class_logger.html#ac744681e23720966b5f430ec2060da36',1,'Logger']]],
+  ['logmessage_7',['logMessage',['../class_logger.html#a3d252ff3ff3a589e81f3ac9904443e84',1,'Logger']]]
 ];

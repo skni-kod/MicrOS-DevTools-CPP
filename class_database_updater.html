@@ -85,9 +85,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3fe4f2641f5513e6ba41da995cecb646"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_database_updater.html#a3fe4f2641f5513e6ba41da995cecb646">DatabaseUpdater</a> (<a class="el" href="class_logger.html">Logger</a> *logger, QObject *parent=nullptr)</td></tr>
 <tr class="memdesc:a3fe4f2641f5513e6ba41da995cecb646"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="class_database_updater.html#a3fe4f2641f5513e6ba41da995cecb646">More...</a><br /></td></tr>
 <tr class="separator:a3fe4f2641f5513e6ba41da995cecb646"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a590eea3bc50c9447bf0696b1ac184499"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_database_updater.html#a590eea3bc50c9447bf0696b1ac184499">checkForUpdate</a> (QSqlDatabase &amp;database, QFile &amp;databaseFile)</td></tr>
-<tr class="memdesc:a590eea3bc50c9447bf0696b1ac184499"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if update should be performed and update if yes.  <a href="class_database_updater.html#a590eea3bc50c9447bf0696b1ac184499">More...</a><br /></td></tr>
-<tr class="separator:a590eea3bc50c9447bf0696b1ac184499"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a128439dc7f016532d3a47b2a82c4e852"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_database_updater.html#a128439dc7f016532d3a47b2a82c4e852">checkForUpdateAndUpdate</a> (QSqlDatabase &amp;database, QFile &amp;databaseFile)</td></tr>
+<tr class="memdesc:a128439dc7f016532d3a47b2a82c4e852"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if update should be performed and update if yes.  <a href="class_database_updater.html#a128439dc7f016532d3a47b2a82c4e852">More...</a><br /></td></tr>
+<tr class="separator:a128439dc7f016532d3a47b2a82c4e852"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Class that updates database. </p>
@@ -138,14 +138,14 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a590eea3bc50c9447bf0696b1ac184499" name="a590eea3bc50c9447bf0696b1ac184499"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a590eea3bc50c9447bf0696b1ac184499">&#9670;&nbsp;</a></span>checkForUpdate()</h2>
+<a id="a128439dc7f016532d3a47b2a82c4e852" name="a128439dc7f016532d3a47b2a82c4e852"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a128439dc7f016532d3a47b2a82c4e852">&#9670;&nbsp;</a></span>checkForUpdateAndUpdate()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool DatabaseUpdater::checkForUpdate </td>
+          <td class="memname">bool DatabaseUpdater::checkForUpdateAndUpdate </td>
           <td>(</td>
           <td class="paramtype">QSqlDatabase &amp;&#160;</td>
           <td class="paramname"><em>database</em>, </td>
@@ -172,7 +172,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if success, false when error. </dd></dl>
 
 </div>
 </div>

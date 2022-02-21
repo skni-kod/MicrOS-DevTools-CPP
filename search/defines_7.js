@@ -12,6 +12,5 @@ var searchData=
   ['ver_5foriginalfilename_5fstr_9',['VER_ORIGINALFILENAME_STR',['../winversion_8h.html#abfbc08ce9e78d5afc2d0c129643d9909',1,'winversion.h']]],
   ['ver_5fproductname_5fstr_10',['VER_PRODUCTNAME_STR',['../winversion_8h.html#a80f0560c57c182d6c4a4aaca02d9b261',1,'winversion.h']]],
   ['ver_5fproductversion_11',['VER_PRODUCTVERSION',['../winversion_8h.html#a1f0c72807dfc9de46855bff55bae541c',1,'winversion.h']]],
-  ['ver_5fproductversion_5fstr_12',['VER_PRODUCTVERSION_STR',['../winversion_8h.html#a5084df706ac15e76da275c143313f3d9',1,'winversion.h']]],
-  ['version_2eh_13',['Version.h',['../_version_8h.html',1,'']]]
+  ['ver_5fproductversion_5fstr_12',['VER_PRODUCTVERSION_STR',['../winversion_8h.html#a5084df706ac15e76da275c143313f3d9',1,'winversion.h']]]
 ];
