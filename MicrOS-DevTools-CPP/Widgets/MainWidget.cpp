@@ -128,10 +128,10 @@ void MainWidget::showAboutMessage()
     msgBox.setWindowTitle(tr("O programie"));
     msgBox.setText(tr("<h3>O programie</h3>"
                       "<p>Program stanowi narzędzie developerskie przydatne programistom MicrOSa.</p>"
-                      "<p>Wersja: 0.1</p>"
+                      "<p>Wersja: " APPLICATION_VERSION "</p>"
                       "<p>MicrOS to 32-bitowy system operacyjny, opracowany przez członków Sekcji Aplikacji Desktopowych Mobilnych i Webowych. "
                       "Naszym głównym celem było stworzenie od podstaw OS'a posiadającego możliwości podobne do systemu operacyjnego MS-DOS.</p>"
-                      "<p>Repozytorium narzędzia MicrOS DevTools CPP (<a href=\"https://github.com/AzuxDario/MicrOS-DevTools-CPP\">www.github.com</a>)"
+                      "<p>Repozytorium narzędzia MicrOS DevTools CPP (<a href=\"https://github.com/skni-kod/MicrOS-DevTools-CPP\">www.github.com</a>)"
                       "<p>W tworzeniu programu wykorzystano Qt 5.12 (<a href=\"https://www.qt.io/\">www.qt.io</a>)</p>"
                       "<p>Program objęty jest licencją GPL 3.0 (<a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">www.gnu.org/licenses/gpl-3.0.en.html</a>)</p>"
                       "<p>Logo MicrOSa jest własnością koła naukowego. <br\\>"

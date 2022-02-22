@@ -24,6 +24,7 @@
 #include "Tabs/StartTabWidget.h"
 #include "Tabs/ToolsTabWidget.h"
 #include "Utils/Logger.h"
+#include "Version.h"
 
 /*!
  * \brief The MainWidget class
