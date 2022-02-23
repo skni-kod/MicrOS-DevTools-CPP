@@ -1,6 +1,25 @@
-function Component()
+function Controller()
 {
 
+}
+
+function Component()
+{
+    installer.installationFinished.connect(this, Component.prototype.installationFinishedPageIsShown);
+    installer.finishButtonClicked.connect(this, Component.prototype.installationFinished);
+}
+
+Controller.prototype.TargetDirectoryPageCallback = function()
+{
+    var page = gui.pageWidgetByObjectName("TargetDirectoryPage");
+    if(page.StartMenuPathLineEdit.text.includes("Program Files"))
+    {
+        WarningLabel.setText("Instalacja w chronionej lokalizacji może spowodować problemy z aktualizacją");
+    }
+    else
+    {
+        WarningLabel.setText("");
+    }
 }
 
 Component.prototype.createOperations = function()
@@ -44,3 +63,34 @@ Component.prototype.createOperations = function()
     }
 }
 
+Component.prototype.installationFinishedPageIsShown = function()
+{
+    try
+    {
+        if (installer.isInstaller() && installer.status == QInstaller.Success)
+        {
+            installer.addWizardPageItem( component, "FinishCheckBoxForm", QInstaller.InstallationFinished );
+        }
+    } catch(e)
+    {
+        console.log(e);
+    }
+}
+
+Component.prototype.installationFinished = function()
+{
+    try
+    {
+        if (installer.isInstaller() && installer.status == QInstaller.Success)
+        {
+            var checkboxForm = component.userInterface( "FinishCheckBoxForm" );
+            if (checkboxForm && checkboxForm.readMeCheckBox.checked)
+            {
+                QDesktopServices.openUrl("file:///" + installer.value("TargetDir") + "/ReadMe.txt");
+            }
+        }
+    } catch(e)
+    {
+        console.log(e);
+    }
+}

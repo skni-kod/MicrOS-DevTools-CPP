@@ -11,4 +11,7 @@
         <License name="Licencja OpenSSL" file="licencja-openssl-ssleay.txt" />
     </Licenses>
     <Script>installscript.qs</Script>
+    <UserInterfaces>
+        <UserInterface>finishcheckboxform.ui</UserInterface>
+    </UserInterfaces>
 </Package>
