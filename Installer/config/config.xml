@@ -5,8 +5,13 @@
     <Title>MicrOS DevTools CPP</Title>
     <Publisher>Studenckie Koło Naukowe Informatyków "KOD"</Publisher>
     <StartMenuDir>MicrOS DevTools CPP</StartMenuDir>
-    <TargetDir>@ApplicationsDirX64@/MicrosDevToolsCPP</TargetDir>
+    <TargetDir>@RootDir@/Programy/MicrosDevToolsCPP</TargetDir>
     <AllowNonAsciiCharacters>true</AllowNonAsciiCharacters>
     <MaintenanceToolName>Instalator</MaintenanceToolName>
     <WizardStyle>Modern</WizardStyle>
+    <RemoteRepositories>
+        <Repository>
+            <Url>http://localhost/repository</Url>
+        </Repository>
+    </RemoteRepositories>
 </Installer>

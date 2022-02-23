@@ -1,1 +1,28 @@
 D:\Programy\Qt\Tools\QtInstallerFramework\4.2\bin\binarycreator.exe -c config/config.xml -p packages "MicrOS DevTools CPP Installer.exe"
+
+Shows how to set up an online installer.
+
+The example uses a very simple web server shipped with python.
+
+Generate online repository with
+
+  D:\Programy\Qt\Tools\QtInstallerFramework\4.2\bin\repogen -p packages repository
+
+Generate installer with
+
+  D:\Programy\Qt\Tools\QtInstallerFramework\4.2\bin\binarycreator --online-only -c config/config.xml -p packages Installer.exe
+
+Now launch a minimal web server in the example's directory (admin rights may be needed)
+
+  python -m http.server 80
+
+This should make the content of the local directory available under
+http://localhost
+
+You should be able to now launch the installer.
+
+To deploy an update, run
+
+  D:\Programy\Qt\Tools\QtInstallerFramework\4.2\bin\repogen --update-new-components -p packages_update repository
+
+and launch the maintenance tool in your installation.
