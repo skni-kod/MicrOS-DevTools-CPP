@@ -11,7 +11,13 @@ function Component()
 
     // For changing information on target directory page
     if (!installer.isCommandLineInstance())
-        gui.pageWidgetByObjectName("TargetDirectoryPage").entered.connect(changeTargetDirectoryLabels);
+    {
+        page = gui.pageWidgetByObjectName("TargetDirectoryPage");
+        if(page !== null)
+        {
+            page.entered.connect(changeTargetDirectoryLabels);
+        }
+    }
 }
 
 changeTargetDirectoryLabels = function()
