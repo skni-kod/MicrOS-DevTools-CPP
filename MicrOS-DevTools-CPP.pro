@@ -1,3 +1,4 @@
 TEMPLATE = subdirs
 
-SUBDIRS += MicrOS-DevTools-CPP
+SUBDIRS += MicrOS-DevTools-CPP \
+    Installer
