@@ -4,7 +4,7 @@
     <Description>Dokumentacja narzędzia MicrOS DevTools CPP.</Description>
     <Version>0.1</Version>
     <ReleaseDate>2022-02-20</ReleaseDate>
-    <SortingPriority>100</SortingPriority>
+    <SortingPriority>75</SortingPriority>
     <Default>true</Default>
     <Script>installscript.qs</Script>
 </Package>
