@@ -1,0 +1,9 @@
+DevTools Installer banner.png
+ - MicrOS cat logo is owned by Studenckie Koło Naukowe Informatyków "KOD" (https://kod.prz.edu.pl/)
+ - Settings gear are made by Webalys (https://www.iconfinder.com/webalys) from his free icon pack (https://www.iconfinder.com/iconsets/streamline-icon-set-free-pack)
+DevTools Installer icon.ico
+ - MicrOS cat logo is owned by Studenckie Koło Naukowe Informatyków "KOD" (https://kod.prz.edu.pl/)
+ - Sync are made by Webalys (https://www.iconfinder.com/webalys) from his free icon pack (https://www.iconfinder.com/iconsets/streamline-icon-set-free-pack)
+DevTools Installer icon.png
+ - MicrOS cat logo is owned by Studenckie Koło Naukowe Informatyków "KOD" (https://kod.prz.edu.pl/)
+ - Sync icon is made by Webalys (https://www.iconfinder.com/webalys) from his free icon pack (https://www.iconfinder.com/iconsets/streamline-icon-set-free-pack)

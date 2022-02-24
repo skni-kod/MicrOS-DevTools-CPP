@@ -4,10 +4,15 @@
     <Version>0.1</Version>
     <Title>MicrOS DevTools CPP</Title>
     <Publisher>Studenckie Koło Naukowe Informatyków "KOD"</Publisher>
+    <ProductUrl>https://kod.prz.edu.pl/project/25</ProductUrl>
     <StartMenuDir>MicrOS DevTools CPP</StartMenuDir>
     <TargetDir>@RootDir@/Programy/MicrOSDevToolsCPP</TargetDir>
     <AllowNonAsciiCharacters>true</AllowNonAsciiCharacters>
     <MaintenanceToolName>Instalator</MaintenanceToolName>
+    <InstallActionColumnVisible>true</InstallActionColumnVisible>
+    <InstallerApplicationIcon>DevTools Installer icon</InstallerApplicationIcon>
+    <InstallerWindowIcon>DevTools Installer icon.png</InstallerWindowIcon>
+    <Logo>DevTools Installer banner.png</Logo>
     <WizardStyle>Modern</WizardStyle>
     <RemoteRepositories>
         <Repository>
