@@ -19,6 +19,4 @@
             <Url>http://localhost/repository</Url>
         </Repository>
     </RemoteRepositories>
-    <RunProgram>@TargetDir@/MicrOSDevToolsCPP/MicrOS-DevTools-CPP.exe</RunProgram>
-    <RunProgramDescription>Uruchom %1</RunProgramDescription>
 </Installer>

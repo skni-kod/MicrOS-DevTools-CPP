@@ -47,25 +47,6 @@ Component.prototype.createOperations = function()
             "@StartMenuDir@/Licencje/Licencja MicrOS DevTools CPP.lnk");
         component.addOperation("CreateShortcut", "@TargetDir@/Licenses/licencja-openssl-ssleay.txt",
             "@StartMenuDir@/Licencje/Licencja OpenSSL.lnk");
-
-        // Urls
-        component.addOperation("Mkdir", "@StartMenuDir@/Linki");
-        component.addOperation("Copy", "@TargetDir@/MicrOSDevToolsCPP/Links/ClubSite.url",
-            "@StartMenuDir@/Linki/Strona koła.url");
-        component.addOperation("Copy", "@TargetDir@/MicrOSDevToolsCPP/Links/DocumentationGitHub.url",
-            "@StartMenuDir@/Linki/GitHub dokumentacji MicrOS DevTools CPP.url");
-        component.addOperation("Copy", "@TargetDir@/MicrOSDevToolsCPP/Links/MicrOSDocumentationGitHub.url",
-            "@StartMenuDir@/Linki/GitHub dokumentacji MicrOSa.url");
-        component.addOperation("Copy", "@TargetDir@/MicrOSDevToolsCPP/Links/MicrOSGitHub.url",
-            "@StartMenuDir@/Linki/GitHub MicrOSa.url");
-        component.addOperation("Copy", "@TargetDir@/MicrOSDevToolsCPP/Links/ProjectDoxygen.url",
-            "@StartMenuDir@/Linki/Doxygen projektu MicrOS DevTools CPP.url");
-        component.addOperation("Copy", "@TargetDir@/MicrOSDevToolsCPP/Links/ProjectGitHub.url",
-            "@StartMenuDir@/Linki/GitHub MicrOS DevTools CPP.url");
-        component.addOperation("Copy", "@TargetDir@/MicrOSDevToolsCPP/Links/ProjectSite.url",
-            "@StartMenuDir@/Linki/Strona projektu MicrOS DevTools CPP.url");
-        component.addOperation("Copy", "@TargetDir@/MicrOSDevToolsCPP/Links/ProjektMicrOSSite.url",
-            "@StartMenuDir@/Linki/Strona projektu MicrOS.url");
     }
 }
 
