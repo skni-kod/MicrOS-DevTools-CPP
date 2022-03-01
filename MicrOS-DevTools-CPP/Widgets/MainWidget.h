@@ -1,6 +1,8 @@
 #ifndef MAINWIDGET_H
 #define MAINWIDGET_H
 
+#include <QDebug>
+
 #include <QAction>
 #include <QApplication>
 #include <QFileDialog>
@@ -24,6 +26,7 @@
 #include "Tabs/StartTabWidget.h"
 #include "Tabs/ToolsTabWidget.h"
 #include "Utils/Logger.h"
+#include "Utils/Updater.h"
 #include "Version.h"
 
 /*!
@@ -97,6 +100,10 @@ private:
      * \brief Pointer to help menu.
      */
     QMenu *helpMenu = nullptr;
+    /*!
+     * \brief Action for check for updates.
+     */
+    QAction *aboutCheckForUpdates = nullptr;
     /*!
      * \brief Action for about.
      */
@@ -174,6 +181,11 @@ private:
      */
     DatabaseManager *databaseManager = nullptr;
 
+    /*!
+     * \brief Instance of application updater.
+     */
+    Updater *updater = nullptr;
+
 public:
     /*!
      * \brief Default constructor.
@@ -202,5 +214,14 @@ private slots:
      * \brief Function that saves log to file.
      */
     void saveLogToFile();
+    /*!
+     * \brief Function that check for updates.
+     */
+    void checkForUpdates();
+    /*!
+     * \brief Called when updater returns result of searching update
+     * \param status Status tatt describes result.
+     */
+    void checkUpdateResult(Updater::UpdateStatus status);
 };
 #endif // MAINWIDGET_H

@@ -27,7 +27,7 @@ QString DatabaseHelper::QSqlErrorTypeToString(const QSqlError::ErrorType &error)
             return tr("Błąd transakcji");
         case QSqlError::ErrorType::UnknownError:
         default:
-            return tr("Bieznany błąd");
+            return tr("Nieznany błąd");
     }
 }
 
