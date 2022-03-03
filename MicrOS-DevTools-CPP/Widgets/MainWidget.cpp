@@ -3,6 +3,8 @@
 MainWidget::MainWidget(QWidget *parent)
     : QWidget(parent)
 {
+    setWindowTitle("MicrOS DevTools CPP");
+
     // Menu bar
     menuBar = new QMenuBar();
     // Program menu
@@ -47,10 +49,13 @@ MainWidget::MainWidget(QWidget *parent)
     // Help menu
     helpMenu = new QMenu(tr("P&omoc"));
     menuBar->addMenu(helpMenu);
+    aboutCheckForUpdates = new QAction(tr("&Sprawdź aktualizacje"));
     aboutAction = new QAction(tr("&O programie"));
     aboutAction->setShortcut(QKeySequence(tr("Ctrl+A")));
     aboutMicrosAction = new QAction(tr("O &MicrOSie"));
     aboutQtAction = new QAction(tr("O &Qt"));
+    helpMenu->addAction(aboutCheckForUpdates);
+    helpMenu->addSeparator();
     helpMenu->addAction(aboutAction);
     helpMenu->addAction(aboutMicrosAction);
     helpMenu->addAction(aboutQtAction);
@@ -96,7 +101,11 @@ MainWidget::MainWidget(QWidget *parent)
     this->setLayout(mainLayout);
     consoleGroupBox->setLayout(consoleLayout);
 
+    // Database
     databaseManager = new DatabaseManager(logger, this);
+
+    // Updater
+    updater = new Updater(logger, this);
 
     // Connections
     connect(exitAction, &QAction::triggered, qApp, &QApplication::quit);
@@ -109,11 +118,14 @@ MainWidget::MainWidget(QWidget *parent)
     connect(saveConsoleAction, &QAction::triggered, this, &MainWidget::saveLogToFile);
     connect(showConsoleAction, &QAction::triggered, this, &MainWidget::toggleConsoleVisibility);
     connect(cleanConsoleAction, &QAction::triggered, consoleWidget, &ConsoleWidget::clear);
+    connect(aboutCheckForUpdates, &QAction::triggered, this, &MainWidget::checkForUpdates);
     connect(aboutAction, &QAction::triggered, this, &MainWidget::showAboutMessage);
     connect(aboutMicrosAction, &QAction::triggered, this, &MainWidget::showAboutMicrosMessage);
     connect(aboutQtAction, &QAction::triggered, qApp, &QApplication::aboutQt);
+    connect(updater, &Updater::updateAvailable, this, &MainWidget::checkUpdateResult);
 
     databaseManager->init();
+    checkForUpdates();
     logger->logMessage(tr("Uruchamianie zakończone"), Logger::LogLevel::Ok);
 }
 
@@ -128,10 +140,10 @@ void MainWidget::showAboutMessage()
     msgBox.setWindowTitle(tr("O programie"));
     msgBox.setText(tr("<h3>O programie</h3>"
                       "<p>Program stanowi narzędzie developerskie przydatne programistom MicrOSa.</p>"
-                      "<p>Wersja: 0.1</p>"
+                      "<p>Wersja: " APPLICATION_VERSION "</p>"
                       "<p>MicrOS to 32-bitowy system operacyjny, opracowany przez członków Sekcji Aplikacji Desktopowych Mobilnych i Webowych. "
                       "Naszym głównym celem było stworzenie od podstaw OS'a posiadającego możliwości podobne do systemu operacyjnego MS-DOS.</p>"
-                      "<p>Repozytorium narzędzia MicrOS DevTools CPP (<a href=\"https://github.com/AzuxDario/MicrOS-DevTools-CPP\">www.github.com</a>)"
+                      "<p>Repozytorium narzędzia MicrOS DevTools CPP (<a href=\"https://github.com/skni-kod/MicrOS-DevTools-CPP\">www.github.com</a>)"
                       "<p>W tworzeniu programu wykorzystano Qt 5.12 (<a href=\"https://www.qt.io/\">www.qt.io</a>)</p>"
                       "<p>Program objęty jest licencją GPL 3.0 (<a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">www.gnu.org/licenses/gpl-3.0.en.html</a>)</p>"
                       "<p>Logo MicrOSa jest własnością koła naukowego. <br\\>"
@@ -187,4 +199,50 @@ void MainWidget::saveLogToFile()
 
     stream << consoleWidget->getLog();
     saveFile.commit();
+}
+
+void MainWidget::checkForUpdates()
+{
+    updater->checkForUpdates();
+}
+
+void MainWidget::checkUpdateResult(Updater::UpdateStatus status)
+{
+    switch(status)
+    {
+        case Updater::UpdateStatus::updateAvailable:
+        {
+            logger->logMessage(tr("Aktualizacja dostępna"), Logger::LogLevel::Info);
+            QMessageBox msgBox;
+            msgBox.setWindowTitle(tr("Dostępne aktualizacje"));
+            msgBox.setText(tr("<p>Zaktualizować MicrOS DevTools CPP?</p>"
+                              "<p>Spowoduje to zamknięcie programu</p>"));
+            msgBox.setIcon(QMessageBox::Question);
+            msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+            msgBox.setDefaultButton(QMessageBox::Ok);
+            int result = msgBox.exec();
+            if(result == QMessageBox::Ok)
+            {
+                logger->logMessage(tr("Rozpoczęcie aktualizacji"), Logger::LogLevel::Info);
+                updater->performUpdate();
+                qApp->closeAllWindows();
+            }
+            break;
+        }
+        case Updater::UpdateStatus::updateNotAvailable:
+        {
+            logger->logMessage(tr("Brak dostępnych aktualizacji"), Logger::LogLevel::Info);
+            break;
+        }
+        case Updater::UpdateStatus::error:
+        {
+            logger->logMessage(tr("Błąd podczas wyszukiwania aktualizacji"), Logger::LogLevel::Error);
+            break;
+        }
+        case Updater::UpdateStatus::updateAlreadyInProgress:
+        {
+            logger->logMessage(tr("Aktualnie trwa już wyszukiwanie aktualizacji"), Logger::LogLevel::Info);
+            break;
+        }
+    }
 }

@@ -10,7 +10,7 @@
 
 /*!
  * \brief The DatabaseHelper class
- * \details Stores staic sunctions that are helpful with database handling.
+ * \details Stores static functions that are helpful with database handling.
  */
 class DatabaseHelper : public QObject
 {

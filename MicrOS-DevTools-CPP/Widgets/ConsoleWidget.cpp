@@ -26,6 +26,7 @@ void ConsoleWidget::printLog(QString text, QColor color)
     consoleTextEdit->setTextColor(color);
     consoleTextEdit->append(text);
     consoleTextEdit->setTextColor(currentColor);
+    consoleTextEdit->ensureCursorVisible();
 }
 
 void ConsoleWidget::printMessage(QString message, Logger::LogLevel level)
