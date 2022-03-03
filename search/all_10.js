@@ -1,17 +1,10 @@
 var searchData=
 [
-  ['ver_5fcompanydomain_5fstr_0',['VER_COMPANYDOMAIN_STR',['../winversion_8h.html#a2a7b2019dfe4e3cf3b89f7f186dc5640',1,'winversion.h']]],
-  ['ver_5fcompanyname_5fstr_1',['VER_COMPANYNAME_STR',['../winversion_8h.html#ae5e9111e9af54e6a31e3f8b369cd3e19',1,'winversion.h']]],
-  ['ver_5ffiledescription_5fstr_2',['VER_FILEDESCRIPTION_STR',['../winversion_8h.html#ad53fc999ea2c9ed67903bcc0bc88f257',1,'winversion.h']]],
-  ['ver_5ffileversion_3',['VER_FILEVERSION',['../winversion_8h.html#ae6ef9058da3d1f2efdc365d6643d1de3',1,'winversion.h']]],
-  ['ver_5ffileversion_5fstr_4',['VER_FILEVERSION_STR',['../winversion_8h.html#a9ab9575a5fdacc8d78fb6a6a982bb060',1,'winversion.h']]],
-  ['ver_5finternalname_5fstr_5',['VER_INTERNALNAME_STR',['../winversion_8h.html#a9c575d8650180954b0a0318d0bb30c71',1,'winversion.h']]],
-  ['ver_5flegalcopyright_5fstr_6',['VER_LEGALCOPYRIGHT_STR',['../winversion_8h.html#a0592f3cc57ce5994c8339bd057ae130c',1,'winversion.h']]],
-  ['ver_5flegaltrademarks1_5fstr_7',['VER_LEGALTRADEMARKS1_STR',['../winversion_8h.html#a9532e03b291a013007c17978f72d1a80',1,'winversion.h']]],
-  ['ver_5flegaltrademarks2_5fstr_8',['VER_LEGALTRADEMARKS2_STR',['../winversion_8h.html#a3788d012ee2bbc1972b1003a16608f31',1,'winversion.h']]],
-  ['ver_5foriginalfilename_5fstr_9',['VER_ORIGINALFILENAME_STR',['../winversion_8h.html#abfbc08ce9e78d5afc2d0c129643d9909',1,'winversion.h']]],
-  ['ver_5fproductname_5fstr_10',['VER_PRODUCTNAME_STR',['../winversion_8h.html#a80f0560c57c182d6c4a4aaca02d9b261',1,'winversion.h']]],
-  ['ver_5fproductversion_11',['VER_PRODUCTVERSION',['../winversion_8h.html#a1f0c72807dfc9de46855bff55bae541c',1,'winversion.h']]],
-  ['ver_5fproductversion_5fstr_12',['VER_PRODUCTVERSION_STR',['../winversion_8h.html#a5084df706ac15e76da275c143313f3d9',1,'winversion.h']]],
-  ['version_2eh_13',['Version.h',['../_version_8h.html',1,'']]]
+  ['updatealreadyinprogress_0',['updateAlreadyInProgress',['../class_updater.html#a17268d3c5d4d162b1974b0833ca338a0af8edc44f5338eabbabb049d7cfb42369',1,'Updater']]],
+  ['updateavailable_1',['updateAvailable',['../class_updater.html#a8941bb0850b8c5054689d5860f2f8c90',1,'Updater::updateAvailable()'],['../class_updater.html#a17268d3c5d4d162b1974b0833ca338a0a15d92527237b90b84efdd6233f7b93ef',1,'Updater::updateAvailable()']]],
+  ['updatenotavailable_2',['updateNotAvailable',['../class_updater.html#a17268d3c5d4d162b1974b0833ca338a0a3dce22a859ef1f186384925a577faa34',1,'Updater']]],
+  ['updater_3',['Updater',['../class_updater.html',1,'Updater'],['../class_updater.html#ab2d8453f57e955cda3ea3031b4ba129b',1,'Updater::Updater()']]],
+  ['updater_2ecpp_4',['Updater.cpp',['../_updater_8cpp.html',1,'']]],
+  ['updater_2eh_5',['Updater.h',['../_updater_8h.html',1,'']]],
+  ['updatestatus_6',['UpdateStatus',['../class_updater.html#a17268d3c5d4d162b1974b0833ca338a0',1,'Updater']]]
 ];

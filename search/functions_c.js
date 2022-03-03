@@ -1,12 +1,5 @@
 var searchData=
 [
-  ['_7ebuildingtabwidget_0',['~BuildingTabWidget',['../class_building_tab_widget.html#adb212725904d1a8aef2cab654da5b918',1,'BuildingTabWidget']]],
-  ['_7ecompilertabwidget_1',['~CompilerTabWidget',['../class_compiler_tab_widget.html#a31c31b770066e3378f30f1d0bb7235ee',1,'CompilerTabWidget']]],
-  ['_7econsolewidget_2',['~ConsoleWidget',['../class_console_widget.html#a151841b20c3b0a1177a49e1522445905',1,'ConsoleWidget']]],
-  ['_7edatabasemanager_3',['~DatabaseManager',['../class_database_manager.html#ae9b3a5da1e04fbb00faf8a034da1d063',1,'DatabaseManager']]],
-  ['_7eenvironmenttabwidget_4',['~EnvironmentTabWidget',['../class_environment_tab_widget.html#a97e2c3c87254c5f4e0404068d033094c',1,'EnvironmentTabWidget']]],
-  ['_7elinkstabwidget_5',['~LinksTabWidget',['../class_links_tab_widget.html#aaa56e4f45ff7e2c4d2ead0157afd515c',1,'LinksTabWidget']]],
-  ['_7emainwidget_6',['~MainWidget',['../class_main_widget.html#add21c63f8e799303a21a69da3d288c2f',1,'MainWidget']]],
-  ['_7estarttabwidget_7',['~StartTabWidget',['../class_start_tab_widget.html#a9130929a6181cbb47e6c75eaba47685c',1,'StartTabWidget']]],
-  ['_7etoolstabwidget_8',['~ToolsTabWidget',['../class_tools_tab_widget.html#adf82e127cf0ff8334e6ae144f8f5e278',1,'ToolsTabWidget']]]
+  ['updateavailable_0',['updateAvailable',['../class_updater.html#a8941bb0850b8c5054689d5860f2f8c90',1,'Updater']]],
+  ['updater_1',['Updater',['../class_updater.html#ab2d8453f57e955cda3ea3031b4ba129b',1,'Updater']]]
 ];
