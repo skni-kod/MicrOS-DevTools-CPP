@@ -124,6 +124,9 @@ MainWidget::MainWidget(QWidget *parent)
     connect(aboutQtAction, &QAction::triggered, qApp, &QApplication::aboutQt);
     connect(updater, &Updater::updateAvailable, this, &MainWidget::checkUpdateResult);
 
+#ifndef _DEBUG
+    createAppDataFolder();
+#endif
     databaseManager->init();
     checkForUpdates();
     logger->logMessage(tr("Uruchamianie zakończone"), Logger::LogLevel::Ok);
@@ -243,6 +246,18 @@ void MainWidget::checkUpdateResult(Updater::UpdateStatus status)
         {
             logger->logMessage(tr("Aktualnie trwa już wyszukiwanie aktualizacji"), Logger::LogLevel::Info);
             break;
+        }
+    }
+}
+
+void MainWidget::createAppDataFolder()
+{
+    QDir databaseDir;
+    if(!databaseDir.cd(QStandardPaths::writableLocation(QStandardPaths::DataLocation)))
+    {
+        if(databaseDir.mkdir(QStandardPaths::writableLocation(QStandardPaths::DataLocation)) == false)
+        {
+            logger->logMessage(tr("Nie można utworzyć folderu aplikacji w AppData\\Local"), Logger::LogLevel::Error);
         }
     }
 }
