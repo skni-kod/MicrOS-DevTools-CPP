@@ -67,6 +67,12 @@ bool DatabaseManager::init()
         }
     }
 
+    if(checkAndUpdateApplicationVersionField() == false)
+    {
+        logger->logMessage(tr("Błąd przy sprawdzaniu numeru wersji aplikacji"), Logger::LogLevel::Error);
+        return false;
+    }
+
     logger->logMessage(tr("Inicjalizacja bazy danych zakończona"), Logger::LogLevel::Ok);
     databaseInitialized = true;
     return true;
@@ -161,4 +167,34 @@ bool DatabaseManager::updateDatabase()
 {
     DatabaseUpdater updater(logger);
     return updater.checkForUpdateAndUpdate(database, databaseFile);
+}
+
+bool DatabaseManager::checkAndUpdateApplicationVersionField()
+{
+    QSqlQuery query(database);
+    // Table SystemVersion
+    if(DatabaseHelper::QSqlQueryExec(query, "SELECT version FROM SystemVersion WHERE component = 'Application version'", logger) == false)
+    {
+        return false;
+    }
+    query.next();
+    QString applicationVersionStr = query.value(0).toString();
+    if(applicationVersionStr == APPLICATION_VERSION)
+    {
+        return true;
+    }
+
+    // Update SystemVersion
+    if(DatabaseHelper::QSqlQueryPrepare(query, "UPDATE SystemVersion SET version = :version WHERE component = :component", logger) == false)
+    {
+        return false;
+    }
+    query.bindValue(":component", APPLICATION_VERSION_SETTING);
+    query.bindValue(":version", APPLICATION_VERSION);
+    if(DatabaseHelper::QSqlQueryExec(query, logger) == false)
+    {
+        return false;
+    }
+    logger->logMessage(tr("Zaktualizowano numer wersji aplikacji w bazie danych"), Logger::LogLevel::Info);
+    return true;
 }

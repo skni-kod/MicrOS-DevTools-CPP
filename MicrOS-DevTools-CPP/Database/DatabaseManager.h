@@ -130,6 +130,11 @@ private:
      * \return True if success, false otherwise.
      */
     bool updateDatabase();
+    /*!
+     * \brief Checks and updates if necessacy application version field in database.
+     * \return True if success, false otherwise.
+     */
+    bool checkAndUpdateApplicationVersionField();
 
 };
 

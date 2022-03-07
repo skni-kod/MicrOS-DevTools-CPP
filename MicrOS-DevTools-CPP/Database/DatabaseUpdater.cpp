@@ -104,7 +104,7 @@ bool DatabaseUpdater::updateDatabaseVersionField(QSqlDatabase &database)
     {
         return false;
     }
-    query.bindValue(":component", APPLICATION_VERSION_SETTING);
+    query.bindValue(":component", DATABASE_VERSION_SETTING);
     query.bindValue(":version", DATABASE_VERSION);
     if(DatabaseHelper::QSqlQueryExec(query, logger) == false)
     {
