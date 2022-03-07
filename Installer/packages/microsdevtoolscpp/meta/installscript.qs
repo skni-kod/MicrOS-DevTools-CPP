@@ -35,10 +35,10 @@ Component.prototype.createOperations = function()
     if (systemInfo.productType === "windows")
     {
         // Desktop
-        component.addOperation("CreateShortcut", "@TargetDir@/MicrOSDevToolsCPP/MicrOS-DevTools-CPP.exe", "@DesktopDir@/MicrOS DevTools CPP.lnk");
+        component.addOperation("CreateShortcut", "@TargetDir@/MicrOSDevToolsCPP/MicrOSDevToolsCPP.exe", "@DesktopDir@/MicrOS DevTools CPP.lnk");
 
         // Main icons
-        component.addOperation("CreateShortcut", "@TargetDir@/MicrOSDevToolsCPP/MicrOS-DevTools-CPP.exe", "@StartMenuDir@/MicrOS DevTools CPP.lnk");
+        component.addOperation("CreateShortcut", "@TargetDir@/MicrOSDevToolsCPP/MicrOSDevToolsCPP.exe", "@StartMenuDir@/MicrOS DevTools CPP.lnk");
         component.addOperation("CreateShortcut", "@TargetDir@/Instalator.exe", "@StartMenuDir@/Instalator.lnk");
         component.addOperation("CreateShortcut", "@TargetDir@/MicrOSDevToolsCPP/ReadMe.txt", "@StartMenuDir@/ReadMe.lnk");
 
