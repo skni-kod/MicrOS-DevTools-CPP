@@ -223,5 +223,10 @@ private slots:
      * \param status Status tatt describes result.
      */
     void checkUpdateResult(Updater::UpdateStatus status);
+
+    /*!
+     * \brief Creates folder for application in AppData/Local location
+     */
+    void createAppDataFolder();
 };
 #endif // MAINWIDGET_H

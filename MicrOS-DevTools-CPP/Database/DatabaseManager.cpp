@@ -83,7 +83,10 @@ void DatabaseManager::checkDatabaseFolder()
     QDir databaseDir;
     if(!databaseDir.cd(databaseFolder))
     {
-        databaseDir.mkdir(databaseFolder);
+        if(databaseDir.mkdir(databaseFolder) == false)
+        {
+            logger->logMessage(tr("Nie można utworzyć folderu dla bazy danych"), Logger::LogLevel::Error);
+        }
     }
 }
 

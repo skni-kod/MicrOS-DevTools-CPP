@@ -4,6 +4,7 @@
 #include <QDir>
 #include <QFile>
 #include <QObject>
+#include <QStandardPaths>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
@@ -47,7 +48,11 @@ private:
     /*!
      * \brief Folder where database is stored.
      */
+#ifdef _DEBUG
     const QString databaseFolder = "data";
+#else
+    const QString databaseFolder = QStandardPaths::writableLocation(QStandardPaths::DataLocation) + "/data";
+#endif
 
     /*!
      * \brief Check file name.
