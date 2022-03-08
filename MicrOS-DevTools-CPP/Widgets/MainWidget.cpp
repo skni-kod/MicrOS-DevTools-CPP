@@ -150,7 +150,7 @@ void MainWidget::showAboutMessage()
                       "<p>W tworzeniu programu wykorzystano Qt 5.12 (<a href=\"https://www.qt.io/\">www.qt.io</a>)</p>"
                       "<p>Program objęty jest licencją GPL 3.0 (<a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">www.gnu.org/licenses/gpl-3.0.en.html</a>)</p>"
                       "<p>Logo MicrOSa jest własnością koła naukowego. <br\\>"
-                      "Znajduje się na nim przerobiony trybik autorstwa Webalys (<a href=\"https://www.iconfinder.com/webalys\">www.iconfinder.com</a>)</p>"));
+                      "Znajdują się na nim dodane ikony trybika oraz synchronizacji pochodzące z Google Material Desing Icons (<a href=\"https://github.com/google/material-design-icons\">GitHub</a>)</p>"));
     msgBox.setIconPixmap(QPixmap(":/pictures/DevToolsIcon").scaled(80, 80));
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.setDefaultButton(QMessageBox::Ok);
