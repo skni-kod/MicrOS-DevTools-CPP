@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>Linki</DisplayName>
+    <Description>Przydatne linki do strony koła, githuba, dokumentacji oraz innych stron.</Description>
+    <Version>1.0</Version>
+    <ReleaseDate>2022-02-20</ReleaseDate>
+    <SortingPriority>95</SortingPriority>
+    <Default>true</Default>
+    <Script>installscript.qs</Script>
+</Package>

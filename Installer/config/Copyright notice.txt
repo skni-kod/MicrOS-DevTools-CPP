@@ -1,0 +1,7 @@
+DevTools logo
+ - MicrOS cat logo is owned by Studenckie Koło Naukowe Informatyków "KOD" (https://kod.prz.edu.pl/)
+ - Gears are from Google Material Desing Icons https://github.com/google/material-design-icons under Apache-2.0 License
+ 
+DevTools installer logo
+ - MicrOS cat logo is owned by Studenckie Koło Naukowe Informatyków "KOD" (https://kod.prz.edu.pl/)
+ - Sync icon is from Google Material Desing Icons https://github.com/google/material-design-icons under Apache-2.0 License
