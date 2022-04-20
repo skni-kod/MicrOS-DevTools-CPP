@@ -20,6 +20,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 TARGET = MicrOSDevToolsCPP
 
 include(Database/Database.pri)
+include(Networking/Networking.pri)
 include(Utils/Utils.pri)
 include(Widgets/Widgets.pri)
 
