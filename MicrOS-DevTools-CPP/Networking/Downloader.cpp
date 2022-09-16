@@ -52,8 +52,6 @@ void Downloader::startNextDownload()
     connect(currentDownload, &QNetworkReply::downloadProgress, this, &Downloader::downloadProgress);
     connect(currentDownload, &QNetworkReply::finished, this, &Downloader::downloadFinished);
     connect(currentDownload, &QNetworkReply::readyRead, this, &Downloader::downloadReadyRead);
-
-
 }
 
 void Downloader::downloadProgress(qint64 bytesReceived, qint64 bytesTotal)
