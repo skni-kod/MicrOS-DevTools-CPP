@@ -25,8 +25,7 @@ void StringDownloader::downloadNewData(QUuid, const QByteArray& byteArray)
 void StringDownloader::downloadEnded(QUuid uuid, qint64 elapsedTime)
 {
     // Send signal with downloaded data
-    downloadResult(DownloadResult::Success, getCurrentUrl().url, content, downloadMapData.find(uuid).value().identifier, elapsedTime);
-    qDebug() << "Downloaded: " << content << " ,Url: " << getCurrentUrl().url << " ,Uuid: " << uuid << " ,Elapsed time: " << elapsedTime;
+    downloadComplete(DownloadResult::Success, getCurrentUrl().url, content, downloadMapData.find(uuid).value().identifier, elapsedTime);
 
     downloadMapData.remove(uuid);
 }
@@ -34,7 +33,7 @@ void StringDownloader::downloadEnded(QUuid uuid, qint64 elapsedTime)
 void StringDownloader::downloadFailed(QUuid uuid, qint64 elapsedTime)
 {
     // Send signal that download failed
-    downloadResult(DownloadResult::Failed, getCurrentUrl().url, "", downloadMapData.find(uuid).value().identifier, elapsedTime);
+    downloadComplete(DownloadResult::Failed, getCurrentUrl().url, "", downloadMapData.find(uuid).value().identifier, elapsedTime);
     content.clear();
 
     downloadMapData.remove(uuid);
@@ -43,7 +42,7 @@ void StringDownloader::downloadFailed(QUuid uuid, qint64 elapsedTime)
 void StringDownloader::downloadRedirected(QUuid uuid, qint64 elapsedTime)
 {
     // Send signal that download has been redirected
-    downloadResult(DownloadResult::Redirected, getCurrentUrl().url, "", downloadMapData.find(uuid).value().identifier, elapsedTime);
+    downloadComplete(DownloadResult::Redirected, getCurrentUrl().url, "", downloadMapData.find(uuid).value().identifier, elapsedTime);
     content.clear();
 
     downloadMapData.remove(uuid);
