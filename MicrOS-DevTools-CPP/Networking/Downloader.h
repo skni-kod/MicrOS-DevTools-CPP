@@ -89,6 +89,15 @@ public:
      */
     explicit Downloader(QObject *parent = nullptr);
 
+signals:
+    /*!
+     * \brief This signal is emitted to indicate the progress of the download.
+     * \param uuid Unique id for download request.
+     * \param bytesReceived Bytes already received.
+     * \param bytesTotal Total bytes to receive.
+     */
+    void downloadProgression(QUuid uuid, qint64 bytesReceived, qint64 bytesTotal);
+
 protected slots:
     /*!
      * \brief Adds url to download queue.
@@ -144,7 +153,7 @@ private slots:
      */
     void startNextDownload();
     /*!
-     * \brief Calculates current download speed.
+     * \brief Reeives current download progress.
      * \details Slot for receive \a downloadProgress signal from \a QNetworkRequest.
      * \param bytesReceived Bytes already received.
      * \param bytesTotal Total bytes to receive.

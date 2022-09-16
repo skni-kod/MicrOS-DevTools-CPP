@@ -50,23 +50,7 @@ void Downloader::startNextDownload()
 
 void Downloader::downloadProgress(qint64 bytesReceived, qint64 bytesTotal)
 {
-    // calculate the download speed
-    double speed = bytesReceived * 1000.0 / downloadTimer.elapsed();
-    QString unit;
-    if (speed < 1024)
-    {
-        unit = "bytes/sec";
-    }
-    else if (speed < 1024*1024)
-    {
-        speed /= 1024;
-        unit = "kB/s";
-    }
-    else
-    {
-        speed /= 1024*1024;
-        unit = "MB/s";
-    }
+    emit downloadProgression(currentUrl.uuid, bytesReceived, bytesTotal);
 }
 
 void Downloader::downloadReadyRead()

@@ -50,7 +50,7 @@ public:
 
 signals:
     /*!
-     * \brief Called when download finishes.
+     * \brief This signal is emitted when download finishes.
      * \param result Result of download, allow to check status.
      * \param url Url which was provided to download file.
      * \param identifier Identifier provided by user when dalled \a download().
@@ -58,6 +58,13 @@ signals:
      * \param elapsedTime Time duration of download.
      */
     void downloadComplete(Downloader::DownloadResult result, QUrl url, QString identifier, QString content, quint64 elapsedTime);
+    /*!
+     * \brief This signal is emitted to indicate the progress of the download.
+     * \param identifier Identifier provided by user.
+     * \param bytesReceived Bytes already received.
+     * \param bytesTotal Total bytes to receive.
+     */
+    void downloadProgression(QString identifier, qint64 bytesReceived, qint64 bytesTotal);
 
 public:
     /*!
@@ -66,6 +73,16 @@ public:
      * \param identifier String which will allow to distinguish different downloads.
      */
     void download(QUrl url, QString identifier);
+
+protected slots:
+    /*!
+     * \brief Reeives current download progress.
+     * \details Slot for receive \a downloadProgress signal from \a QNetworkRequest.
+     * \param uuid Uuid of dowlnload.
+     * \param bytesReceived Bytes already received.
+     * \param bytesTotal Total bytes to receive.
+     */
+    void downloadProgress(QUuid uuid, qint64 bytesReceived, qint64 bytesTotal);
 
 protected:
     /*!
