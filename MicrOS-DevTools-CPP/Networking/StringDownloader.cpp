@@ -42,7 +42,7 @@ void StringDownloader::downloadFailed(QUuid uuid, qint64 elapsedTime)
 {
     // Send signal that download failed
     logger->logMessage(tr("Niepowodzenie pobierania pliku: ") + getCurrentUrl().url.toString() +
-                       tr(" , czas pobierania: ") + QString::number(static_cast<double>(elapsedTime)/ 1000) + tr(" s"), Logger::LogLevel::Info);
+                       tr(" , czas pobierania: ") + QString::number(static_cast<double>(elapsedTime)/ 1000) + tr(" s"), Logger::LogLevel::Error);
     emit downloadComplete(DownloadResult::Failed, getCurrentUrl().url, "", downloadMapData.find(uuid).value().identifier, elapsedTime);
     content.clear();
 
@@ -53,7 +53,7 @@ void StringDownloader::downloadRedirected(QUuid uuid, qint64 elapsedTime)
 {
     // Send signal that download has been redirected
     logger->logMessage(tr("Przekierowanie podczas pobierania pliku: ") + getCurrentUrl().url.toString() +
-                       tr(" , czas pobierania: ") + QString::number(static_cast<double>(elapsedTime)/ 1000) + tr(" s"), Logger::LogLevel::Info);
+                       tr(" , czas pobierania: ") + QString::number(static_cast<double>(elapsedTime)/ 1000) + tr(" s"), Logger::LogLevel::Warning);
     emit downloadComplete(DownloadResult::Redirected, getCurrentUrl().url, "", downloadMapData.find(uuid).value().identifier, elapsedTime);
     content.clear();
 
