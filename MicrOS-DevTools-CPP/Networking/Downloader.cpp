@@ -1,8 +1,8 @@
 #include "Downloader.h"
 
-Downloader::Downloader(QObject *parent) : QObject(parent)
+Downloader::Downloader(Logger *logger, QObject *parent) : QObject(parent)
 {
-
+    this->logger = logger;
 }
 
 void Downloader::downloadEnqueue(QUuid uuid, QUrl url)

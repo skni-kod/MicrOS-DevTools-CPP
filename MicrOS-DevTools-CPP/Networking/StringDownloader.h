@@ -43,9 +43,10 @@ private:
 public:
     /*!
      * \brief Default constructor.
+     * \param logger Pointer to logger.
      * \param parent Pointer to parent object.
      */
-    StringDownloader(QObject *parent = nullptr);
+    StringDownloader(Logger *logger, QObject *parent = nullptr);
 
 
 signals:

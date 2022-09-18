@@ -10,6 +10,8 @@
 #include <QUuid>
 #include <QQueue>
 
+#include "Utils/Logger.h"
+
 /*!
  * \brief The Downloader class
  * \details Provides queue for sequential file download.
@@ -52,6 +54,10 @@ protected:
 
 protected:
     /*!
+     * \brief Instance of logger.
+     */
+    Logger *logger = nullptr;
+    /*!
      * \brief Manager for network access. Allows to send network requests.
      */
     QNetworkAccessManager manager;
@@ -85,9 +91,10 @@ private:
 public:
     /*!
      * \brief Default constructor.
+     * \param logger Pointer to logger.
      * \param parent Pointer to parent object.
      */
-    explicit Downloader(QObject *parent = nullptr);
+    explicit Downloader(Logger *logger, QObject *parent = nullptr);
 
 signals:
     /*!
